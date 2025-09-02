@@ -162,7 +162,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(79, 195, 247, 0.8), rgba(2, 144, 201, 0.9)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(79, 195, 247, 0.8), rgba(2, 144, 201, 0.9)), url('hero-bg.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -268,6 +268,55 @@
             margin-bottom: 10px;
         }
         
+        /* World Scholars Cup Section */
+        .scholars-section {
+            background: linear-gradient(to right, var(--medium-blue), var(--dark-blue));
+            color: white;
+        }
+        
+        .scholars-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .scholars-text {
+            flex: 1;
+        }
+        
+        .scholars-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .scholars-list {
+            margin: 20px 0;
+        }
+        
+        .scholars-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .scholars-list i {
+            color: var(--orange);
+            margin-right: 10px;
+        }
+        
+        .scholars-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .scholars-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
         /* Location Section */
         .location-content {
             display: flex;
@@ -359,8 +408,7 @@
         
         /* Contact Section */
         .contact {
-            background: linear-gradient(to right, var(--medium-blue), var(--dark-blue));
-            color: white;
+            background: var(--light-blue);
         }
         
         .contact-content {
@@ -369,21 +417,26 @@
             gap: 50px;
         }
         
-        .contact-info, .contact-form {
+        .contact-info {
             flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .contact-info h3 {
             margin-bottom: 20px;
             font-size: 1.8rem;
+            color: var(--dark-blue);
         }
         
         .contact-details {
-            margin-top: 20px;
+            margin-top: 30px;
         }
         
         .contact-details p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
         }
@@ -393,24 +446,20 @@
             color: var(--orange);
             font-size: 1.2rem;
             width: 20px;
+            text-align: center;
         }
         
-        .form-group {
-            margin-bottom: 20px;
+        .contact-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .form-group input, .form-group textarea {
+        .contact-image img {
             width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* Footer */
@@ -450,12 +499,12 @@
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            .about-content {
+            .about-content, .scholars-content, .contact-content {
                 flex-direction: column;
             }
             
-            .contact-content {
-                flex-direction: column;
+            .contact-image {
+                display: none;
             }
         }
         
@@ -498,7 +547,6 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <!-- Replace with your actual logo.png file -->
                     <img src="logo.png" alt="Igniting Minds Logo">
                     <h1>Igniting <span>Minds</span></h1>
                 </div>
@@ -506,6 +554,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#programs">Programs</a></li>
+                    <li><a href="#scholars">World Scholars</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#location">Location</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -541,7 +590,7 @@
                     <a href="#programs" class="btn">Our Programs</a>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Children learning at Igniting Minds">
+                    <img src="about-image.jpg" alt="Children learning at Igniting Minds">
                 </div>
             </div>
         </div>
@@ -557,7 +606,7 @@
             <div class="program-cards">
                 <div class="program-card">
                     <div class="program-img">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Academic Support">
+                        <img src="academic-program.jpg" alt="Academic Support">
                     </div>
                     <div class="program-info">
                         <h3>Academic Excellence</h3>
@@ -566,7 +615,7 @@
                 </div>
                 <div class="program-card">
                     <div class="program-img">
-                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="STEM Learning">
+                        <img src="stem-program.jpg" alt="STEM Learning">
                     </div>
                     <div class="program-info">
                         <h3>STEM Exploration</h3>
@@ -575,12 +624,41 @@
                 </div>
                 <div class="program-card">
                     <div class="program-img">
-                        <img src="https://images.unsplash.com/photo-1549056572-75914d6d7e1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Creative Arts">
+                        <img src="arts-program.jpg" alt="Creative Arts">
                     </div>
                     <div class="program-info">
                         <h3>Creative Arts</h3>
                         <p>From painting to pottery, drama to dance, our arts program encourages self-expression and creative thinking.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- World Scholars Cup Section -->
+    <section id="scholars" class="scholars-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>World Scholars Cup Preparation</h2>
+                <p>Specialized training for academic excellence and global competition</p>
+            </div>
+            <div class="scholars-content">
+                <div class="scholars-text">
+                    <h3>Excel in Global Academic Competitions</h3>
+                    <p>Our specialized World Scholars Cup program prepares students to excel in this prestigious global academic competition. We provide comprehensive training in all areas of the competition:</p>
+                    <ul class="scholars-list">
+                        <li><i class="fas fa-check-circle"></i> Collaborative Writing strategies and techniques</li>
+                        <li><i class="fas fa-check-circle"></i> Scholar's Challenge subject mastery</li>
+                        <li><i class="fas fa-check-circle"></i> Team Debate preparation and practice</li>
+                        <li><i class="fas fa-check-circle"></i> Curriculum-aligned subject knowledge building</li>
+                        <li><i class="fas fa-check-circle"></i> Mock tournaments and practice sessions</li>
+                        <li><i class="fas fa-check-circle"></i> Critical thinking and rapid learning skills</li>
+                    </ul>
+                    <p>Our experienced coaches have a proven track record of helping students achieve top honors at regional and global rounds of the World Scholars Cup.</p>
+                    <a href="#contact" class="btn">Learn More About Our WSC Program</a>
+                </div>
+                <div class="scholars-image">
+                    <img src="scholars-cup.jpg" alt="World Scholars Cup Preparation">
                 </div>
             </div>
         </div>
@@ -599,7 +677,7 @@
                         <p>Igniting Minds has transformed my child's approach to learning. The personalized attention and creative teaching methods have made a significant difference in both academic performance and confidence.</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Parent">
+                        <img src="parent1.jpg" alt="Parent">
                         <div class="author-details">
                             <h4>Priya Sharma</h4>
                             <p>Parent of Arjun, Grade 5</p>
@@ -611,7 +689,7 @@
                         <p>The STEM program is exceptional! My daughter now looks forward to learning about science and technology. The hands-on projects have ignited her curiosity in ways I never thought possible.</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Parent">
+                        <img src="parent2.jpg" alt="Parent">
                         <div class="author-details">
                             <h4>Rajesh Kumar</h4>
                             <p>Parent of Meera, Grade 6</p>
@@ -620,13 +698,13 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        <p>As a working parent, I appreciate the safe environment and the quality of care my child receives. The staff is professional and caring, and the facilities are excellent.</p>
+                        <p>The World Scholars Cup preparation has been incredible. My son's confidence and knowledge have grown tremendously, and he's now competing at an international level!</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Parent">
+                        <img src="parent3.jpg" alt="Parent">
                         <div class="author-details">
                             <h4>Lakshmi Venkat</h4>
-                            <p>Parent of Vikram, Grade 4</p>
+                            <p>Parent of Vikram, Grade 7</p>
                         </div>
                     </div>
                 </div>
@@ -671,22 +749,8 @@
                         <p><i class="fas fa-clock"></i> Monday-Saturday: 2:00 PM - 7:00 PM</p>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Your Phone">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                <div class="contact-image">
+                    <img src="contact-image.jpg" alt="Children at Igniting Minds">
                 </div>
             </div>
         </div>
