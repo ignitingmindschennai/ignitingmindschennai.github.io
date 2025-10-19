@@ -187,12 +187,11 @@
             transition: all 0.3s ease;
         }
         
-        /* Hero Section - FIXED */
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9)), var(--hero-bg, url('hero-bg.jpg'));
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -267,7 +266,7 @@
         
         .programs-carousel {
             position: relative;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             overflow: hidden;
         }
@@ -282,12 +281,15 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
             border-top: 5px solid var(--orange);
             min-width: 100%;
             padding: 0 15px;
             box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
         }
         
         .program-img {
@@ -308,9 +310,6 @@
         
         .program-info {
             padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
         
         .program-info h3 {
@@ -322,42 +321,8 @@
         .program-info p {
             line-height: 1.7;
             color: #555;
-            margin-bottom: 15px;
         }
         
-        .program-text {
-            flex-grow: 1;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .program-text.collapsed {
-            max-height: 150px;
-        }
-        
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: var(--orange);
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            padding: 5px 0;
-        }
-        
-        .read-more-btn i {
-            margin-left: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .read-more-btn.expanded i {
-            transform: rotate(180deg);
-        }
-        
-        /* Carousel buttons - FIXED POSITIONING */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -383,11 +348,11 @@
         }
         
         .carousel-btn.prev {
-            left: -70px;
+            left: 10px;
         }
         
         .carousel-btn.next {
-            right: -70px;
+            right: 10px;
         }
         
         .carousel-dots {
@@ -463,14 +428,14 @@
             font-size: 1.4rem;
         }
         
-        /* Student Testimonials Section - FIXED */
+        /* Student Testimonials Section */
         .student-testimonials {
             background-color: var(--light-blue);
         }
         
         .testimonials-carousel {
             position: relative;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             overflow: hidden;
         }
@@ -487,10 +452,8 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             position: relative;
             min-width: 100%;
+            margin: 0 15px;
             box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            margin: 0;
         }
         
         .student-testimonial-card::before {
@@ -511,18 +474,11 @@
             color: #555;
             position: relative;
             z-index: 1;
-            flex-grow: 1;
-            overflow: hidden;
-        }
-        
-        .student-testimonial-text.collapsed {
-            max-height: 120px;
         }
         
         .student-testimonial-author {
             display: flex;
             align-items: center;
-            margin-top: auto;
         }
         
         .student-testimonial-author img {
@@ -800,16 +756,6 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .carousel-btn.prev {
-                left: -50px;
-            }
-            
-            .carousel-btn.next {
-                right: -50px;
-            }
-        }
-        
         @media (max-width: 992px) {
             :root {
                 --section-spacing: 70px;
@@ -825,14 +771,6 @@
             
             .hero-content h2 {
                 font-size: 2.7rem;
-            }
-            
-            .carousel-btn.prev {
-                left: 10px;
-            }
-            
-            .carousel-btn.next {
-                right: 10px;
             }
         }
         
@@ -906,29 +844,6 @@
             .team-cards {
                 grid-template-columns: 1fr;
             }
-            
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .carousel-btn.prev {
-                left: 5px;
-            }
-            
-            .carousel-btn.next {
-                right: 5px;
-            }
-            
-            /* Mobile-specific styles for carousels */
-            .program-card, .student-testimonial-card {
-                padding: 0 10px;
-            }
-            
-            .program-info, .student-testimonial-card {
-                padding: 20px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -958,9 +873,17 @@
             }
             
             .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .carousel-btn.prev {
+                left: 5px;
+            }
+            
+            .carousel-btn.next {
+                right: 5px;
             }
         }
     </style>
@@ -1020,7 +943,7 @@
                     <a href="#programs" class="btn">Our Programs</a>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Children learning at Igniting Minds">
+                    <img src="about-image.jpg" alt="Children learning at Igniting Minds">
                 </div>
             </div>
         </div>
@@ -1041,68 +964,48 @@
                     <!-- Academic Support Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Academic Support">
+                            <img src="academic-support.jpg" alt="Academic Support">
                         </div>
                         <div class="program-info">
                             <h3>Academic Support</h3>
-                            <div class="program-text collapsed" id="programText1">
-                                <p>At this institution, we believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively. Our Academic Support is designed to nurture these very qualities — empowering every learner to reach their fullest potential.</p>
-                                <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills that prepare students for real-world success. Each session is thoughtfully crafted to help students build logical reasoning, enhance English fluency, and master the art of public speaking and presentation — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
-                            </div>
-                            <button class="read-more-btn" data-target="programText1">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
+                            <p>At this institution, we believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively. Our Academic Support is designed to nurture these very qualities — empowering every learner to reach their fullest potential.</p>
+                            <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills that prepare students for real-world success. Each session is thoughtfully crafted to help students build logical reasoning, enhance English fluency, and master the art of public speaking and presentation — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
                         </div>
                     </div>
                     
                     <!-- Creative Arts Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Creative Arts">
+                            <img src="creative-arts.jpg" alt="Creative Arts">
                         </div>
                         <div class="program-info">
                             <h3>Creative Arts</h3>
-                            <div class="program-text collapsed" id="programText2">
-                                <p>Here, we inculcate the foundations of the special and fine arts and to establish a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and a meaningful impact. These include the visual arts, dance and sophisticated project presentations.</p>
-                                <p>We utilise guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression and showcase their talent.</p>
-                            </div>
-                            <button class="read-more-btn" data-target="programText2">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
+                            <p>Here, we inculcate the foundations of the special and fine arts and to establish a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and a meaningful impact. These include the visual arts, dance and sophisticated project presentations.</p>
+                            <p>We utilise guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression and showcase their talent.</p>
                         </div>
                     </div>
                     
                     <!-- Cambridge Examinations Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="https://images.unsplash.com/photo-1560785496-3c9d27877182?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Cambridge Examinations">
+                            <img src="cambridge-exams.jpg" alt="Cambridge Examinations">
                         </div>
                         <div class="program-info">
                             <h3>Cambridge Examinations</h3>
-                            <div class="program-text collapsed" id="programText3">
-                                <p>As proof of our Cambridge certification, our students are trained vigorously to attend various levels of Cambridge examinations namely the Preliminary English Test (PET) and the First Certificate in English (FCE) amongst many other dynamic and robust tests and assessments. These are done to validate a student's proficiency over the English language and how they master it.</p>
-                                <p>Here, we focus and emphasize on learning the basic fundamentals through a multitude of practice sessions, explanations and masterclasses as well as mock tests to identify and check the aptitude of our students. Without these efforts, our students would not be acing their examinations with ease, a testament to the commitment we have with our Cambridge heritage.</p>
-                            </div>
-                            <button class="read-more-btn" data-target="programText3">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
+                            <p>As proof of our Cambridge certification, our students are trained vigorously to attend various levels of Cambridge examinations namely the Preliminary English Test (PET) and the First Certificate in English (FCE) amongst many other dynamic and robust tests and assessments. These are done to validate a student's proficiency over the English language and how they master it.</p>
+                            <p>Here, we focus and emphasize on learning the basic fundamentals through a multitude of practice sessions, explanations and masterclasses as well as mock tests to identify and check the aptitude of our students. Without these efforts, our students would not be acing their examinations with ease, a testament to the commitment we have with our Cambridge heritage.</p>
                         </div>
                     </div>
                     
                     <!-- Extra-Curricular Activities Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Extra-Curricular Activities">
+                            <img src="extra-curricular.jpg" alt="Extra-Curricular Activities">
                         </div>
                         <div class="program-info">
                             <h3>Extra-Curricular Activities</h3>
-                            <div class="program-text collapsed" id="programText4">
-                                <p>To promote a sense of healthy competition between our own houses within the institution who are named after legends of the literary world – Shakespeare, Wordsworth, Austen and Tagore – points are awarded to all achievers regardless of any field in which they have made an accomplishment of value and honour.</p>
-                                <p>On top of that, we allow our students to participate in a versatile set of extra-curricular events such as competitions in dance, our very own and much cherished Sports Day, our historic Annual Day and our beloved cultural event 'IGNITE'. We believe that these events can open up spaces for out-of-the-box learning, personality-building, heartfelt camaraderie and an equitable opportunity for all to compete against the best of the best to emerge victorious for their houses.</p>
-                            </div>
-                            <button class="read-more-btn" data-target="programText4">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
+                            <p>To promote a sense of healthy competition between our own houses within the institution who are named after legends of the literary world – Shakespeare, Wordsworth, Austen and Tagore – points are awarded to all achievers regardless of any field in which they have made an accomplishment of value and honour.</p>
+                            <p>On top of that, we allow our students to participate in a versatile set of extra-curricular events such as competitions in dance, our very own and much cherished Sports Day, our historic Annual Day and our beloved cultural event 'IGNITE'. We believe that these events can open up spaces for out-of-the-box learning, personality-building, heartfelt camaraderie and an equitable opportunity for all to compete against the best of the best to emerge victorious for their houses.</p>
                         </div>
                     </div>
                 </div>
@@ -1128,7 +1031,7 @@
             </div>
             <div class="event-card">
                 <div class="event-img">
-                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="IGNITE 25">
+                    <img src="ignite-logo.jpg" alt="IGNITE 25">
                 </div>
                 <div class="event-info">
                     <h3>IGNITE 25</h3>
@@ -1162,13 +1065,13 @@
                     <a href="#contact" class="btn">Learn More About Our WSC Program</a>
                 </div>
                 <div class="scholars-image">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="World Scholars Cup Preparation">
+                    <img src="scholars-cup.jpg" alt="World Scholars Cup Preparation">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Student Testimonials Section - FIXED -->
+    <!-- Student Testimonials Section -->
     <section id="student-testimonials" class="student-testimonials">
         <div class="container">
             <div class="section-title">
@@ -1182,17 +1085,14 @@
                 <div class="student-testimonial-cards" id="testimonialsCarousel">
                     <!-- Sachin Sathyasivan Testimonial -->
                     <div class="student-testimonial-card">
-                        <div class="student-testimonial-text collapsed" id="testimonialText1">
+                        <div class="student-testimonial-text">
                             <p>IGM is the abode of learning that every student and parent would dream of. The dynamic activities that keep us students engaged regularly help us in transforming ourselves to be outgoing, self-aware and intellectually capable of understanding situations and adapting to prompts. (These include public speaking, writing, quizzing, debates and even other extra-curriculars like dance and sporting events too) Students from every walk of life are encouraged to take part. A worthwhile and astounding experience with various other higher-level English tests and opportunities in other competitions also provided!</p>
                             <p>English and it's subsequent modes of communication are taken very seriously here and will definitely improve with leaps and bounds. It is the heart and soul of so many young minds and to all those who read these reviews - these aren't nearly sufficient to completely describe this institution.</p>
                             <p>Truly a marvellous community to whom I owe so much. This is one and truly the destination in this large city of ours which would undeniably help a growing student foster the necessary values for their future. Perfect for instilling overall development in the youth to become part of a well-faring society as a whole at the end of the day.</p>
                             <p>My heart goes out to all those who have ever guided me here. LONG LIVE IGNITING MINDS!!</p>
                         </div>
-                        <button class="read-more-btn" data-target="testimonialText1">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
                         <div class="student-testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sachin Sathyasivan">
+                            <img src="sachin.jpg" alt="Sachin Sathyasivan">
                             <div class="student-author-details">
                                 <h4>Sachin Sathyasivan</h4>
                                 <p>Student at Igniting Minds</p>
@@ -1201,15 +1101,11 @@
                     </div>
                     
                     <div class="student-testimonial-card">
-                        <div class="student-testimonial-text collapsed" id="testimonialText2">
-                            <p>The World Scholars Cup preparation at Igniting Minds helped me win medals at the global round. The mock debates and collaborative writing sessions were incredibly helpful! The teachers are very supportive and always encourage us to push our boundaries. I've grown so much in confidence and critical thinking skills since joining this program.</p>
-                            <p>The environment at Igniting Minds is truly inspiring. Every session brings new challenges and opportunities to learn. I especially appreciate how they balance academic rigor with creative expression, making learning an enjoyable experience.</p>
+                        <div class="student-testimonial-text">
+                            <p>The World Scholars Cup preparation at Igniting Minds helped me win medals at the global round. The mock debates and collaborative writing sessions were incredibly helpful!</p>
                         </div>
-                        <button class="read-more-btn" data-target="testimonialText2">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
                         <div class="student-testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Student">
+                            <img src="student2.jpg" alt="Student">
                             <div class="student-author-details">
                                 <h4>Priya Patel</h4>
                                 <p>Grade 9 Student</p>
@@ -1217,17 +1113,13 @@
                         </div>
                     </div>
                     <div class="student-testimonial-card">
-                        <div class="student-testimonial-text collapsed" id="testimonialText3">
-                            <p>Igniting Minds has transformed my approach to learning. The Cambridge exam preparation has been exceptional, and I've seen remarkable improvement in my English proficiency. The teachers are not just instructors but mentors who genuinely care about our growth.</p>
-                            <p>What I love most about Igniting Minds is how they make learning interactive and fun. The house competitions, cultural events, and various activities keep us engaged and motivated throughout the year. It's more than just an after-school program - it's a community that nurtures holistic development.</p>
+                        <div class="student-testimonial-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at consectetur est. Phasellus viverra molestie diam vel vehicula. Duis molestie lectus libero, non interdum ex luctus quis</p>
                         </div>
-                        <button class="read-more-btn" data-target="testimonialText3">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
                         <div class="student-testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Student">
+                            <img src="student3.jpg" alt="Student">
                             <div class="student-author-details">
-                                <h4>Rahul Kumar</h4>
+                                <h4>XXX</h4>
                                 <p>Grade 8 Student</p>
                             </div>
                         </div>
@@ -1255,10 +1147,10 @@
             <div class="team-cards">
                 <div class="team-card">
                     <div class="team-text">
-                        <p>Our founder has dedicated her life to education and child development. With over 20 years of experience in teaching and curriculum design, she has created a nurturing environment where children can thrive academically and personally.</p>
+                        <p>Testimonial 1</p>
                     </div>
                     <div class="team-author">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Team Member">
+                        <img src="parent1.jpg" alt="Team Member">
                         <div class="team-author-details">
                             <h4>Dr. Anumpama Rao</h4>
                             <p>Founder of IGM</p>
@@ -1267,10 +1159,10 @@
                 </div>
                 <div class="team-card">
                     <div class="team-text">
-                        <p>With specialized training in child psychology and education, our educators create personalized learning experiences that cater to each child's unique needs and learning style.</p>
+                        <p>Testimonial 2</p>
                     </div>
                     <div class="team-author">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Team Member">
+                        <img src="parent2.jpg" alt="Team Member">
                         <div class="team-author-details">
                             <h4>Mrs. Khushi</h4>
                             <p>Experienced Trained Educator</p>
@@ -1279,10 +1171,10 @@
                 </div>
                 <div class="team-card">
                     <div class="team-text">
-                        <p>Our team of Cambridge-certified educators brings global teaching standards to our program, ensuring students receive world-class education and preparation for international examinations.</p>
+                        <p>Testimonial 3</p>
                     </div>
                     <div class="team-author">
-                        <img src="https://images.unsplash.com/photo-1551836026-d5c088a9f7b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Team Member">
+                        <img src="parent3.jpg" alt="Team Member">
                         <div class="team-author-details">
                             <h4>Mrs. Sonal</h4>
                             <p>Experienced Trained Educator</p>
@@ -1330,7 +1222,7 @@
                     </div>
                 </div>
                 <div class="contact-image">
-                    <img src="https://images.unsplash.com/photo-1516627145497-ae69578cfc06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Children at Igniting Minds">
+                    <img src="contact-image.jpg" alt="Children at Igniting Minds">
                 </div>
             </div>
         </div>
@@ -1391,6 +1283,11 @@
             });
         });
 
+        // Function to change hero background
+        function changeHeroBackground(imageUrl) {
+            document.documentElement.style.setProperty('--hero-bg', `url('${imageUrl}')`);
+        }
+
         // Carousel functionality for Programs
         const programsCarousel = document.getElementById('programsCarousel');
         const programsPrev = document.getElementById('programsPrev');
@@ -1430,7 +1327,7 @@
             });
         });
 
-        // Carousel functionality for Testimonials - FIXED
+        // Carousel functionality for Testimonials
         const testimonialsCarousel = document.getElementById('testimonialsCarousel');
         const testimonialsPrev = document.getElementById('testimonialsPrev');
         const testimonialsNext = document.getElementById('testimonialsNext');
@@ -1469,27 +1366,16 @@
             });
         });
 
-        // Read More functionality - FIXED
-        document.querySelectorAll('.read-more-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent event bubbling
-                const targetId = this.getAttribute('data-target');
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement.classList.contains('collapsed')) {
-                    targetElement.classList.remove('collapsed');
-                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-                    this.classList.add('expanded');
-                } else {
-                    targetElement.classList.add('collapsed');
-                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                    this.classList.remove('expanded');
-                }
-            });
-        });
+        // Auto-advance carousels
+        setInterval(() => {
+            currentProgramIndex = (currentProgramIndex + 1) % programCards.length;
+            updateProgramsCarousel();
+        }, 8000);
 
-        // Auto-advance carousels DISABLED as requested
-        // No timer functions are included
+        setInterval(() => {
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonialCards.length;
+            updateTestimonialsCarousel();
+        }, 10000);
     </script>
 </body>
 </html>
