@@ -314,6 +314,120 @@
             color: #555;
         }
         
+        /* Upcoming Events Section */
+        .events {
+            background-color: white;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border-top: 5px solid var(--orange);
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .event-img {
+            height: 150px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--light-blue);
+        }
+        
+        .event-img img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-card:hover .event-img img {
+            transform: scale(1.1);
+        }
+        
+        .event-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .event-info h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* Student Testimonials Section */
+        .student-testimonials {
+            background-color: var(--light-blue);
+        }
+        
+        .student-testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        
+        .student-testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .student-testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--light-blue);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+        
+        .student-testimonial-text {
+            margin-bottom: 25px;
+            font-style: italic;
+            line-height: 1.7;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .student-testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .student-testimonial-author img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .student-author-details h4 {
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+        
+        .student-author-details p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
         /* World Scholars Cup Section */
         .scholars-section {
             background: linear-gradient(to right, rgba(79, 195, 247, 0.7), rgba(79, 195, 247, 1));
@@ -365,6 +479,70 @@
             display: block;
         }
         
+        /* Team Section */
+        .team {
+            background-color: white;
+        }
+        
+        .team-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            text-align: center;
+        }
+        
+        .team-card::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--light-blue);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+        
+        .team-text {
+            margin-bottom: 25px;
+            font-style: italic;
+            line-height: 1.7;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .team-author img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .team-author-details h4 {
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+        
+        .team-author-details p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
         /* Location Section */
         .location-content {
             display: flex;
@@ -406,68 +584,6 @@
             width: 100%;
             height: 100%;
             border: none;
-        }
-        
-        /* Testimonials Section */
-        .testimonials {
-            background-color: var(--light-blue);
-        }
-        
-        .testimonial-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            font-size: 5rem;
-            color: var(--light-blue);
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            line-height: 1;
-            opacity: 0.7;
-        }
-        
-        .testimonial-text {
-            margin-bottom: 25px;
-            font-style: italic;
-            line-height: 1.7;
-            color: #555;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .testimonial-author img {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-        
-        .author-details h4 {
-            color: var(--dark-blue);
-            margin-bottom: 5px;
-        }
-        
-        .author-details p {
-            color: #777;
-            font-size: 0.9rem;
         }
         
         /* Contact Section */
@@ -654,7 +770,7 @@
                 margin: 12px 0;
             }
             
-            .program-cards, .testimonial-cards {
+            .program-cards, .testimonial-cards, .student-testimonial-cards, .team-cards {
                 grid-template-columns: 1fr;
             }
         }
@@ -702,7 +818,8 @@
                     <li><a href="#programs">Programs</a></li>
                     <li><a href="#events">Upcoming Events</a></li>
                     <li><a href="#scholars">World Scholars</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#student-testimonials">Student Testimonials</a></li>
+                    <li><a href="#team">Our Team</a></li>
                     <li><a href="#location">Location</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -787,29 +904,25 @@
         </div>
     </section>
 
-    <!-- Upcoming events section -->
-<section id="events" class="about">
-    <div class="container">
-        <div class="section-title">
-            <h2>Upcoming Events</h2>
-            <p>Upcoming intra-IGM events</p>
-        </div>
-        <div class="program-cards">
-            <div class="program-card">
-                <div class="program-img">
-                    <img src="academic-program.jpg" alt="Academic Support">
+    <!-- Upcoming Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Events</h2>
+                <p>Upcoming intra-IGM events</p>
+            </div>
+            <div class="event-card">
+                <div class="event-img">
+                    <img src="ignite-logo.jpg" alt="IGNITE 25">
                 </div>
-                <div class="program-info">
-                    <h3>Culturals</h3>
-                    <a href="#programs" class="btn">Learn More</a>
+                <div class="event-info">
+                    <h3>IGNITE 25</h3>
+                    <p>Annual Cultural Festival</p>
+                    <a href="ignite.html" class="btn">Learn More</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
- 
-
-
+    </section>
 
     <!-- World Scholars Cup Section -->
     <section id="scholars" class="scholars-section">
@@ -830,7 +943,7 @@
                         <li><i class="fas fa-check-circle"></i> Mock tournaments and practice sessions</li>
                         <li><i class="fas fa-check-circle"></i> Critical thinking and rapid learning skills</li>
                     </ul>
-                    <p>Our experienced traing have a proven track record of helping students achieve top honors at regional and global rounds of the World Scholars Cup.</p>
+                    <p>Our experienced training have a proven track record of helping students achieve top honors at regional and global rounds of the World Scholars Cup.</p>
                     <a href="#contact" class="btn">Learn More About Our WSC Program</a>
                 </div>
                 <div class="scholars-image">
@@ -840,45 +953,93 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
+    <!-- Student Testimonials Section -->
+    <section id="student-testimonials" class="student-testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Meet our team</h2>
-                <p>Testimonials from our educators</p>
+                <h2>Student Testimonials</h2>
+                <p>What our students say about Igniting Minds</p>
             </div>
-            <div class="testimonial-cards">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
+            <div class="student-testimonial-cards">
+                <div class="student-testimonial-card">
+                    <div class="student-testimonial-text">
+                        <p>Igniting Minds has completely transformed my learning experience. The personalized attention and creative teaching methods have helped me excel in both academics and extracurricular activities.</p>
+                    </div>
+                    <div class="student-testimonial-author">
+                        <img src="student1.jpg" alt="Student">
+                        <div class="student-author-details">
+                            <h4>Rahul Sharma</h4>
+                            <p>Grade 7 Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="student-testimonial-card">
+                    <div class="student-testimonial-text">
+                        <p>The World Scholars Cup preparation at Igniting Minds helped me win medals at the global round. The mock debates and collaborative writing sessions were incredibly helpful!</p>
+                    </div>
+                    <div class="student-testimonial-author">
+                        <img src="student2.jpg" alt="Student">
+                        <div class="student-author-details">
+                            <h4>Priya Patel</h4>
+                            <p>Grade 9 Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="student-testimonial-card">
+                    <div class="student-testimonial-text">
+                        <p>I used to struggle with math, but the tutors at Igniting Minds made it so much easier to understand. Now I actually enjoy solving math problems!</p>
+                    </div>
+                    <div class="student-testimonial-author">
+                        <img src="student3.jpg" alt="Student">
+                        <div class="student-author-details">
+                            <h4>Arjun Kumar</h4>
+                            <p>Grade 6 Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>Our dedicated educators and staff</p>
+            </div>
+            <div class="team-cards">
+                <div class="team-card">
+                    <div class="team-text">
                         <p>Testimonial 1</p>
                     </div>
-                    <div class="testimonial-author">
-                        <img src="parent1.jpg" alt="Parent">
-                        <div class="author-details">
+                    <div class="team-author">
+                        <img src="parent1.jpg" alt="Team Member">
+                        <div class="team-author-details">
                             <h4>Dr. Anumpama Rao</h4>
                             <p>Founder of IGM</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
+                <div class="team-card">
+                    <div class="team-text">
                         <p>Testimonial 2</p>
                     </div>
-                    <div class="testimonial-author">
-                        <img src="parent2.jpg" alt="Parent">
-                        <div class="author-details">
+                    <div class="team-author">
+                        <img src="parent2.jpg" alt="Team Member">
+                        <div class="team-author-details">
                             <h4>Mrs. Khushi</h4>
                             <p>Experienced Trained Educator</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
+                <div class="team-card">
+                    <div class="team-text">
                         <p>Testimonial 3</p>
                     </div>
-                    <div class="testimonial-author">
-                        <img src="parent3.jpg" alt="Parent">
-                        <div class="author-details">
+                    <div class="team-author">
+                        <img src="parent3.jpg" alt="Team Member">
+                        <div class="team-author-details">
                             <h4>Mrs. Sonal</h4>
                             <p>Experienced Trained Educator</p>
                         </div>
@@ -994,13 +1155,4 @@
         // Example: To change the background, call changeHeroBackground('your-image-url.jpg');
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
