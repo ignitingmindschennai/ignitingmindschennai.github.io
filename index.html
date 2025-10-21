@@ -100,7 +100,7 @@
             margin: 0 auto;
         }
         
-        /* Header Styles */
+        /* Header Styles - FIXED */
         header {
             background: white;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -108,28 +108,34 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            padding: 0;
         }
         
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 10px 0;
+            min-height: 70px;
         }
         
         .logo {
             display: flex;
             align-items: center;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         
         .logo img {
-            height: 50px;
-            margin-right: 12px;
+            height: 45px;
+            margin-right: 10px;
         }
         
         .logo h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--dark-blue);
+            line-height: 1;
+            white-space: nowrap;
         }
         
         .logo span {
@@ -139,10 +145,15 @@
         .nav-links {
             display: flex;
             list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
         }
         
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 20px;
+            white-space: nowrap;
         }
         
         .nav-links a {
@@ -151,7 +162,8 @@
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            padding: 5px 0;
         }
         
         .nav-links a::after {
@@ -177,6 +189,9 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
         }
         
         .menu-toggle span {
@@ -197,7 +212,7 @@
             align-items: center;
             color: white;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 70px;
         }
         
         .hero-content {
@@ -935,6 +950,16 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-links li {
+                margin-left: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+        }
+        
         @media (max-width: 992px) {
             :root {
                 --section-spacing: 70px;
@@ -951,26 +976,36 @@
             .hero-content h2 {
                 font-size: 2.7rem;
             }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-links.active li {
+                margin: 10px 0;
+                text-align: center;
+            }
         }
         
         @media (max-width: 768px) {
             :root {
                 --section-spacing: 60px;
-            }
-            
-            .navbar {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-            
-            .nav-links {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-links li {
-                margin: 8px 15px;
             }
             
             .hero {
@@ -995,29 +1030,7 @@
             }
             
             .logo h1 {
-                font-size: 1.5rem;
-            }
-            
-            .menu-toggle {
-                display: flex;
-                position: absolute;
-                right: 20px;
-                top: 25px;
-            }
-            
-            .nav-links {
-                display: none;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .nav-links li {
-                margin: 12px 0;
+                font-size: 1.4rem;
             }
             
             .carousel-btn {
@@ -1122,7 +1135,7 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - FIXED -->
     <header>
         <div class="container">
             <nav class="navbar">
@@ -1141,15 +1154,16 @@
                     <li><a href="#location">Location</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </nav>
         </div>
     </header>
 
+    <!-- Rest of the website content remains the same -->
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
@@ -1609,7 +1623,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
