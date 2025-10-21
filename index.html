@@ -189,7 +189,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9));
+            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9)), var(--hero-bg, url('hero-bg.jpg'));
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -246,13 +246,17 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            background: var(--light-blue);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-weight: bold;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
         }
         
         /* Programs Section */
@@ -282,7 +286,6 @@
             min-width: 100%;
             padding: 0 15px;
             box-sizing: border-box;
-            position: relative;
         }
         
         .program-card:hover {
@@ -292,12 +295,17 @@
         .program-img {
             height: 200px;
             overflow: hidden;
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-weight: bold;
+        }
+        
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
         }
         
         .program-info {
@@ -387,11 +395,11 @@
         }
         
         .carousel-btn.prev {
-            left: -70px;
+            left: 10px;
         }
         
         .carousel-btn.next {
-            right: -70px;
+            right: 10px;
         }
         
         .carousel-dots {
@@ -442,8 +450,18 @@
             justify-content: center;
             align-items: center;
             background: var(--light-blue);
-            color: var(--dark-blue);
-            font-weight: bold;
+        }
+        
+        .event-img img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-card:hover .event-img img {
+            transform: scale(1.1);
         }
         
         .event-info {
@@ -500,13 +518,12 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            background: var(--light-blue);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-weight: bold;
+        }
+        
+        .scholars-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         /* Student Testimonials Section - FIXED */
@@ -717,13 +734,14 @@
             height: 150px;
             border-radius: 50%;
             margin: 0 auto 20px;
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-weight: bold;
+            overflow: hidden;
             border: 3px solid var(--orange);
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .team-text {
@@ -873,12 +891,12 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-weight: bold;
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* Footer */
@@ -917,16 +935,6 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .carousel-btn.prev {
-                left: -30px;
-            }
-            
-            .carousel-btn.next {
-                right: -30px;
-            }
-        }
-        
         @media (max-width: 992px) {
             :root {
                 --section-spacing: 70px;
@@ -942,14 +950,6 @@
             
             .hero-content h2 {
                 font-size: 2.7rem;
-            }
-            
-            .carousel-btn.prev {
-                left: 10px;
-            }
-            
-            .carousel-btn.next {
-                right: 10px;
             }
         }
         
@@ -1177,7 +1177,7 @@
                     <a href="#programs" class="btn">Our Programs</a>
                 </div>
                 <div class="about-image">
-                    About Us Image
+                    <img src="about-image.jpg" alt="Children learning at Igniting Minds">
                 </div>
             </div>
         </div>
@@ -1198,7 +1198,7 @@
                     <!-- Academic Support Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            Academic Support Image
+                            <img src="academic-support.jpg" alt="Academic Support">
                         </div>
                         <div class="program-info">
                             <h3>Academic Support</h3>
@@ -1219,7 +1219,7 @@
                     <!-- Creative Arts Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            Creative Arts Image
+                            <img src="creative-arts.jpg" alt="Creative Arts">
                         </div>
                         <div class="program-info">
                             <h3>Creative Arts</h3>
@@ -1240,7 +1240,7 @@
                     <!-- Cambridge Examinations Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            Cambridge Exams Image
+                            <img src="cambridge-exams.jpg" alt="Cambridge Examinations">
                         </div>
                         <div class="program-info">
                             <h3>Cambridge Examinations</h3>
@@ -1261,7 +1261,7 @@
                     <!-- Extra-Curricular Activities Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            Extra-Curricular Image
+                            <img src="extra-curricular.jpg" alt="Extra-Curricular Activities">
                         </div>
                         <div class="program-info">
                             <h3>Extra-Curricular Activities</h3>
@@ -1301,12 +1301,12 @@
             </div>
             <div class="event-card">
                 <div class="event-img">
-                    IGNITE 25 Logo
+                    <img src="ignite-logo.jpg" alt="IGNITE 25">
                 </div>
                 <div class="event-info">
                     <h3>IGNITE 25</h3>
                     <p>Annual Cultural Festival</p>
-                    <a href="https://www.instagram.com/ignitingmindschennai/?hl=en" class="btn">Learn More</a>
+                    <a href="ignite.html" class="btn">Learn More</a>
                 </div>
             </div>
         </div>
@@ -1335,7 +1335,7 @@
                     <a href="#contact" class="btn">Learn More About Our WSC Program</a>
                 </div>
                 <div class="scholars-image">
-                    World Scholars Cup Image
+                    <img src="scholars-cup.jpg" alt="World Scholars Cup Preparation">
                 </div>
             </div>
         </div>
@@ -1454,7 +1454,7 @@
                     <div class="team-slide active" id="teamSlide1">
                         <div class="team-card">
                             <div class="team-image">
-                                Dr. Anumpama Rao Image
+                                <img src="parent1.jpg" alt="Dr. Anumpama Rao">
                             </div>
                             <div class="team-text">
                                 <p>As the founder of Igniting Minds, I believe every child has unique potential waiting to be unlocked. Our mission is to provide a nurturing environment where children can explore, create, and grow beyond the traditional classroom. With over 20 years of experience in education, I've dedicated my career to developing innovative teaching methods that inspire young minds.</p>
@@ -1470,7 +1470,7 @@
                     <div class="team-slide" id="teamSlide2">
                         <div class="team-card">
                             <div class="team-image">
-                                Mrs. Khushi Image
+                                <img src="parent2.jpg" alt="Mrs. Khushi">
                             </div>
                             <div class="team-text">
                                 <p>With over 15 years of teaching experience, I specialize in making complex concepts simple and engaging. My passion is helping students discover their love for learning and building their confidence. I focus on creating interactive lessons that cater to different learning styles, ensuring every student can reach their full potential.</p>
@@ -1486,7 +1486,7 @@
                     <div class="team-slide" id="teamSlide3">
                         <div class="team-card">
                             <div class="team-image">
-                                Mrs. Sonal Image
+                                <img src="parent3.jpg" alt="Mrs. Sonal">
                             </div>
                             <div class="team-text">
                                 <p>I focus on creating a supportive learning environment where students feel comfortable taking risks and making mistakes. My approach combines academic rigor with creative expression to foster holistic development. I believe that education should not only prepare students for exams but also for life, helping them develop critical thinking and problem-solving skills.</p>
@@ -1555,7 +1555,7 @@
                     </div>
                 </div>
                 <div class="contact-image">
-                    Contact Us Image
+                    <img src="contact-image.jpg" alt="Children at Igniting Minds">
                 </div>
             </div>
         </div>
@@ -1615,6 +1615,11 @@
                 }
             });
         });
+
+        // Function to change hero background
+        function changeHeroBackground(imageUrl) {
+            document.documentElement.style.setProperty('--hero-bg', `url('${imageUrl}')`);
+        }
 
         // Carousel functionality for Programs
         const programsCarousel = document.getElementById('programsCarousel');
