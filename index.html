@@ -189,7 +189,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9)), var(--hero-bg, url('hero-bg.jpg'));
+            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9));
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -246,17 +246,13 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.03);
+            background: var(--light-blue);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            font-weight: bold;
         }
         
         /* Programs Section */
@@ -286,6 +282,7 @@
             min-width: 100%;
             padding: 0 15px;
             box-sizing: border-box;
+            position: relative;
         }
         
         .program-card:hover {
@@ -295,17 +292,12 @@
         .program-img {
             height: 200px;
             overflow: hidden;
-        }
-        
-        .program-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .program-card:hover .program-img img {
-            transform: scale(1.1);
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            font-weight: bold;
         }
         
         .program-info {
@@ -321,6 +313,53 @@
         .program-info p {
             line-height: 1.7;
             color: #555;
+        }
+        
+        /* Read More functionality */
+        .program-text-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .program-text-truncated {
+            max-height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .program-text-truncated::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+        }
+        
+        .program-text-full {
+            display: none;
+        }
+        
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--dark-blue);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 10px;
+            padding: 5px 0;
+        }
+        
+        .read-more-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more-btn.active i {
+            transform: rotate(180deg);
         }
         
         .carousel-btn {
@@ -348,11 +387,11 @@
         }
         
         .carousel-btn.prev {
-            left: 10px;
+            left: -70px;
         }
         
         .carousel-btn.next {
-            right: 10px;
+            right: -70px;
         }
         
         .carousel-dots {
@@ -403,18 +442,8 @@
             justify-content: center;
             align-items: center;
             background: var(--light-blue);
-        }
-        
-        .event-img img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 50%;
-            transition: transform 0.5s ease;
-        }
-        
-        .event-card:hover .event-img img {
-            transform: scale(1.1);
+            color: var(--dark-blue);
+            font-weight: bold;
         }
         
         .event-info {
@@ -426,77 +455,6 @@
             color: var(--dark-blue);
             margin-bottom: 15px;
             font-size: 1.4rem;
-        }
-        
-        /* Student Testimonials Section */
-        .student-testimonials {
-            background-color: var(--light-blue);
-        }
-        
-        .testimonials-carousel {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .student-testimonial-cards {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .student-testimonial-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            position: relative;
-            min-width: 100%;
-            margin: 0 15px;
-            box-sizing: border-box;
-        }
-        
-        .student-testimonial-card::before {
-            content: '"';
-            font-size: 5rem;
-            color: var(--light-blue);
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            line-height: 1;
-            opacity: 0.7;
-        }
-        
-        .student-testimonial-text {
-            margin-bottom: 25px;
-            font-style: italic;
-            line-height: 1.7;
-            color: #555;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .student-testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .student-testimonial-author img {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-        
-        .student-author-details h4 {
-            color: var(--dark-blue);
-            margin-bottom: 5px;
-        }
-        
-        .student-author-details p {
-            color: #777;
-            font-size: 0.9rem;
         }
         
         /* World Scholars Cup Section */
@@ -542,43 +500,230 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: var(--light-blue);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            font-weight: bold;
         }
         
-        .scholars-image img {
-            width: 100%;
-            height: auto;
+        /* Student Testimonials Section - FIXED */
+        .student-testimonials {
+            background-color: var(--light-blue);
+        }
+        
+        .testimonials-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-container {
+            overflow: hidden;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        
+        .testimonial-slide {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .testimonial-slide.active {
             display: block;
         }
         
-        /* Team Section */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .testimonial-content {
+            position: relative;
+            padding: 30px 40px 30px 80px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            font-size: 80px;
+            color: var(--light-blue);
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-text.truncated {
+            max-height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-text.truncated::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+        }
+        
+        .testimonial-read-more-btn {
+            background: none;
+            border: none;
+            color: var(--dark-blue);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-read-more-btn:hover {
+            background: rgba(2, 144, 201, 0.1);
+        }
+        
+        .testimonial-read-more-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-read-more-btn.active i {
+            transform: rotate(180deg);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .testimonial-author img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid var(--orange);
+        }
+        
+        .author-details h4 {
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .author-details p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+        
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .testimonial-btn {
+            background: var(--dark-blue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            margin: 0 15px;
+        }
+        
+        .testimonial-btn:hover {
+            background: var(--orange);
+            transform: translateY(-3px);
+        }
+        
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            margin: 0 20px;
+        }
+        
+        /* Team Section - FIXED */
         .team {
             background-color: var(--light-blue);
         }
         
-        .team-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
+        .team-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .team-container {
+            overflow: hidden;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        
+        .team-slide {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .team-slide.active {
+            display: block;
         }
         
         .team-card {
             background: white;
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .team-card::before {
-            content: '"';
-            font-size: 5rem;
-            color: var(--light-blue);
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            line-height: 1;
-            opacity: 0.7;
+        .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            font-weight: bold;
+            border: 3px solid var(--orange);
         }
         
         .team-text {
@@ -590,28 +735,44 @@
             z-index: 1;
         }
         
-        .team-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .team-author img {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-        
         .team-author-details h4 {
             color: var(--dark-blue);
             margin-bottom: 5px;
+            font-size: 1.3rem;
         }
         
         .team-author-details p {
             color: #777;
-            font-size: 0.9rem;
+            font-size: 1rem;
+        }
+        
+        .team-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .team-nav-btn {
+            background: var(--dark-blue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            margin: 0 15px;
+        }
+        
+        .team-nav-btn:hover {
+            background: var(--orange);
+            transform: translateY(-3px);
         }
         
         /* Location Section */
@@ -712,12 +873,12 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            font-weight: bold;
         }
         
         /* Footer */
@@ -756,6 +917,16 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .carousel-btn.prev {
+                left: -30px;
+            }
+            
+            .carousel-btn.next {
+                right: -30px;
+            }
+        }
+        
         @media (max-width: 992px) {
             :root {
                 --section-spacing: 70px;
@@ -771,6 +942,14 @@
             
             .hero-content h2 {
                 font-size: 2.7rem;
+            }
+            
+            .carousel-btn.prev {
+                left: 10px;
+            }
+            
+            .carousel-btn.next {
+                right: 10px;
             }
         }
         
@@ -841,8 +1020,43 @@
                 margin: 12px 0;
             }
             
-            .team-cards {
-                grid-template-columns: 1fr;
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .carousel-btn.prev {
+                left: 5px;
+            }
+            
+            .carousel-btn.next {
+                right: 5px;
+            }
+            
+            .testimonials-container, .team-container {
+                padding: 25px;
+            }
+            
+            .testimonial-content {
+                padding: 25px 25px 25px 70px;
+            }
+            
+            .testimonial-content::before {
+                font-size: 60px;
+                left: 20px;
+            }
+            
+            .testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .testimonial-text.truncated {
+                max-height: 150px;
+            }
+            
+            .team-card {
+                padding: 20px;
             }
         }
         
@@ -872,18 +1086,37 @@
                 padding: 25px;
             }
             
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            .testimonials-container, .team-container {
+                padding: 20px;
             }
             
-            .carousel-btn.prev {
-                left: 5px;
+            .testimonial-content {
+                padding: 20px 20px 20px 60px;
             }
             
-            .carousel-btn.next {
-                right: 5px;
+            .testimonial-content::before {
+                font-size: 50px;
+                left: 15px;
+                top: 15px;
+            }
+            
+            .testimonial-text.truncated {
+                max-height: 120px;
+            }
+            
+            .testimonial-author, .team-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .testimonial-author img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .team-image {
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
@@ -904,6 +1137,7 @@
                     <li><a href="#events">Upcoming Events</a></li>
                     <li><a href="#scholars">World Scholars</a></li>
                     <li><a href="#student-testimonials">Testimonials</a></li>
+                    <li><a href="#team">Our Team</a></li>
                     <li><a href="#location">Location</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -943,7 +1177,7 @@
                     <a href="#programs" class="btn">Our Programs</a>
                 </div>
                 <div class="about-image">
-                    <img src="about-image.jpg" alt="Children learning at Igniting Minds">
+                    About Us Image
                 </div>
             </div>
         </div>
@@ -964,48 +1198,84 @@
                     <!-- Academic Support Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="academic-support.jpg" alt="Academic Support">
+                            Academic Support Image
                         </div>
                         <div class="program-info">
                             <h3>Academic Support</h3>
-                            <p>At this institution, we believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively. Our Academic Support is designed to nurture these very qualities — empowering every learner to reach their fullest potential.</p>
-                            <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills that prepare students for real-world success. Each session is thoughtfully crafted to help students build logical reasoning, enhance English fluency, and master the art of public speaking and presentation — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
+                            <div class="program-text-container">
+                                <div class="program-text-truncated">
+                                    <p>At this institution, we believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively. Our Academic Support is designed to nurture these very qualities — empowering every learner to reach their fullest potential.</p>
+                                    <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills that prepare students for real-world success. Each session is thoughtfully crafted to help students build logical reasoning, enhance English fluency, and master the art of public speaking and presentation — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
+                                </div>
+                                <div class="program-text-full">
+                                    <p>At this institution, we believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively. Our Academic Support is designed to nurture these very qualities — empowering every learner to reach their fullest potential.</p>
+                                    <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills that prepare students for real-world success. Each session is thoughtfully crafted to help students build logical reasoning, enhance English fluency, and master the art of public speaking and presentation — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
                         </div>
                     </div>
                     
                     <!-- Creative Arts Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="creative-arts.jpg" alt="Creative Arts">
+                            Creative Arts Image
                         </div>
                         <div class="program-info">
                             <h3>Creative Arts</h3>
-                            <p>Here, we inculcate the foundations of the special and fine arts and to establish a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and a meaningful impact. These include the visual arts, dance and sophisticated project presentations.</p>
-                            <p>We utilise guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression and showcase their talent.</p>
+                            <div class="program-text-container">
+                                <div class="program-text-truncated">
+                                    <p>Here, we inculcate the foundations of the special and fine arts and to establish a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and a meaningful impact. These include the visual arts, dance and sophisticated project presentations.</p>
+                                    <p>We utilise guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression and showcase their talent.</p>
+                                </div>
+                                <div class="program-text-full">
+                                    <p>Here, we inculcate the foundations of the special and fine arts and to establish a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and a meaningful impact. These include the visual arts, dance and sophisticated project presentations.</p>
+                                    <p>We utilise guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression and showcase their talent.</p>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
                         </div>
                     </div>
                     
                     <!-- Cambridge Examinations Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="cambridge-exams.jpg" alt="Cambridge Examinations">
+                            Cambridge Exams Image
                         </div>
                         <div class="program-info">
                             <h3>Cambridge Examinations</h3>
-                            <p>As proof of our Cambridge certification, our students are trained vigorously to attend various levels of Cambridge examinations namely the Preliminary English Test (PET) and the First Certificate in English (FCE) amongst many other dynamic and robust tests and assessments. These are done to validate a student's proficiency over the English language and how they master it.</p>
-                            <p>Here, we focus and emphasize on learning the basic fundamentals through a multitude of practice sessions, explanations and masterclasses as well as mock tests to identify and check the aptitude of our students. Without these efforts, our students would not be acing their examinations with ease, a testament to the commitment we have with our Cambridge heritage.</p>
+                            <div class="program-text-container">
+                                <div class="program-text-truncated">
+                                    <p>As proof of our Cambridge certification, our students are trained vigorously to attend various levels of Cambridge examinations namely the Preliminary English Test (PET) and the First Certificate in English (FCE) amongst many other dynamic and robust tests and assessments. These are done to validate a student's proficiency over the English language and how they master it.</p>
+                                    <p>Here, we focus and emphasize on learning the basic fundamentals through a multitude of practice sessions, explanations and masterclasses as well as mock tests to identify and check the aptitude of our students. Without these efforts, our students would not be acing their examinations with ease, a testament to the commitment we have with our Cambridge heritage.</p>
+                                </div>
+                                <div class="program-text-full">
+                                    <p>As proof of our Cambridge certification, our students are trained vigorously to attend various levels of Cambridge examinations namely the Preliminary English Test (PET) and the First Certificate in English (FCE) amongst many other dynamic and robust tests and assessments. These are done to validate a student's proficiency over the English language and how they master it.</p>
+                                    <p>Here, we focus and emphasize on learning the basic fundamentals through a multitude of practice sessions, explanations and masterclasses as well as mock tests to identify and check the aptitude of our students. Without these efforts, our students would not be acing their examinations with ease, a testament to the commitment we have with our Cambridge heritage.</p>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
                         </div>
                     </div>
                     
                     <!-- Extra-Curricular Activities Card -->
                     <div class="program-card">
                         <div class="program-img">
-                            <img src="extra-curricular.jpg" alt="Extra-Curricular Activities">
+                            Extra-Curricular Image
                         </div>
                         <div class="program-info">
                             <h3>Extra-Curricular Activities</h3>
-                            <p>To promote a sense of healthy competition between our own houses within the institution who are named after legends of the literary world – Shakespeare, Wordsworth, Austen and Tagore – points are awarded to all achievers regardless of any field in which they have made an accomplishment of value and honour.</p>
-                            <p>On top of that, we allow our students to participate in a versatile set of extra-curricular events such as competitions in dance, our very own and much cherished Sports Day, our historic Annual Day and our beloved cultural event 'IGNITE'. We believe that these events can open up spaces for out-of-the-box learning, personality-building, heartfelt camaraderie and an equitable opportunity for all to compete against the best of the best to emerge victorious for their houses.</p>
+                            <div class="program-text-container">
+                                <div class="program-text-truncated">
+                                    <p>To promote a sense of healthy competition between our own houses within the institution who are named after legends of the literary world – Shakespeare, Wordsworth, Austen and Tagore – points are awarded to all achievers regardless of any field in which they have made an accomplishment of value and honour.</p>
+                                    <p>On top of that, we allow our students to participate in a versatile set of extra-curricular events such as competitions in dance, our very own and much cherished Sports Day, our historic Annual Day and our beloved cultural event 'IGNITE'. We believe that these events can open up spaces for out-of-the-box learning, personality-building, heartfelt camaraderie and an equitable opportunity for all to compete against the best of the best to emerge victorious for their houses.</p>
+                                </div>
+                                <div class="program-text-full">
+                                    <p>To promote a sense of healthy competition between our own houses within the institution who are named after legends of the literary world – Shakespeare, Wordsworth, Austen and Tagore – points are awarded to all achievers regardless of any field in which they have made an accomplishment of value and honour.</p>
+                                    <p>On top of that, we allow our students to participate in a versatile set of extra-curricular events such as competitions in dance, our very own and much cherished Sports Day, our historic Annual Day and our beloved cultural event 'IGNITE'. We believe that these events can open up spaces for out-of-the-box learning, personality-building, heartfelt camaraderie and an equitable opportunity for all to compete against the best of the best to emerge victorious for their houses.</p>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1031,7 +1301,7 @@
             </div>
             <div class="event-card">
                 <div class="event-img">
-                    <img src="ignite-logo.jpg" alt="IGNITE 25">
+                    IGNITE 25 Logo
                 </div>
                 <div class="event-info">
                     <h3>IGNITE 25</h3>
@@ -1065,121 +1335,184 @@
                     <a href="#contact" class="btn">Learn More About Our WSC Program</a>
                 </div>
                 <div class="scholars-image">
-                    <img src="scholars-cup.jpg" alt="World Scholars Cup Preparation">
+                    World Scholars Cup Image
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Student Testimonials Section -->
+    <!-- Student Testimonials Section - FIXED -->
     <section id="student-testimonials" class="student-testimonials">
         <div class="container">
             <div class="section-title">
                 <h2>Student Testimonials</h2>
                 <p>What our students say about Igniting Minds</p>
             </div>
-            <div class="testimonials-carousel">
-                <button class="carousel-btn prev" id="testimonialsPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="student-testimonial-cards" id="testimonialsCarousel">
+            <div class="testimonials-wrapper">
+                <div class="testimonials-container">
                     <!-- Sachin Sathyasivan Testimonial -->
-                    <div class="student-testimonial-card">
-                        <div class="student-testimonial-text">
-                            <p>IGM is the abode of learning that every student and parent would dream of. The dynamic activities that keep us students engaged regularly help us in transforming ourselves to be outgoing, self-aware and intellectually capable of understanding situations and adapting to prompts. (These include public speaking, writing, quizzing, debates and even other extra-curriculars like dance and sporting events too) Students from every walk of life are encouraged to take part. A worthwhile and astounding experience with various other higher-level English tests and opportunities in other competitions also provided!</p>
-                            <p>English and it's subsequent modes of communication are taken very seriously here and will definitely improve with leaps and bounds. It is the heart and soul of so many young minds and to all those who read these reviews - these aren't nearly sufficient to completely describe this institution.</p>
-                            <p>Truly a marvellous community to whom I owe so much. This is one and truly the destination in this large city of ours which would undeniably help a growing student foster the necessary values for their future. Perfect for instilling overall development in the youth to become part of a well-faring society as a whole at the end of the day.</p>
-                            <p>My heart goes out to all those who have ever guided me here. LONG LIVE IGNITING MINDS!!</p>
+                    <div class="testimonial-slide active" id="slide1">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text truncated" id="testimonial1">
+                                <p>IGM is the abode of learning that every student and parent would dream of. The dynamic activities that keep us students engaged regularly help us in transforming ourselves to be outgoing, self-aware and intellectually capable of understanding situations and adapting to prompts.</p>
+                                <p>These include public speaking, writing, quizzing, debates and even other extra-curriculars like dance and sporting events too. Students from every walk of life are encouraged to take part. A worthwhile and astounding experience with various other higher-level English tests and opportunities in other competitions also provided!</p>
+                                <p>English and it's subsequent modes of communication are taken very seriously here and will definitely improve with leaps and bounds. It is the heart and soul of so many young minds and to all those who read these reviews - these aren't nearly sufficient to completely describe this institution.</p>
+                                <p>Truly a marvellous community to whom I owe so much. This is one and truly the destination in this large city of ours which would undeniably help a growing student foster the necessary values for their future. Perfect for instilling overall development in the youth to become part of a well-faring society as a whole at the end of the day.</p>
+                                <p>My heart goes out to all those who have ever guided me here. LONG LIVE IGNITING MINDS!!</p>
+                            </div>
+                            <button class="testimonial-read-more-btn" data-target="testimonial1">
+                                Read More <i class="fas fa-chevron-down"></i>
+                            </button>
                         </div>
-                        <div class="student-testimonial-author">
-                            <img src="sachin.jpg" alt="Sachin Sathyasivan">
-                            <div class="student-author-details">
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="sachin.jpg" alt="Sachin Sathyasivan">
+                            </div>
+                            <div class="author-details">
                                 <h4>Sachin Sathyasivan</h4>
                                 <p>Student at Igniting Minds</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="student-testimonial-card">
-                        <div class="student-testimonial-text">
-                            <p>The World Scholars Cup preparation at Igniting Minds helped me win medals at the global round. The mock debates and collaborative writing sessions were incredibly helpful!</p>
+                    <!-- Priya Patel Testimonial -->
+                    <div class="testimonial-slide" id="slide2">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text truncated" id="testimonial2">
+                                <p>The World Scholars Cup preparation at Igniting Minds helped me win medals at the global round. The mock debates and collaborative writing sessions were incredibly helpful! The teachers here are not just educators but mentors who genuinely care about our growth.</p>
+                                <p>I've developed confidence in public speaking and critical thinking that will benefit me throughout my academic career. The supportive environment encourages us to push our boundaries while knowing we have a safety net of guidance.</p>
+                                <p>The Cambridge exam preparation has been exceptional. The personalized attention and practice sessions have significantly improved my English proficiency. I'm now confident about taking my PET exam next month.</p>
+                            </div>
+                            <button class="testimonial-read-more-btn" data-target="testimonial2">
+                                Read More <i class="fas fa-chevron-down"></i>
+                            </button>
                         </div>
-                        <div class="student-testimonial-author">
-                            <img src="student2.jpg" alt="Student">
-                            <div class="student-author-details">
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="student2.jpg" alt="Priya Patel">
+                            </div>
+                            <div class="author-details">
                                 <h4>Priya Patel</h4>
                                 <p>Grade 9 Student</p>
                             </div>
                         </div>
                     </div>
-                    <div class="student-testimonial-card">
-                        <div class="student-testimonial-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at consectetur est. Phasellus viverra molestie diam vel vehicula. Duis molestie lectus libero, non interdum ex luctus quis</p>
+                    
+                    <!-- Rahul Kumar Testimonial -->
+                    <div class="testimonial-slide" id="slide3">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text truncated" id="testimonial3">
+                                <p>Before joining Igniting Minds, I was quite shy and hesitant to participate in class discussions. The supportive environment and encouraging teachers helped me find my voice. Now I actively participate in debates and even won the inter-school elocution competition!</p>
+                                <p>What I appreciate most is how the program balances academics with creative activities. The dance workshops and art classes provide a perfect outlet for self-expression and stress relief.</p>
+                                <p>The house system with Shakespeare, Wordsworth, Austen and Tagore houses creates a wonderful sense of healthy competition and camaraderie. I've made friends across different age groups and developed leadership skills through various intra-school events.</p>
+                            </div>
+                            <button class="testimonial-read-more-btn" data-target="testimonial3">
+                                Read More <i class="fas fa-chevron-down"></i>
+                            </button>
                         </div>
-                        <div class="student-testimonial-author">
-                            <img src="student3.jpg" alt="Student">
-                            <div class="student-author-details">
-                                <h4>XXX</h4>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="student3.jpg" alt="Rahul Kumar">
+                            </div>
+                            <div class="author-details">
+                                <h4>Rahul Kumar</h4>
                                 <p>Grade 8 Student</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-btn next" id="testimonialsNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <div class="carousel-dots" id="testimonialsDots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
+                
+                <div class="testimonial-controls">
+                    <button class="testimonial-btn prev" id="testimonialsPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="testimonial-dots" id="testimonialsDots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                    
+                    <button class="testimonial-btn next" id="testimonialsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section - FIXED -->
     <section id="team" class="team">
         <div class="container">
             <div class="section-title">
                 <h2>Meet Our Team</h2>
                 <p>Our dedicated educators and staff</p>
             </div>
-            <div class="team-cards">
-                <div class="team-card">
-                    <div class="team-text">
-                        <p>Testimonial 1</p>
+            <div class="team-wrapper">
+                <div class="team-container">
+                    <!-- Dr. Anumpama Rao -->
+                    <div class="team-slide active" id="teamSlide1">
+                        <div class="team-card">
+                            <div class="team-image">
+                                Dr. Anumpama Rao Image
+                            </div>
+                            <div class="team-text">
+                                <p>As the founder of Igniting Minds, I believe every child has unique potential waiting to be unlocked. Our mission is to provide a nurturing environment where children can explore, create, and grow beyond the traditional classroom. With over 20 years of experience in education, I've dedicated my career to developing innovative teaching methods that inspire young minds.</p>
+                            </div>
+                            <div class="team-author-details">
+                                <h4>Dr. Anumpama Rao</h4>
+                                <p>Founder of IGM</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="team-author">
-                        <img src="parent1.jpg" alt="Team Member">
-                        <div class="team-author-details">
-                            <h4>Dr. Anumpama Rao</h4>
-                            <p>Founder of IGM</p>
+                    
+                    <!-- Mrs. Khushi -->
+                    <div class="team-slide" id="teamSlide2">
+                        <div class="team-card">
+                            <div class="team-image">
+                                Mrs. Khushi Image
+                            </div>
+                            <div class="team-text">
+                                <p>With over 15 years of teaching experience, I specialize in making complex concepts simple and engaging. My passion is helping students discover their love for learning and building their confidence. I focus on creating interactive lessons that cater to different learning styles, ensuring every student can reach their full potential.</p>
+                            </div>
+                            <div class="team-author-details">
+                                <h4>Mrs. Khushi</h4>
+                                <p>Experienced Trained Educator</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mrs. Sonal -->
+                    <div class="team-slide" id="teamSlide3">
+                        <div class="team-card">
+                            <div class="team-image">
+                                Mrs. Sonal Image
+                            </div>
+                            <div class="team-text">
+                                <p>I focus on creating a supportive learning environment where students feel comfortable taking risks and making mistakes. My approach combines academic rigor with creative expression to foster holistic development. I believe that education should not only prepare students for exams but also for life, helping them develop critical thinking and problem-solving skills.</p>
+                            </div>
+                            <div class="team-author-details">
+                                <h4>Mrs. Sonal</h4>
+                                <p>Experienced Trained Educator</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="team-card">
-                    <div class="team-text">
-                        <p>Testimonial 2</p>
+                
+                <div class="team-controls">
+                    <button class="team-nav-btn prev" id="teamPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carousel-dots" id="teamDots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
                     </div>
-                    <div class="team-author">
-                        <img src="parent2.jpg" alt="Team Member">
-                        <div class="team-author-details">
-                            <h4>Mrs. Khushi</h4>
-                            <p>Experienced Trained Educator</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-text">
-                        <p>Testimonial 3</p>
-                    </div>
-                    <div class="team-author">
-                        <img src="parent3.jpg" alt="Team Member">
-                        <div class="team-author-details">
-                            <h4>Mrs. Sonal</h4>
-                            <p>Experienced Trained Educator</p>
-                        </div>
-                    </div>
+                    
+                    <button class="team-nav-btn next" id="teamNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1222,7 +1555,7 @@
                     </div>
                 </div>
                 <div class="contact-image">
-                    <img src="contact-image.jpg" alt="Children at Igniting Minds">
+                    Contact Us Image
                 </div>
             </div>
         </div>
@@ -1283,11 +1616,6 @@
             });
         });
 
-        // Function to change hero background
-        function changeHeroBackground(imageUrl) {
-            document.documentElement.style.setProperty('--hero-bg', `url('${imageUrl}')`);
-        }
-
         // Carousel functionality for Programs
         const programsCarousel = document.getElementById('programsCarousel');
         const programsPrev = document.getElementById('programsPrev');
@@ -1327,57 +1655,170 @@
             });
         });
 
-        // Carousel functionality for Testimonials
-        const testimonialsCarousel = document.getElementById('testimonialsCarousel');
+        // Testimonials Carousel - Fixed Version
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const testimonialDots = document.querySelectorAll('#testimonialsDots .dot');
         const testimonialsPrev = document.getElementById('testimonialsPrev');
         const testimonialsNext = document.getElementById('testimonialsNext');
-        const testimonialsDots = document.getElementById('testimonialsDots');
-        const testimonialCards = document.querySelectorAll('.student-testimonial-card');
         let currentTestimonialIndex = 0;
-
-        function updateTestimonialsCarousel() {
-            testimonialsCarousel.style.transform = `translateX(-${currentTestimonialIndex * 100}%)`;
+        
+        // Function to show a specific slide
+        function showTestimonialSlide(index) {
+            // Hide all slides
+            testimonialSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
             
-            // Update dots
-            document.querySelectorAll('#testimonialsDots .dot').forEach((dot, index) => {
-                if (index === currentTestimonialIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
+            // Remove active class from all dots
+            testimonialDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show the selected slide and activate corresponding dot
+            testimonialSlides[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+            
+            // Reset read more buttons for the new slide
+            resetTestimonialReadMoreButtons();
+            
+            currentTestimonialIndex = index;
+        }
+        
+        // Function to reset read more buttons
+        function resetTestimonialReadMoreButtons() {
+            document.querySelectorAll('.testimonial-read-more-btn').forEach(btn => {
+                const targetId = btn.getAttribute('data-target');
+                const textElement = document.getElementById(targetId);
+                
+                if (textElement) {
+                    textElement.classList.add('truncated');
+                    btn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+                    btn.classList.remove('active');
                 }
             });
         }
-
+        
+        // Event listeners for navigation
         testimonialsPrev.addEventListener('click', () => {
-            currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonialCards.length) % testimonialCards.length;
-            updateTestimonialsCarousel();
+            let newIndex = currentTestimonialIndex - 1;
+            if (newIndex < 0) newIndex = testimonialSlides.length - 1;
+            showTestimonialSlide(newIndex);
         });
-
+        
         testimonialsNext.addEventListener('click', () => {
-            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonialCards.length;
-            updateTestimonialsCarousel();
+            let newIndex = currentTestimonialIndex + 1;
+            if (newIndex >= testimonialSlides.length) newIndex = 0;
+            showTestimonialSlide(newIndex);
         });
-
-        // Add click event to dots
-        document.querySelectorAll('#testimonialsDots .dot').forEach(dot => {
+        
+        // Event listeners for dots
+        testimonialDots.forEach(dot => {
             dot.addEventListener('click', () => {
-                currentTestimonialIndex = parseInt(dot.getAttribute('data-index'));
-                updateTestimonialsCarousel();
+                const index = parseInt(dot.getAttribute('data-index'));
+                showTestimonialSlide(index);
+            });
+        });
+        
+        // Team Carousel - Fixed Version
+        const teamSlides = document.querySelectorAll('.team-slide');
+        const teamDots = document.querySelectorAll('#teamDots .dot');
+        const teamPrev = document.getElementById('teamPrev');
+        const teamNext = document.getElementById('teamNext');
+        let currentTeamIndex = 0;
+        
+        // Function to show a specific slide
+        function showTeamSlide(index) {
+            // Hide all slides
+            teamSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            teamDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show the selected slide and activate corresponding dot
+            teamSlides[index].classList.add('active');
+            teamDots[index].classList.add('active');
+            
+            currentTeamIndex = index;
+        }
+        
+        // Event listeners for navigation
+        teamPrev.addEventListener('click', () => {
+            let newIndex = currentTeamIndex - 1;
+            if (newIndex < 0) newIndex = teamSlides.length - 1;
+            showTeamSlide(newIndex);
+        });
+        
+        teamNext.addEventListener('click', () => {
+            let newIndex = currentTeamIndex + 1;
+            if (newIndex >= teamSlides.length) newIndex = 0;
+            showTeamSlide(newIndex);
+        });
+        
+        // Event listeners for dots
+        teamDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showTeamSlide(index);
+            });
+        });
+        
+        // Read More functionality for testimonials
+        document.querySelectorAll('.testimonial-read-more-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const textElement = document.getElementById(targetId);
+                
+                if (textElement.classList.contains('truncated')) {
+                    textElement.classList.remove('truncated');
+                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+                    this.classList.add('active');
+                } else {
+                    textElement.classList.add('truncated');
+                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+                    this.classList.remove('active');
+                }
+            });
+        });
+        
+        // Read More functionality for programs
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const container = this.closest('.program-info');
+                const truncated = container.querySelector('.program-text-truncated');
+                const full = container.querySelector('.program-text-full');
+                
+                if (truncated.style.display === 'none') {
+                    truncated.style.display = 'block';
+                    full.style.display = 'none';
+                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+                    this.classList.remove('active');
+                } else {
+                    truncated.style.display = 'none';
+                    full.style.display = 'block';
+                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+                    this.classList.add('active');
+                }
             });
         });
 
-        // Auto-advance carousels
-        setInterval(() => {
-            currentProgramIndex = (currentProgramIndex + 1) % programCards.length;
-            updateProgramsCarousel();
-        }, 8000);
-
-        setInterval(() => {
-            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonialCards.length;
-            updateTestimonialsCarousel();
-        }, 10000);
+        // Hide Read More buttons if content is not long enough
+        document.querySelectorAll('.testimonial-text').forEach(textElement => {
+            const button = textElement.nextElementSibling;
+            
+            // Check if text is longer than the truncated height
+            if (textElement.scrollHeight <= 200) {
+                button.style.display = 'none';
+                textElement.classList.remove('truncated');
+            }
+        });
+        
+        // Initialize the carousels
+        showTestimonialSlide(0);
+        showTeamSlide(0);
     </script>
 </body>
 </html>
-
-
