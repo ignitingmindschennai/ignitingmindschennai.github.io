@@ -97,8 +97,34 @@
             background: var(--orange);
             border-radius: 2px;
         }
+
+        .wscspec h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .wscspec h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--orange);
+            border-radius: 2px;
+        }        
         
         .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .wscspec p {
             font-size: 1.1rem;
             color: #666;
             max-width: 600px;
@@ -1029,6 +1055,10 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            .wscspec h2 {
+                font-size: 2rem;
+            }
             
             .logo img {
                 height: 40px;
@@ -1088,6 +1118,10 @@
             }
             
             .section-title h2 {
+                font-size: 1.7rem;
+            }
+
+            .wscspec h2 {
                 font-size: 1.7rem;
             }
             
@@ -1840,6 +1874,7 @@
     </script>
 </body>
 </html>
+
 
 
 
