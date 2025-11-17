@@ -8,6 +8,11 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* All your existing CSS remains exactly the same */
+        /* ... (all your CSS code) ... */
+        
+        /* Add this to fix the testimonial text styling */
+
         /* Global Styles */
         * {
             margin: 0;
@@ -649,6 +654,10 @@
             background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
         }
         
+        .testimonial-text.expanded {
+            max-height: none;
+        }
+        
         .testimonial-read-more-btn {
             background: none;
             border: none;
@@ -1170,50 +1179,22 @@
                 width: 120px;
                 height: 120px;
             }
-            .testimonial-text.truncated {
-                max-height: 200px;
-                overflow: hidden;
-                position: relative;
+        
+             .testimonial-text.expanded {
+                max-height: none !important;
             }
-            .testimonial-text.truncated::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 50px;
-                background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-            }
-            .testimonial-text.expanded {
-                max-height: none;
-            }
-            .testimonial-read-more-btn {
-                background: none;
-                border: none;
-                color: #0290c9;
-                font-weight: 600;
-                cursor: pointer;
-                display: inline-flex;
-                align-items: center;
-                margin-top: 10px;
-                padding: 8px 15px;
-                border-radius: 5px;
-                transition: all 0.3s ease;
-            }
-            .testimonial-read-more-btn:hover {
-                background: rgba(2, 144, 201, 0.1);
-            }
-            .testimonial-read-more-btn i {
-                margin-left: 8px;
-                transition: transform 0.3s ease;
-            }
-            .testimonial-read-more-btn.active i {
-                transform: rotate(180deg);
-    
+        
+        /* Ensure read more buttons are visible by default */
+             .testimonial-read-more-btn {
+                  display: inline-flex !important;
+             }
+        
         }
     </style>
 </head>
 <body>
+    <!-- Your entire HTML structure remains exactly the same -->
+    <!-- ... (all your HTML code) ... -->
     <!-- Header - FIXED -->
     <header>
         <div class="container">
@@ -1242,7 +1223,6 @@
         </div>
     </header>
 
-    <!-- Rest of the website content remains the same -->
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
@@ -1435,7 +1415,6 @@
     </section>
 
    <!-- Student Testimonials Section - FIXED -->
-<!-- Student Testimonials Section - FINAL -->
 <section id="student-testimonials" class="student-testimonials">
     <div class="container">
         <div class="section-title">
@@ -1639,208 +1618,188 @@
 
     <script>
         // Mobile menu toggle
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Close menu when clicking on a link
-const links = document.querySelectorAll('.nav-links a');
-links.forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
         
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
         
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 70,
-                behavior: 'smooth'
+        // Close menu when clicking on a link
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Function to change hero background
+        function changeHeroBackground(imageUrl) {
+            document.documentElement.style.setProperty('--hero-bg', `url('${imageUrl}')`);
+        }
+
+        // Carousel functionality for Programs
+        const programsCarousel = document.getElementById('programsCarousel');
+        const programsPrev = document.getElementById('programsPrev');
+        const programsNext = document.getElementById('programsNext');
+        const programsDots = document.getElementById('programsDots');
+        const programCards = document.querySelectorAll('.program-card');
+        let currentProgramIndex = 0;
+
+        function updateProgramsCarousel() {
+            programsCarousel.style.transform = `translateX(-${currentProgramIndex * 100}%)`;
+            
+            // Update dots
+            document.querySelectorAll('#programsDots .dot').forEach((dot, index) => {
+                if (index === currentProgramIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
             });
         }
-    });
-});
 
-// Function to change hero background
-function changeHeroBackground(imageUrl) {
-    document.documentElement.style.setProperty('--hero-bg', `url('${imageUrl}')`);
-}
+        programsPrev.addEventListener('click', () => {
+            currentProgramIndex = (currentProgramIndex - 1 + programCards.length) % programCards.length;
+            updateProgramsCarousel();
+        });
 
-// Carousel functionality for Programs
-const programsCarousel = document.getElementById('programsCarousel');
-const programsPrev = document.getElementById('programsPrev');
-const programsNext = document.getElementById('programsNext');
-const programsDots = document.getElementById('programsDots');
-const programCards = document.querySelectorAll('.program-card');
-let currentProgramIndex = 0;
+        programsNext.addEventListener('click', () => {
+            currentProgramIndex = (currentProgramIndex + 1) % programCards.length;
+            updateProgramsCarousel();
+        });
 
-function updateProgramsCarousel() {
-    programsCarousel.style.transform = `translateX(-${currentProgramIndex * 100}%)`;
-    
-    // Update dots
-    document.querySelectorAll('#programsDots .dot').forEach((dot, index) => {
-        if (index === currentProgramIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
-    });
-}
+        // Add click event to dots
+        document.querySelectorAll('#programsDots .dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentProgramIndex = parseInt(dot.getAttribute('data-index'));
+                updateProgramsCarousel();
+            });
+        });
 
-programsPrev.addEventListener('click', () => {
-    currentProgramIndex = (currentProgramIndex - 1 + programCards.length) % programCards.length;
-    updateProgramsCarousel();
-});
-
-programsNext.addEventListener('click', () => {
-    currentProgramIndex = (currentProgramIndex + 1) % programCards.length;
-    updateProgramsCarousel();
-});
-
-// Add click event to dots
-document.querySelectorAll('#programsDots .dot').forEach(dot => {
-    dot.addEventListener('click', () => {
-        currentProgramIndex = parseInt(dot.getAttribute('data-index'));
-        updateProgramsCarousel();
-    });
-});
-
-// Testimonials Carousel
-const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-const testimonialDots = document.querySelectorAll('#testimonialsDots .dot');
-const testimonialsPrev = document.getElementById('testimonialsPrev');
-const testimonialsNext = document.getElementById('testimonialsNext');
-let currentTestimonialIndex = 0;
-
-// Function to show a specific slide
-function showTestimonialSlide(index) {
-    // Hide all slides
-    testimonialSlides.forEach(slide => {
-        slide.classList.remove('active');
-    });
-    
-    // Remove active class from all dots
-    testimonialDots.forEach(dot => {
-        dot.classList.remove('active');
-    });
-    
-    // Show the selected slide and activate corresponding dot
-    testimonialSlides[index].classList.add('active');
-    testimonialDots[index].classList.add('active');
-    
-    // Reset read more buttons for the new slide
-    resetTestimonialReadMoreButtons();
-    
-    currentTestimonialIndex = index;
-}
-
-// Function to reset read more buttons
-function resetTestimonialReadMoreButtons() {
-    document.querySelectorAll('.testimonial-read-more-btn').forEach(btn => {
-        const targetId = btn.getAttribute('data-target');
-        const textElement = document.getElementById(targetId);
+        // Testimonials Carousel - Fixed Version
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const testimonialDots = document.querySelectorAll('#testimonialsDots .dot');
+        const testimonialsPrev = document.getElementById('testimonialsPrev');
+        const testimonialsNext = document.getElementById('testimonialsNext');
+        let currentTestimonialIndex = 0;
         
-        if (textElement) {
-            textElement.classList.add('truncated');
-            textElement.classList.remove('expanded');
-            btn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-            btn.classList.remove('active');
+        // Function to show a specific slide
+        function showTestimonialSlide(index) {
+            // Hide all slides
+            testimonialSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            testimonialDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show the selected slide and activate corresponding dot
+            testimonialSlides[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+            
+            currentTestimonialIndex = index;
         }
-    });
-}
-
-// Event listeners for navigation
-testimonialsPrev.addEventListener('click', () => {
-    let newIndex = currentTestimonialIndex - 1;
-    if (newIndex < 0) newIndex = testimonialSlides.length - 1;
-    showTestimonialSlide(newIndex);
-});
-
-testimonialsNext.addEventListener('click', () => {
-    let newIndex = currentTestimonialIndex + 1;
-    if (newIndex >= testimonialSlides.length) newIndex = 0;
-    showTestimonialSlide(newIndex);
-});
-
-// Event listeners for dots
-testimonialDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-        const index = parseInt(dot.getAttribute('data-index'));
-        showTestimonialSlide(index);
-    });
-});
-
-// SIMPLE Read More functionality for testimonials - FIXED
-document.querySelectorAll('.testimonial-read-more-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const targetId = this.getAttribute('data-target');
-        const textElement = document.getElementById(targetId);
         
-        if (!textElement) return;
+        // Event listeners for navigation
+        testimonialsPrev.addEventListener('click', () => {
+            let newIndex = currentTestimonialIndex - 1;
+            if (newIndex < 0) newIndex = testimonialSlides.length - 1;
+            showTestimonialSlide(newIndex);
+        });
         
-        if (textElement.classList.contains('truncated')) {
-            // Expand
-            textElement.classList.remove('truncated');
-            textElement.classList.add('expanded');
-            this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-            this.classList.add('active');
-        } else {
-            // Collapse
-            textElement.classList.add('truncated');
-            textElement.classList.remove('expanded');
-            this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-            this.classList.remove('active');
+        testimonialsNext.addEventListener('click', () => {
+            let newIndex = currentTestimonialIndex + 1;
+            if (newIndex >= testimonialSlides.length) newIndex = 0;
+            showTestimonialSlide(newIndex);
+        });
+        
+        // Event listeners for dots
+        testimonialDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showTestimonialSlide(index);
+            });
+        });
+        
+        // SIMPLE Read More functionality for testimonials - FIXED
+        function initTestimonialReadMore() {
+            document.querySelectorAll('.testimonial-read-more-btn').forEach(button => {
+                // Make sure button is visible
+                button.style.display = 'inline-flex';
+                
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const textElement = document.getElementById(targetId);
+                    
+                    if (!textElement) return;
+                    
+                    if (textElement.classList.contains('truncated')) {
+                        // Expand the text
+                        textElement.classList.remove('truncated');
+                        textElement.classList.add('expanded');
+                        this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+                        this.classList.add('active');
+                    } else {
+                        // Collapse the text
+                        textElement.classList.add('truncated');
+                        textElement.classList.remove('expanded');
+                        this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+                        this.classList.remove('active');
+                    }
+                });
+            });
         }
-    });
-});
-
-// Read More functionality for programs
-document.querySelectorAll('.read-more-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const container = this.closest('.program-info');
-        const truncated = container.querySelector('.program-text-truncated');
-        const full = container.querySelector('.program-text-full');
         
-        if (truncated.style.display === 'none') {
-            truncated.style.display = 'block';
-            full.style.display = 'none';
-            this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-            this.classList.remove('active');
-        } else {
-            truncated.style.display = 'none';
-            full.style.display = 'block';
-            this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-            this.classList.add('active');
-        }
-    });
-});
+        // Read More functionality for programs
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const container = this.closest('.program-info');
+                const truncated = container.querySelector('.program-text-truncated');
+                const full = container.querySelector('.program-text-full');
+                
+                if (truncated.style.display === 'none') {
+                    truncated.style.display = 'block';
+                    full.style.display = 'none';
+                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+                    this.classList.remove('active');
+                } else {
+                    truncated.style.display = 'none';
+                    full.style.display = 'block';
+                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+                    this.classList.add('active');
+                }
+            });
+        });
 
-// Hide Read More buttons if content is not long enough
-document.querySelectorAll('.testimonial-text').forEach(textElement => {
-    const button = textElement.nextElementSibling;
-    
-    // Check if text is longer than the truncated height
-    if (textElement.scrollHeight <= 200) {
-        button.style.display = 'none';
-        textElement.classList.remove('truncated');
-        textElement.classList.add('expanded');
-    }
-});
-
-// Initialize the carousels
-showTestimonialSlide(0);
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize testimonial read more buttons
+            initTestimonialReadMore();
+            
+            // Initialize the carousels
+            showTestimonialSlide(0);
+        });
     </script>
 </body>
 </html>
-
