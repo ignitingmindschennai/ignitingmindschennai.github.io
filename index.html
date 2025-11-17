@@ -1639,251 +1639,208 @@
 
     <script>
         // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-        // Function to change hero background
-        function changeHeroBackground(imageUrl) {
-            document.documentElement.style.setProperty('--hero-bg', `url('${imageUrl}')`);
-        }
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
 
-        // Carousel functionality for Programs
-        const programsCarousel = document.getElementById('programsCarousel');
-        const programsPrev = document.getElementById('programsPrev');
-        const programsNext = document.getElementById('programsNext');
-        const programsDots = document.getElementById('programsDots');
-        const programCards = document.querySelectorAll('.program-card');
-        let currentProgramIndex = 0;
+// Close menu when clicking on a link
+const links = document.querySelectorAll('.nav-links a');
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
 
-        function updateProgramsCarousel() {
-            programsCarousel.style.transform = `translateX(-${currentProgramIndex * 100}%)`;
-            
-            // Update dots
-            document.querySelectorAll('#programsDots .dot').forEach((dot, index) => {
-                if (index === currentProgramIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 70,
+                behavior: 'smooth'
             });
         }
+    });
+});
 
-        programsPrev.addEventListener('click', () => {
-            currentProgramIndex = (currentProgramIndex - 1 + programCards.length) % programCards.length;
-            updateProgramsCarousel();
-        });
+// Function to change hero background
+function changeHeroBackground(imageUrl) {
+    document.documentElement.style.setProperty('--hero-bg', `url('${imageUrl}')`);
+}
 
-        programsNext.addEventListener('click', () => {
-            currentProgramIndex = (currentProgramIndex + 1) % programCards.length;
-            updateProgramsCarousel();
-        });
+// Carousel functionality for Programs
+const programsCarousel = document.getElementById('programsCarousel');
+const programsPrev = document.getElementById('programsPrev');
+const programsNext = document.getElementById('programsNext');
+const programsDots = document.getElementById('programsDots');
+const programCards = document.querySelectorAll('.program-card');
+let currentProgramIndex = 0;
 
-        // Add click event to dots
-        document.querySelectorAll('#programsDots .dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                currentProgramIndex = parseInt(dot.getAttribute('data-index'));
-                updateProgramsCarousel();
-            });
-        });
-
-        // Testimonials Carousel - Fixed Version
-        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-        const testimonialDots = document.querySelectorAll('#testimonialsDots .dot');
-        const testimonialsPrev = document.getElementById('testimonialsPrev');
-        const testimonialsNext = document.getElementById('testimonialsNext');
-        let currentTestimonialIndex = 0;
-        
-        // Function to show a specific slide
-        function showTestimonialSlide(index) {
-            // Hide all slides
-            testimonialSlides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-            
-            // Remove active class from all dots
-            testimonialDots.forEach(dot => {
-                dot.classList.remove('active');
-            });
-            
-            // Show the selected slide and activate corresponding dot
-            testimonialSlides[index].classList.add('active');
-            testimonialDots[index].classList.add('active');
-            
-            // Reset read more buttons for the new slide
-            resetTestimonialReadMoreButtons();
-            
-            currentTestimonialIndex = index;
+function updateProgramsCarousel() {
+    programsCarousel.style.transform = `translateX(-${currentProgramIndex * 100}%)`;
+    
+    // Update dots
+    document.querySelectorAll('#programsDots .dot').forEach((dot, index) => {
+        if (index === currentProgramIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
         }
-        
-        // Function to reset read more buttons
-        function resetTestimonialReadMoreButtons() {
-            document.querySelectorAll('.testimonial-read-more-btn').forEach(btn => {
-                const targetId = btn.getAttribute('data-target');
-                const textElement = document.getElementById(targetId);
-                
-                if (textElement) {
-                    textElement.classList.add('truncated');
-                    textElement.classList.remove('expanded');
-                    btn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                    btn.classList.remove('active');
-                }
-            });
-        }
-        
-        // Event listeners for navigation
-        testimonialsPrev.addEventListener('click', () => {
-            let newIndex = currentTestimonialIndex - 1;
-            if (newIndex < 0) newIndex = testimonialSlides.length - 1;
-            showTestimonialSlide(newIndex);
-        });
-        
-        testimonialsNext.addEventListener('click', () => {
-            let newIndex = currentTestimonialIndex + 1;
-            if (newIndex >= testimonialSlides.length) newIndex = 0;
-            showTestimonialSlide(newIndex);
-        });
-        
-        // Event listeners for dots
-        testimonialDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const index = parseInt(dot.getAttribute('data-index'));
-                showTestimonialSlide(index);
-            });
-        });
-        
-        // Team Carousel - Fixed Version
-        const teamSlides = document.querySelectorAll('.team-slide');
-        const teamDots = document.querySelectorAll('#teamDots .dot');
-        const teamPrev = document.getElementById('teamPrev');
-        const teamNext = document.getElementById('teamNext');
-        let currentTeamIndex = 0;
-        
-        // Function to show a specific slide
-        function showTeamSlide(index) {
-            // Hide all slides
-            teamSlides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-            
-            // Remove active class from all dots
-            teamDots.forEach(dot => {
-                dot.classList.remove('active');
-            });
-            
-            // Show the selected slide and activate corresponding dot
-            teamSlides[index].classList.add('active');
-            teamDots[index].classList.add('active');
-            
-            currentTeamIndex = index;
-        }
-        
-        // Event listeners for navigation
-        teamPrev.addEventListener('click', () => {
-            let newIndex = currentTeamIndex - 1;
-            if (newIndex < 0) newIndex = teamSlides.length - 1;
-            showTeamSlide(newIndex);
-        });
-        
-        teamNext.addEventListener('click', () => {
-            let newIndex = currentTeamIndex + 1;
-            if (newIndex >= teamSlides.length) newIndex = 0;
-            showTeamSlide(newIndex);
-        });
-        
-        // Event listeners for dots
-        teamDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const index = parseInt(dot.getAttribute('data-index'));
-                showTeamSlide(index);
-            });
-        });
-        
-        // Read More functionality for testimonials - FIXED
-        document.querySelectorAll('.testimonial-read-more-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const textElement = document.getElementById(targetId);
-                
-                if (textElement.classList.contains('truncated')) {
-                    textElement.classList.remove('truncated');
-                    textElement.classList.add('expanded');
-                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-                    this.classList.add('active');
-                } else {
-                    textElement.classList.add('truncated');
-                    textElement.classList.remove('expanded');
-                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                    this.classList.remove('active');
-                }
-            });
-        });
-        
-        // Read More functionality for programs
-        document.querySelectorAll('.read-more-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const container = this.closest('.program-info');
-                const truncated = container.querySelector('.program-text-truncated');
-                const full = container.querySelector('.program-text-full');
-                
-                if (truncated.style.display === 'none') {
-                    truncated.style.display = 'block';
-                    full.style.display = 'none';
-                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                    this.classList.remove('active');
-                } else {
-                    truncated.style.display = 'none';
-                    full.style.display = 'block';
-                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-                    this.classList.add('active');
-                }
-            });
-        });
+    });
+}
 
-        // Hide Read More buttons if content is not long enough
-        document.querySelectorAll('.testimonial-text').forEach(textElement => {
-            const button = textElement.nextElementSibling;
-            
-            // Check if text is longer than the truncated height
-            if (textElement.scrollHeight <= 200) {
-                button.style.display = 'none';
-                textElement.classList.remove('truncated');
-                textElement.classList.add('expanded');
-            }
-        });
+programsPrev.addEventListener('click', () => {
+    currentProgramIndex = (currentProgramIndex - 1 + programCards.length) % programCards.length;
+    updateProgramsCarousel();
+});
+
+programsNext.addEventListener('click', () => {
+    currentProgramIndex = (currentProgramIndex + 1) % programCards.length;
+    updateProgramsCarousel();
+});
+
+// Add click event to dots
+document.querySelectorAll('#programsDots .dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+        currentProgramIndex = parseInt(dot.getAttribute('data-index'));
+        updateProgramsCarousel();
+    });
+});
+
+// Testimonials Carousel
+const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+const testimonialDots = document.querySelectorAll('#testimonialsDots .dot');
+const testimonialsPrev = document.getElementById('testimonialsPrev');
+const testimonialsNext = document.getElementById('testimonialsNext');
+let currentTestimonialIndex = 0;
+
+// Function to show a specific slide
+function showTestimonialSlide(index) {
+    // Hide all slides
+    testimonialSlides.forEach(slide => {
+        slide.classList.remove('active');
+    });
+    
+    // Remove active class from all dots
+    testimonialDots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+    
+    // Show the selected slide and activate corresponding dot
+    testimonialSlides[index].classList.add('active');
+    testimonialDots[index].classList.add('active');
+    
+    // Reset read more buttons for the new slide
+    resetTestimonialReadMoreButtons();
+    
+    currentTestimonialIndex = index;
+}
+
+// Function to reset read more buttons
+function resetTestimonialReadMoreButtons() {
+    document.querySelectorAll('.testimonial-read-more-btn').forEach(btn => {
+        const targetId = btn.getAttribute('data-target');
+        const textElement = document.getElementById(targetId);
         
-        // Initialize the carousels
-        showTestimonialSlide(0);
-        showTeamSlide(0);
+        if (textElement) {
+            textElement.classList.add('truncated');
+            textElement.classList.remove('expanded');
+            btn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+            btn.classList.remove('active');
+        }
+    });
+}
+
+// Event listeners for navigation
+testimonialsPrev.addEventListener('click', () => {
+    let newIndex = currentTestimonialIndex - 1;
+    if (newIndex < 0) newIndex = testimonialSlides.length - 1;
+    showTestimonialSlide(newIndex);
+});
+
+testimonialsNext.addEventListener('click', () => {
+    let newIndex = currentTestimonialIndex + 1;
+    if (newIndex >= testimonialSlides.length) newIndex = 0;
+    showTestimonialSlide(newIndex);
+});
+
+// Event listeners for dots
+testimonialDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'));
+        showTestimonialSlide(index);
+    });
+});
+
+// SIMPLE Read More functionality for testimonials - FIXED
+document.querySelectorAll('.testimonial-read-more-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const textElement = document.getElementById(targetId);
+        
+        if (!textElement) return;
+        
+        if (textElement.classList.contains('truncated')) {
+            // Expand
+            textElement.classList.remove('truncated');
+            textElement.classList.add('expanded');
+            this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+            this.classList.add('active');
+        } else {
+            // Collapse
+            textElement.classList.add('truncated');
+            textElement.classList.remove('expanded');
+            this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+            this.classList.remove('active');
+        }
+    });
+});
+
+// Read More functionality for programs
+document.querySelectorAll('.read-more-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const container = this.closest('.program-info');
+        const truncated = container.querySelector('.program-text-truncated');
+        const full = container.querySelector('.program-text-full');
+        
+        if (truncated.style.display === 'none') {
+            truncated.style.display = 'block';
+            full.style.display = 'none';
+            this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+            this.classList.remove('active');
+        } else {
+            truncated.style.display = 'none';
+            full.style.display = 'block';
+            this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+            this.classList.add('active');
+        }
+    });
+});
+
+// Hide Read More buttons if content is not long enough
+document.querySelectorAll('.testimonial-text').forEach(textElement => {
+    const button = textElement.nextElementSibling;
+    
+    // Check if text is longer than the truncated height
+    if (textElement.scrollHeight <= 200) {
+        button.style.display = 'none';
+        textElement.classList.remove('truncated');
+        textElement.classList.add('expanded');
+    }
+});
+
+// Initialize the carousels
+showTestimonialSlide(0);
     </script>
 </body>
 </html>
+
