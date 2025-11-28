@@ -474,71 +474,119 @@
             transform: scale(1.2);
         }
         
-        /* Meet Our Team Section */
+        /* Meet Our Team Section - UPDATED WITH CAROUSEL */
         .team-section {
             background-color: white;
         }
         
-        .team-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
+        .team-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
-        .team-member-card {
+        .team-container {
+            overflow: hidden;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        
+        .team-slide {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .team-slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .team-card {
             background: white;
             border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-            border-top: 5px solid var(--orange);
-            max-width: 350px;
-            width: 100%;
+            border: 3px solid var(--orange);
         }
         
-        .team-member-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .team-member-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .team-member-img img {
+        .team-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
         
-        .team-member-card:hover .team-member-img img {
-            transform: scale(1.1);
+        .team-info {
+            margin-bottom: 25px;
         }
         
-        .team-member-info {
-            padding: 25px;
-            text-align: center;
-        }
-        
-        .team-member-info h3 {
+        .team-info h3 {
             color: var(--dark-blue);
             margin-bottom: 10px;
             font-size: 1.4rem;
         }
         
-        .team-member-info .position {
+        .team-info .position {
             color: var(--orange);
             font-weight: 600;
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
         
-        .team-member-info p {
+        .team-info p {
             line-height: 1.7;
             color: #555;
-            margin-bottom: 20px;
+        }
+        
+        .team-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .team-btn {
+            background: var(--dark-blue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            margin: 0 15px;
+        }
+        
+        .team-btn:hover {
+            background: var(--orange);
+            transform: translateY(-3px);
+        }
+        
+        .team-dots {
+            display: flex;
+            justify-content: center;
+            margin: 0 20px;
         }
         
         /* World Scholars Cup Section */
@@ -618,11 +666,6 @@
         
         .testimonial-slide.active {
             display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .testimonial-content {
@@ -759,108 +802,6 @@
             display: flex;
             justify-content: center;
             margin: 0 20px;
-        }
-        
-        /* Team Section - FIXED */
-        .team {
-            background-color: var(--light-blue);
-        }
-        
-        .team-wrapper {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .team-container {
-            overflow: hidden;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-        }
-        
-        .team-slide {
-            display: none;
-            animation: fadeIn 0.8s ease;
-        }
-        
-        .team-slide.active {
-            display: block;
-        }
-        
-        .team-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .team-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            border: 3px solid var(--orange);
-        }
-        
-        .team-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .team-text {
-            margin-bottom: 25px;
-            font-style: italic;
-            line-height: 1.7;
-            color: #555;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .team-author-details h4 {
-            color: var(--dark-blue);
-            margin-bottom: 5px;
-            font-size: 1.3rem;
-        }
-        
-        .team-author-details p {
-            color: #777;
-            font-size: 1rem;
-        }
-        
-        .team-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-        }
-        
-        .team-nav-btn {
-            background: var(--dark-blue);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            margin: 0 15px;
-        }
-        
-        .team-nav-btn:hover {
-            background: var(--orange);
-            transform: translateY(-3px);
         }
         
         /* Location Section */
@@ -1208,8 +1149,6 @@
     </style>
 </head>
 <body>
-    <!-- Your entire HTML structure remains exactly the same -->
-    <!-- ... (all your HTML code) ... -->
     <!-- Header - FIXED -->
     <header>
         <div class="container">
@@ -1225,7 +1164,6 @@
                     <li><a href="#events">Meet Our Team</a></li>
                     <li><a href="#scholars">World Scholars</a></li>
                     <li><a href="#student-testimonials">Testimonials</a></li>
-                    <li><a href="#team">Our Team</a></li>
                     <li><a href="#location">Location</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1380,51 +1318,72 @@
         </div>
     </section>
 
-    <!-- Meet Our Team Section -->
+    <!-- Meet Our Team Section - UPDATED WITH CAROUSEL -->
     <section id="events" class="team-section">
         <div class="container">
             <div class="section-title">
                 <h2>Meet Our Team</h2>
                 <p>Passionate educators dedicated to your child's success</p>
             </div>
-            <div class="team-cards">
-                <!-- Team Member 1 -->
-                <div class="team-member-card">
-                    <div class="team-member-img">
-                        <img src="teacher1.jpg" alt="Ms. Priya Sharma">
+            <div class="team-wrapper">
+                <div class="team-container">
+                    <!-- Team Member 1 -->
+                    <div class="team-slide active" id="teamSlide1">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img src="teacher1.jpg" alt="Ms. Priya Sharma">
+                            </div>
+                            <div class="team-info">
+                                <h3>Ms. Priya Sharma</h3>
+                                <p class="position">Academic Director</p>
+                                <p>With over 15 years of experience in education, Ms. Sharma specializes in curriculum development and personalized learning approaches. She holds a Master's degree in Education from the University of Madras and has helped hundreds of students achieve academic excellence through her innovative teaching methods.</p>
+                            </div>
+                            <a href="#contact" class="btn">Contact</a>
+                        </div>
                     </div>
-                    <div class="team-member-info">
-                        <h3>Ms. Priya Sharma</h3>
-                        <p class="position">Academic Director</p>
-                        <p>With over 15 years of experience in education, Ms. Sharma specializes in curriculum development and personalized learning approaches. She holds a Master's degree in Education from the University of Madras.</p>
-                        <a href="#contact" class="btn">Contact</a>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="team-slide" id="teamSlide2">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img src="teacher2.jpg" alt="Mr. Rajesh Kumar">
+                            </div>
+                            <div class="team-info">
+                                <h3>Mr. Rajesh Kumar</h3>
+                                <p class="position">Cambridge Program Coordinator</p>
+                                <p>Mr. Kumar is a certified Cambridge educator with expertise in preparing students for international examinations. His innovative teaching methods have helped hundreds of students achieve academic excellence. He specializes in developing critical thinking skills and preparing students for global competitions.</p>
+                            </div>
+                            <a href="#contact" class="btn">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="team-slide" id="teamSlide3">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img src="teacher3.jpg" alt="Ms. Anjali Patel">
+                            </div>
+                            <div class="team-info">
+                                <h3>Ms. Anjali Patel</h3>
+                                <p class="position">Creative Arts Director</p>
+                                <p>Ms. Patel brings creativity and innovation to our arts program. With a background in fine arts and child psychology, she designs activities that foster self-expression and creative thinking in students. Her approach helps students develop confidence and discover their unique talents beyond academics.</p>
+                            </div>
+                            <a href="#contact" class="btn">Contact</a>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Team Member 2 -->
-                <div class="team-member-card">
-                    <div class="team-member-img">
-                        <img src="teacher2.jpg" alt="Mr. Rajesh Kumar">
+                <div class="team-controls">
+                    <button class="team-btn prev" id="teamPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="team-dots" id="teamDots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
                     </div>
-                    <div class="team-member-info">
-                        <h3>Mr. Rajesh Kumar</h3>
-                        <p class="position">Cambridge Program Coordinator</p>
-                        <p>Mr. Kumar is a certified Cambridge educator with expertise in preparing students for international examinations. His innovative teaching methods have helped hundreds of students achieve academic excellence.</p>
-                        <a href="#contact" class="btn">Contact</a>
-                    </div>
-                </div>
-                
-                <!-- Team Member 3 -->
-                <div class="team-member-card">
-                    <div class="team-member-img">
-                        <img src="teacher3.jpg" alt="Ms. Anjali Patel">
-                    </div>
-                    <div class="team-member-info">
-                        <h3>Ms. Anjali Patel</h3>
-                        <p class="position">Creative Arts Director</p>
-                        <p>Ms. Patel brings creativity and innovation to our arts program. With a background in fine arts and child psychology, she designs activities that foster self-expression and creative thinking in students.</p>
-                        <a href="#contact" class="btn">Contact</a>
-                    </div>
+                    <button class="team-btn next" id="teamNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1787,6 +1746,53 @@
             });
         });
         
+        // Team Carousel - NEW
+        const teamSlides = document.querySelectorAll('.team-slide');
+        const teamDots = document.querySelectorAll('#teamDots .dot');
+        const teamPrev = document.getElementById('teamPrev');
+        const teamNext = document.getElementById('teamNext');
+        let currentTeamIndex = 0;
+        
+        // Function to show a specific team slide
+        function showTeamSlide(index) {
+            // Hide all slides
+            teamSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            teamDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show the selected slide and activate corresponding dot
+            teamSlides[index].classList.add('active');
+            teamDots[index].classList.add('active');
+            
+            currentTeamIndex = index;
+        }
+        
+        // Event listeners for navigation
+        teamPrev.addEventListener('click', () => {
+            let newIndex = currentTeamIndex - 1;
+            if (newIndex < 0) newIndex = teamSlides.length - 1;
+            showTeamSlide(newIndex);
+        });
+        
+        teamNext.addEventListener('click', () => {
+            let newIndex = currentTeamIndex + 1;
+            if (newIndex >= teamSlides.length) newIndex = 0;
+            showTeamSlide(newIndex);
+        });
+        
+        // Event listeners for dots
+        teamDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showTeamSlide(index);
+            });
+        });
+        
         // SIMPLE Read More functionality for testimonials - FIXED
         function initTestimonialReadMore() {
             document.querySelectorAll('.testimonial-read-more-btn').forEach(button => {
@@ -1844,6 +1850,7 @@
             
             // Initialize the carousels
             showTestimonialSlide(0);
+            showTeamSlide(0);
         });
     </script>
 </body>
