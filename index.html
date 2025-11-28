@@ -474,12 +474,19 @@
             transform: scale(1.2);
         }
         
-        /* Upcoming Events Section */
-        .events {
+        /* Meet Our Team Section */
+        .team-section {
             background-color: white;
         }
         
-        .event-card {
+        .team-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .team-member-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
@@ -487,43 +494,51 @@
             transition: transform 0.3s ease;
             border-top: 5px solid var(--orange);
             max-width: 350px;
-            margin: 0 auto;
+            width: 100%;
         }
         
-        .event-card:hover {
+        .team-member-card:hover {
             transform: translateY(-10px);
         }
         
-        .event-img {
-            height: 150px;
+        .team-member-img {
+            height: 200px;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--light-blue);
         }
         
-        .event-img img {
-            width: 120px;
-            height: 120px;
+        .team-member-img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 50%;
             transition: transform 0.5s ease;
         }
         
-        .event-card:hover .event-img img {
+        .team-member-card:hover .team-member-img img {
             transform: scale(1.1);
         }
         
-        .event-info {
-            padding: 20px;
+        .team-member-info {
+            padding: 25px;
             text-align: center;
         }
         
-        .event-info h3 {
+        .team-member-info h3 {
             color: var(--dark-blue);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-size: 1.4rem;
+        }
+        
+        .team-member-info .position {
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .team-member-info p {
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 20px;
         }
         
         /* World Scholars Cup Section */
@@ -1207,7 +1222,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#programs">Programs</a></li>
-                    <li><a href="#events">Upcoming Events</a></li>
+                    <li><a href="#events">Meet Our Team</a></li>
                     <li><a href="#scholars">World Scholars</a></li>
                     <li><a href="#student-testimonials">Testimonials</a></li>
                     <li><a href="#team">Our Team</a></li>
@@ -1365,21 +1380,51 @@
         </div>
     </section>
 
-    <!-- Upcoming Events Section -->
-    <section id="events" class="events">
+    <!-- Meet Our Team Section -->
+    <section id="events" class="team-section">
         <div class="container">
             <div class="section-title">
-                <h2>Upcoming Events</h2>
-                <p>Upcoming intra-IGM events</p>
+                <h2>Meet Our Team</h2>
+                <p>Passionate educators dedicated to your child's success</p>
             </div>
-            <div class="event-card">
-                <div class="event-img">
-                    <img src="ignite-logo.jpg" alt="IGNITE 25">
+            <div class="team-cards">
+                <!-- Team Member 1 -->
+                <div class="team-member-card">
+                    <div class="team-member-img">
+                        <img src="teacher1.jpg" alt="Ms. Priya Sharma">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Ms. Priya Sharma</h3>
+                        <p class="position">Academic Director</p>
+                        <p>With over 15 years of experience in education, Ms. Sharma specializes in curriculum development and personalized learning approaches. She holds a Master's degree in Education from the University of Madras.</p>
+                        <a href="#contact" class="btn">Contact</a>
+                    </div>
                 </div>
-                <div class="event-info">
-                    <h3>IGNITE 25</h3>
-                    <p>Annual Cultural Festival</p>
-                    <a href="https://www.instagram.com/ignitingmindschennai/?hl=en" class="btn">Learn More</a>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member-card">
+                    <div class="team-member-img">
+                        <img src="teacher2.jpg" alt="Mr. Rajesh Kumar">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Mr. Rajesh Kumar</h3>
+                        <p class="position">Cambridge Program Coordinator</p>
+                        <p>Mr. Kumar is a certified Cambridge educator with expertise in preparing students for international examinations. His innovative teaching methods have helped hundreds of students achieve academic excellence.</p>
+                        <a href="#contact" class="btn">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member-card">
+                    <div class="team-member-img">
+                        <img src="teacher3.jpg" alt="Ms. Anjali Patel">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Ms. Anjali Patel</h3>
+                        <p class="position">Creative Arts Director</p>
+                        <p>Ms. Patel brings creativity and innovation to our arts program. With a background in fine arts and child psychology, she designs activities that foster self-expression and creative thinking in students.</p>
+                        <a href="#contact" class="btn">Contact</a>
+                    </div>
                 </div>
             </div>
         </div>
