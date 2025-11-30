@@ -305,7 +305,7 @@
             transform: scale(1.03);
         }
         
-        /* Programs Section */
+        /* Programs Section - UPDATED */
         .programs {
             background-color: var(--light-blue);
         }
@@ -330,7 +330,7 @@
             transition: transform 0.3s ease;
             border-top: 5px solid var(--orange);
             min-width: 100%;
-            padding: 0 15px;
+            padding: 0;
             box-sizing: border-box;
         }
         
@@ -441,11 +441,11 @@
         }
         
         .carousel-btn.prev {
-            left: 10px;
+            left: -25px;
         }
         
         .carousel-btn.next {
-            right: 10px;
+            right: -25px;
         }
         
         .carousel-dots {
@@ -905,7 +905,7 @@
             object-fit: cover;
         }
         
-        /* Footer */
+        /* Footer - UPDATED */
         footer {
             background: var(--dark);
             color: white;
@@ -932,6 +932,53 @@
         
         .social-links a:hover {
             color: var(--orange);
+        }
+        
+        .creator-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .creator-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .creator-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--orange);
+        }
+        
+        .creator-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .creator-info {
+            text-align: left;
+            max-width: 400px;
+        }
+        
+        .creator-info h4 {
+            color: var(--orange);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .creator-info p {
+            line-height: 1.6;
+            color: #ddd;
+            font-size: 0.95rem;
         }
         
         .copyright {
@@ -992,6 +1039,15 @@
                 margin: 10px 0;
                 text-align: center;
             }
+            
+            .creator-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .creator-info {
+                text-align: center;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1035,11 +1091,11 @@
             }
             
             .carousel-btn.prev {
-                left: 5px;
+                left: -20px;
             }
             
             .carousel-btn.next {
-                right: 5px;
+                right: -20px;
             }
             
             .testimonials-container, .team-container {
@@ -1130,6 +1186,11 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            .creator-image {
+                width: 80px;
+                height: 80px;
+            }
         
              .testimonial-text.expanded {
                 max-height: none !important;
@@ -1192,7 +1253,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Our Mission</h3>
-                    <p>At Igniting Minds, we believe in the dictum, “Each child is special.” Given the right exposure, at the right age, every child can hone their skills to their maximum potential. We commit to fostering a love for learning, celebrating curiosity, building confidence and creating a close-knit community of support and trust.</p>
+                    <p>At Igniting Minds, we believe in the dictum, "Each child is special." Given the right exposure, at the right age, every child can hone their skills to their maximum potential. We commit to fostering a love for learning, celebrating curiosity, building confidence and creating a close-knit community of support and trust.</p>
                     <p>We make sure every child is seen, heard and valued, inspiring them to dream big and discover their strengths.</p>
                     <p>Our mission is to spark creativity and promote collaboration in an inclusive, joyful environment. </p>
                     <P>We integrate values into our learning, instilling integrity, caring, kindness, respect, empathy and responsibility, to ensure that our students are well rounded individuals with honesty, humility and compassion.</P>
@@ -1205,7 +1266,7 @@
         </div>
     </section>
 
-    <!-- Programs Section -->
+    <!-- Programs Section - UPDATED -->
     <section id="programs" class="programs">
         <div class="container">
             <div class="section-title">
@@ -1599,7 +1660,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - UPDATED -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1612,6 +1673,20 @@
                     <a href="https://www.instagram.com/ignitingmindschennai/?hl=en"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
+                
+                <!-- Creator Section - NEW -->
+                <div class="creator-section">
+                    <div class="creator-content">
+                        <div class="creator-image">
+                            <img src="creator.jpg" alt="Website Creator">
+                        </div>
+                        <div class="creator-info">
+                            <h4>About the Creator</h4>
+                            <p>This website was designed and developed with passion and dedication to showcase the excellence of Igniting Minds. The creator is a student at Igniting Minds who has experienced firsthand the transformative education offered here.</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <p class="copyright">- Made with ❤️ by Kiyan Parekh -</p>
                 <p class="copyright">&copy; 2025 Igniting Minds After School Program. All rights reserved.</p>
             </div>
@@ -1853,6 +1928,3 @@
     </script>
 </body>
 </html>
-
-
-
