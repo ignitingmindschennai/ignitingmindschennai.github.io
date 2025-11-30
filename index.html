@@ -234,7 +234,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%234fc3f7"/><circle cx="200" cy="200" r="100" fill="%230290c9" opacity="0.2"/><circle cx="800" cy="300" r="150" fill="%230290c9" opacity="0.2"/><circle cx="400" cy="600" r="120" fill="%230290c9" opacity="0.2"/></svg>');
+            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9)), url('hero-bg.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -291,13 +291,17 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            background: var(--light-blue);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-size: 1.2rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
         }
         
         /* Programs Section - FIXED */
@@ -348,12 +352,17 @@
         .program-img {
             height: 200px;
             overflow: hidden;
-            background: var(--medium-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
+        }
+        
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
         }
         
         .program-info {
@@ -518,11 +527,12 @@
             margin: 0 auto 20px;
             overflow: hidden;
             border: 3px solid var(--orange);
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .team-info {
@@ -625,13 +635,12 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            background: var(--light-blue);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-size: 1.2rem;
+        }
+        
+        .scholars-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         /* Student Testimonials Section - FIXED */
@@ -903,12 +912,12 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
-            font-size: 1.2rem;
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* Footer - UPDATED */
@@ -962,11 +971,12 @@
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--orange);
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-blue);
+        }
+        
+        .creator-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .creator-info {
@@ -1270,7 +1280,7 @@
                     <a href="#programs" class="btn">Our Programs</a>
                 </div>
                 <div class="about-image">
-                    About Us Image
+                    <img src="about-image.jpg" alt="Children learning at Igniting Minds">
                 </div>
             </div>
         </div>
@@ -1290,7 +1300,7 @@
                             <!-- Academic Support Card -->
                             <div class="program-card">
                                 <div class="program-img">
-                                    Academic Support
+                                    <img src="academic-support.jpg" alt="Academic Support">
                                 </div>
                                 <div class="program-info">
                                     <h3>Academic Support</h3>
@@ -1313,7 +1323,7 @@
                             <!-- Creative Arts Card -->
                             <div class="program-card">
                                 <div class="program-img">
-                                    Creative Arts
+                                    <img src="creative-arts.jpg" alt="Creative Arts">
                                 </div>
                                 <div class="program-info">
                                     <h3>Creative Arts</h3>
@@ -1334,7 +1344,7 @@
                             <!-- Cambridge Examinations Card -->
                             <div class="program-card">
                                 <div class="program-img">
-                                    Cambridge Exams
+                                    <img src="cambridge-exams.jpg" alt="Cambridge Examinations">
                                 </div>
                                 <div class="program-info">
                                     <h3>Cambridge Examinations</h3>
@@ -1355,7 +1365,7 @@
                             <!-- Extra-Curricular Activities Card -->
                             <div class="program-card">
                                 <div class="program-img">
-                                    Extra-Curricular
+                                    <img src="extra-curricular.jpg" alt="Extra-Curricular Activities">
                                 </div>
                                 <div class="program-info">
                                     <h3>Extra-Curricular Activities</h3>
@@ -1406,7 +1416,7 @@
                     <div class="team-slide active" id="teamSlide1">
                         <div class="team-card">
                             <div class="team-image">
-                                Ms. Priya Sharma
+                                <img src="teacher1.jpg" alt="Ms. Priya Sharma">
                             </div>
                             <div class="team-info">
                                 <h3>Ms. Priya Sharma</h3>
@@ -1421,7 +1431,7 @@
                     <div class="team-slide" id="teamSlide2">
                         <div class="team-card">
                             <div class="team-image">
-                                Mr. Rajesh Kumar
+                                <img src="teacher2.jpg" alt="Mr. Rajesh Kumar">
                             </div>
                             <div class="team-info">
                                 <h3>Mr. Rajesh Kumar</h3>
@@ -1436,7 +1446,7 @@
                     <div class="team-slide" id="teamSlide3">
                         <div class="team-card">
                             <div class="team-image">
-                                Ms. Anjali Patel
+                                <img src="teacher3.jpg" alt="Ms. Anjali Patel">
                             </div>
                             <div class="team-info">
                                 <h3>Ms. Anjali Patel</h3>
@@ -1487,7 +1497,7 @@
                     <a href="#contact" class="btn">Learn More About Our WSC Program</a>
                 </div>
                 <div class="scholars-image">
-                    World Scholars Cup Image
+                    <img src="scholars-cup.jpg" alt="World Scholars Cup Preparation">
                 </div>
             </div>
         </div>
@@ -1518,7 +1528,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
-                            <div style="width:70px;height:70px;border-radius:50%;background:var(--light-blue);display:flex;align-items:center;justify-content:center;color:var(--dark-blue);border:3px solid var(--orange);">S</div>
+                            <img src="sachin.jpg" alt="Sachin Sathyasivan">
                         </div>
                         <div class="author-details">
                             <h4>Sachin Sathyasivan</h4>
@@ -1545,7 +1555,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
-                            <div style="width:70px;height:70px;border-radius:50%;background:var(--light-blue);display:flex;align-items:center;justify-content:center;color:var(--dark-blue);border:3px solid var(--orange);">K</div>
+                            <img src="student2.jpg" alt="Kriya Jain">
                         </div>
                         <div class="author-details">
                             <h4>Kriya Jain</h4>
@@ -1565,7 +1575,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
-                            <div style="width:70px;height:70px;border-radius:50%;background:var(--light-blue);display:flex;align-items:center;justify-content:center;color:var(--dark-blue);border:3px solid var(--orange);">R</div>
+                            <img src="student3.jpg" alt="Rahul Kumar">
                         </div>
                         <div class="author-details">
                             <h4>Rahul Kumar</h4>
@@ -1632,7 +1642,7 @@
                     </div>
                 </div>
                 <div class="contact-image">
-                    Contact Image
+                    <img src="contact-image.jpg" alt="Children at Igniting Minds">
                 </div>
             </div>
         </div>
@@ -1656,7 +1666,7 @@
                 <div class="creator-section">
                     <div class="creator-content">
                         <div class="creator-image">
-                            K
+                            <img src="creator.jpg" alt="Website Creator">
                         </div>
                         <div class="creator-info">
                             <h4>About the Creator</h4>
