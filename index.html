@@ -4,1908 +4,1655 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="-6SYTi2tKA1dwX57lM9NUzzwk1bxmr8zv4zQ3W16Fy8" />
-    <title>Igniting Minds</title>
+    <title>Igniting Minds — Chennai</title>
     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
         }
-        
+
         :root {
-            --light-blue: #e1f5fe;
-            --medium-blue: #4fc3f7;
-            --dark-blue: #0290c9;
-            --orange: #ff9800;
-            --red: #ff5252;
-            --dark: #333;
-            --section-spacing: 80px;
+            --navy:    #0d1b2a;
+            --navy-mid:#1a3050;
+            --gold:    #e8a825;
+            --gold-lt: #f5c84c;
+            --cream:   #fdf8f0;
+            --warm-wh: #fffdf7;
+            --text:    #1c1c1e;
+            --muted:   #6b7280;
+            --sky:     #dceef8;
+            --accent:  #c8522a;
+            --section: 100px;
         }
-        
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: #f9fdff;
-            color: var(--dark);
-            line-height: 1.6;
+            font-family: 'Outfit', sans-serif;
+            background: var(--warm-wh);
+            color: var(--text);
             overflow-x: hidden;
         }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        section {
-            padding: var(--section-spacing) 0;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--orange);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
-            margin-top: 15px;
-        }
-        
-        .btn:hover {
-            background: var(--red);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(255, 82, 82, 0.4);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--dark-blue);
-        }
 
-        .wscspec {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--orange);
-            border-radius: 2px;
-        }
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-        .wscspec h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .wscspec h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--orange);
-            border-radius: 2px;
-        }        
-        
-        .section-title p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        /* ── UTILITY ── */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-        .wscspec p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        
-        /* Header Styles - FIXED */
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── HEADER ── */
         header {
-            background: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
-            width: 100%;
-            top: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 0;
+            background: rgba(13, 27, 42, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(232,168,37,0.2);
+            transition: background 0.3s;
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            min-height: 70px;
+            height: 72px;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        
-        .logo img {
-            height: 45px;
-            margin-right: 10px;
-        }
-        
-        .logo h1 {
-            font-size: 1.6rem;
-            color: var(--dark-blue);
-            line-height: 1;
-            white-space: nowrap;
-        }
-        
-        .logo span {
-            color: var(--orange);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            flex-wrap: nowrap;
-        }
-        
-        .nav-links li {
-            margin-left: 20px;
-            white-space: nowrap;
-        }
-        
-        .nav-links a {
+            gap: 12px;
             text-decoration: none;
-            color: var(--dark);
+        }
+        .logo img { height: 42px; }
+        .logo-text { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: #fff; line-height: 1; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-links a {
+            font-size: 0.82rem;
             font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            font-size: 0.95rem;
-            padding: 5px 0;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: color 0.25s, background 0.25s;
         }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--orange);
-            transition: width 0.3s ease;
+        .nav-links a:hover { color: var(--gold); background: rgba(232,168,37,0.1); }
+
+        .nav-cta {
+            background: var(--gold) !important;
+            color: var(--navy) !important;
+            font-weight: 700 !important;
+            padding: 8px 18px !important;
+            border-radius: 30px !important;
         }
-        
-        .nav-links a:hover {
-            color: var(--orange);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
+        .nav-cta:hover { background: var(--gold-lt) !important; color: var(--navy) !important; }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
+            gap: 5px;
             cursor: pointer;
             background: none;
             border: none;
-            padding: 5px;
+            padding: 6px;
         }
-        
         .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--dark-blue);
-            margin: 3px 0;
-            transition: all 0.3s ease;
+            display: block; width: 26px; height: 2px;
+            background: white;
+            transition: all 0.3s;
         }
-        
-        /* Hero Section */
+
+        /* ── HERO ── */
         .hero {
-            background: linear-gradient(rgba(79, 195, 247, 0.85), rgba(2, 144, 201, 0.9)), url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
+            height: calc(100vh - 72px);
+            min-height: 560px;
             display: flex;
             align-items: center;
-            color: white;
-            text-align: center;
-            margin-top: 70px;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .hero-content h2 {
-            font-size: 3.2rem;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            line-height: 1.2;
-        }
-        
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-        
-        /* About Section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            color: var(--dark-blue);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.03);
-        }
-        
-        /* Programs Section - FIXED */
-        .programs {
-            background-color: var(--light-blue);
-        }
-        
-        .programs-wrapper {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .programs-container {
-            overflow: hidden;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-        }
-        
-        .programs-carousel {
             position: relative;
             overflow: hidden;
+            background: var(--navy);
+            margin-top: 72px;
         }
-        
-        .program-cards {
-            display: flex;
-            transition: transform 0.5s ease;
+
+        .hero-bg {
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232,168,37,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 80% at 20% 70%, rgba(200,82,42,0.08) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(13,27,42,0.88) 0%, rgba(26,48,80,0.85) 100%),
+                url('hero-bg.jpg') center/cover no-repeat;
         }
-        
-        .program-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-            border-top: 5px solid var(--orange);
-            min-width: 100%;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        .program-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .program-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .program-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .program-card:hover .program-img img {
-            transform: scale(1.1);
-        }
-        
-        .program-info {
-            padding: 25px;
-        }
-        
-        .program-info h3 {
-            color: var(--dark-blue);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        .program-info p {
-            line-height: 1.7;
-            color: #555;
-        }
-        
-        /* Read More functionality */
-        .program-text-container {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .program-text-truncated {
-            max-height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .program-text-truncated::after {
+
+        /* animated floating orbs */
+        .hero-bg::before, .hero-bg::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+            border-radius: 50%;
+            animation: floatOrb 12s ease-in-out infinite alternate;
         }
-        
-        .program-text-full {
-            display: none;
+        .hero-bg::before {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(232,168,37,0.08), transparent 70%);
+            top: -100px; right: -100px;
         }
-        
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: var(--dark-blue);
-            font-weight: 600;
-            cursor: pointer;
+        .hero-bg::after {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(200,82,42,0.06), transparent 70%);
+            bottom: -50px; left: 5%;
+            animation-delay: -5s;
+        }
+        @keyframes floatOrb {
+            0% { transform: translate(0,0) scale(1); }
+            100% { transform: translate(30px,30px) scale(1.1); }
+        }
+
+        /* grain overlay */
+        .hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 740px;
+        }
+
+        .hero-eyebrow {
             display: inline-flex;
             align-items: center;
-            margin-top: 10px;
-            padding: 5px 0;
+            gap: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            animation: fadeUp 0.8s 0.2s both;
         }
-        
-        .read-more-btn i {
-            margin-left: 5px;
-            transition: transform 0.3s ease;
+        .hero-eyebrow::before {
+            content: '';
+            display: block; width: 36px; height: 1.5px;
+            background: var(--gold);
         }
-        
-        .read-more-btn.active i {
-            transform: rotate(180deg);
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: #fff;
+            animation: fadeUp 0.8s 0.4s both;
         }
-        
-        .programs-controls {
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            margin-top: 16px;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.65;
+            max-width: 520px;
+            animation: fadeUp 0.8s 0.6s both;
+        }
+
+        .hero-actions {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
+            gap: 14px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.8s 0.8s both;
         }
-        
-        .programs-btn {
-            background: var(--dark-blue);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            margin: 0 15px;
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        
-        .programs-btn:hover {
-            background: var(--orange);
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            padding: 13px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(232,168,37,0.35);
+        }
+        .btn-primary:hover {
+            background: var(--gold-lt);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(232,168,37,0.45);
+        }
+
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 13px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
             transform: translateY(-3px);
         }
-        
-        .programs-dots {
+
+        .hero-stats {
             display: flex;
-            justify-content: center;
-            margin: 0 20px;
+            flex-direction: row;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 24px;
+            max-width: 560px;
         }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--medium-blue);
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .stat-pill {
+            flex: 1;
+            text-align: left;
+            padding-right: 24px;
+            border-right: 1px solid rgba(255,255,255,0.12);
+            margin-right: 24px;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: statFadeUp 0.6s ease forwards;
         }
-        
-        .dot.active {
-            background: var(--orange);
-            transform: scale(1.2);
-        }
-        
-        /* Meet Our Team Section - UPDATED WITH CAROUSEL */
-        .team-section {
-            background-color: white;
-        }
-        
-        .team-wrapper {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .team-container {
-            overflow: hidden;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-        }
-        
-        .team-slide {
-            display: none;
-            animation: fadeIn 0.8s ease;
-        }
-        
-        .team-slide.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        .stat-pill:last-child { border-right: none; margin-right: 0; }
+        .stat-pill:nth-child(1) { animation-delay: 1.0s; }
+        .stat-pill:nth-child(2) { animation-delay: 1.2s; }
+        .stat-pill:nth-child(3) { animation-delay: 1.4s; }
+        @keyframes statFadeUp {
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .team-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .team-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            border: 3px solid var(--orange);
-        }
-        
-        .team-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .team-info {
-            margin-bottom: 25px;
-        }
-        
-        .team-info h3 {
-            color: var(--dark-blue);
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-        
-        .team-info .position {
-            color: var(--orange);
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        
-        .team-info p {
-            line-height: 1.7;
-            color: #555;
-        }
-        
-        .team-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-        }
-        
-        .team-btn {
-            background: var(--dark-blue);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            margin: 0 15px;
-        }
-        
-        .team-btn:hover {
-            background: var(--orange);
-            transform: translateY(-3px);
-        }
-        
-        .team-dots {
-            display: flex;
-            justify-content: center;
-            margin: 0 20px;
-        }
-        
-        /* World Scholars Cup Section */
-        .scholars-section {
-            background: linear-gradient(to right, rgba(79, 195, 247, 0.7), rgba(79, 195, 247, 1));
-            color: white;
-        }
-        
-        .scholars-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-        
-        .scholars-text {
-            flex: 1;
-        }
-        
-        .scholars-text h3 {
+        .stat-pill strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            margin-bottom: 25px;
-        }
-        
-        .scholars-list {
-            margin: 25px 0;
-        }
-        
-        .scholars-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            line-height: 1.6;
-        }
-        
-        .scholars-list i {
-            color: var(--orange);
-            margin-right: 12px;
-            font-size: 1.2rem;
-        }
-        
-        .scholars-image {
-            flex: 1;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-        
-        .scholars-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Student Testimonials Section - FIXED */
-        .student-testimonials {
-            background-color: var(--light-blue);
-        }
-        
-        .testimonials-wrapper {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .testimonials-container {
-            overflow: hidden;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-        }
-        
-        .testimonial-slide {
-            display: none;
-            animation: fadeIn 0.8s ease;
-        }
-        
-        .testimonial-slide.active {
-            display: block;
-        }
-        
-        .testimonial-content {
-            position: relative;
-            padding: 30px 40px 30px 80px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-        }
-        
-        .testimonial-content::before {
-            content: '"';
-            font-size: 80px;
-            color: var(--light-blue);
-            position: absolute;
-            top: 20px;
-            left: 30px;
+            font-weight: 700;
+            color: var(--gold);
             line-height: 1;
-            opacity: 0.7;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            line-height: 1.8;
-            color: #555;
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-text.truncated {
-            max-height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .testimonial-text.truncated::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-        }
-        
-        .testimonial-text.expanded {
-            max-height: none;
-        }
-        
-        .testimonial-read-more-btn {
-            background: none;
-            border: none;
-            color: var(--dark-blue);
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            margin-top: 10px;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-read-more-btn:hover {
-            background: rgba(2, 144, 201, 0.1);
-        }
-        
-        .testimonial-read-more-btn i {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-        
-        .testimonial-read-more-btn.active i {
-            transform: rotate(180deg);
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .testimonial-author img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 20px;
-            border: 3px solid var(--orange);
-        }
-        
-        .author-details h4 {
-            color: var(--dark-blue);
             margin-bottom: 5px;
-            font-size: 1.2rem;
         }
-        
-        .author-details p {
-            color: #777;
-            font-size: 0.95rem;
-        }
-        
-        .testimonial-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-        }
-        
-        .testimonial-btn {
-            background: var(--dark-blue);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            margin: 0 15px;
-        }
-        
-        .testimonial-btn:hover {
-            background: var(--orange);
-            transform: translateY(-3px);
-        }
-        
-        .testimonial-dots {
-            display: flex;
-            justify-content: center;
-            margin: 0 20px;
-        }
-        
-        /* Location Section */
-        .location-content {
+        .stat-pill span { font-size: 0.65rem; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 38px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.35);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            animation: fadeUp 0.8s 1.2s both;
         }
-        
-        .address {
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
-            text-align: center;
-            max-width: 650px;
-            border-left: 5px solid var(--orange);
+        .scroll-line {
+            width: 1.5px; height: 50px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
         }
-        
-        .address h3 {
-            color: var(--dark-blue);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(1); }
+            50%       { opacity: 1;   transform: scaleY(1.15); }
         }
-        
-        .address p {
-            font-size: 1.1rem;
-            line-height: 1.6;
+
+        /* ── SECTION TITLE ── */
+        .section-title {
+            margin-bottom: 64px;
         }
-        
-        .map {
-            width: 100%;
-            height: 450px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        .section-title .eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 16px;
         }
-        
-        .map iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .section-title .eyebrow::before {
+            content: ''; display: block;
+            width: 28px; height: 1.5px; background: var(--gold);
         }
-        
-        /* Contact Section - UPDATED */
-        .contact {
-            background: var(--light-blue);
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--navy);
         }
-        
-        .contact-content {
-            display: flex;
-            justify-content: space-between;
-            gap: 60px;
-        }
-        
-        .contact-info {
-            flex: 1;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            color: var(--dark-blue);
-        }
-        
-        .contact-info > p {
+        .section-title p {
+            margin-top: 16px;
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 540px;
             line-height: 1.7;
-            margin-bottom: 10px;
-            color: #555;
         }
-        
-        .contact-details {
-            margin-top: 30px;
-        }
-        
-        .contact-details p {
-            margin-bottom: 20px;
-            display: flex;
+
+        .section-title.center { text-align: center; }
+        .section-title.center p { margin-left: auto; margin-right: auto; }
+        .section-title.center .eyebrow { justify-content: center; }
+        .section-title.center .eyebrow::before { display: none; }
+
+        /* ── ABOUT ── */
+        .about { padding: var(--section) 0; background: var(--warm-wh); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
             align-items: center;
-            font-size: 1.1rem;
         }
-        
-        .contact-details i {
-            margin-right: 15px;
-            color: var(--orange);
-            font-size: 1.3rem;
-            width: 25px;
-            text-align: center;
+
+        .about-image-wrap {
+            position: relative;
         }
-        
-        .contact-buttons {
+        .about-image-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            filter: brightness(0.95);
+        }
+        .about-image-badge {
+            position: absolute;
+            bottom: -24px; right: -24px;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 20px 50px rgba(232,168,37,0.35);
+        }
+        .about-image-badge strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .about-image-badge span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+        .about-text p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1rem;
+        }
+        .about-values {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 32px 0;
+        }
+        .value-chip {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--cream);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--navy);
+        }
+        .value-chip i { color: var(--gold); font-size: 0.9rem; }
+
+        /* ── PROGRAMS ── */
+        .programs { padding: var(--section) 0; background: var(--navy); position: relative; overflow: hidden; }
+        .programs::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(232,168,37,0.4), transparent);
+        }
+
+        .programs .section-title h2 { color: #fff; }
+        .programs .section-title .eyebrow { color: var(--gold); }
+        .programs .section-title p { color: rgba(255,255,255,0.5); }
+
+        .programs-tabs {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 8px;
+            margin-bottom: 48px;
             flex-wrap: wrap;
         }
-        
-        .contact-image {
-            flex: 1;
-            border-radius: 12px;
+        .prog-tab {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: transparent;
+            color: rgba(255,255,255,0.55);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .prog-tab.active, .prog-tab:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+            font-weight: 700;
+        }
+
+        .programs-panel { display: none; }
+        .programs-panel.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            animation: fadeIn 0.5s ease both;
+        }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+
+        .prog-image {
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4/3;
         }
-        
-        .contact-image img {
-            width: 100%;
-            height: 100%;
+        .prog-image img {
+            width: 100%; height: 100%;
             object-fit: cover;
+            transition: transform 0.6s;
         }
-        
-        /* Footer - UPDATED */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 50px 0 25px;
+        .prog-image:hover img { transform: scale(1.04); }
+
+        .prog-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+        .prog-body p { color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+
+        /* ── TEAM ── */
+        .team { padding: var(--section) 0; background: var(--cream); }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .team-card {
+            background: var(--warm-wh);
+            border-radius: 20px;
+            padding: 40px 28px 32px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+            transition: transform 0.35s, box-shadow 0.35s;
+            cursor: default;
             text-align: center;
         }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
-        
-        .social-links {
-            margin: 25px 0;
-        }
-        
-        .social-links a {
-            color: white;
-            margin: 0 15px;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: var(--orange);
-        }
-        
-        .creator-section {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            width: 100%;
-            max-width: 600px;
-        }
-        
-        .creator-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-        
-        .creator-image {
-            width: 100px;
-            height: 100px;
+
+        .team-card-img {
+            width: 120px; height: 120px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--orange);
+            margin: 0 auto 20px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 0 5px rgba(232,168,37,0.15);
+            transition: box-shadow 0.35s, transform 0.35s;
         }
-        
-        .creator-image img {
-            width: 100%;
-            height: 100%;
+        .team-card:hover .team-card-img {
+            box-shadow: 0 0 0 7px rgba(232,168,37,0.25);
+            transform: scale(1.05);
+        }
+        .team-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .team-card:hover .team-card-img img { transform: scale(1.08); }
+
+        /* gold accent bar under avatar */
+        .team-card-img-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .team-card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .team-card-body .role {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(232,168,37,0.1);
+            border-radius: 50px;
+        }
+        .team-card-body p { font-size: 0.93rem; color: var(--muted); line-height: 1.7; }
+
+        /* ── FOOTER DEVELOPER CARD ── */
+        .footer-dev {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: 0;
+            padding: 40px 0 0;
+        }
+        .footer-dev-inner {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 28px 32px;
+        }
+        .footer-dev-avatar {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2.5px solid var(--gold);
+            box-shadow: 0 0 0 4px rgba(232,168,37,0.15);
+        }
+        .footer-dev-avatar img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .footer-dev-info { flex: 1; }
+        .footer-dev-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .footer-dev-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .footer-dev-info p {
+            font-size: 0.83rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0;
+        }
+
+        /* ── WSC ── */
+        .scholars { padding: var(--section) 0; background: var(--warm-wh); }
+
+        .scholars-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .scholars-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+        .scholars-image img {
+            width: 100%; height: 100%;
             object-fit: cover;
         }
-        
-        .creator-info {
-            text-align: left;
-            max-width: 400px;
+        .scholars-image::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(13,27,42,0.5) 0%, transparent 50%);
         }
-        
-        .creator-info h4 {
-            color: var(--orange);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+
+        .scholars-badge {
+            position: absolute;
+            top: 28px; left: 28px;
+            z-index: 2;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
-        
-        .creator-info p {
+
+        .scholars-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 32px 0;
+        }
+        .scholars-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 1rem;
+            color: var(--text);
             line-height: 1.6;
-            color: #ddd;
-            font-size: 0.95rem;
         }
-        
-        .copyright {
-            margin-top: 25px;
+        .scholars-list li .icon {
+            flex-shrink: 0;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: rgba(232,168,37,0.15);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials { padding: var(--section) 0; background: var(--navy); position: relative; }
+        .testimonials::before {
+            content: '';
+            position: absolute; top:0; left:0; right:0; height:1px;
+            background: linear-gradient(90deg, transparent, rgba(232,168,37,0.4), transparent);
+        }
+
+        .testimonials .section-title h2 { color: #fff; }
+        .testimonials .section-title .eyebrow { color: var(--gold); }
+        .testimonials .section-title p { color: rgba(255,255,255,0.5); }
+
+        .testimonials-carousel {
+            position: relative;
+        }
+
+        .t-slide { display: none; animation: fadeIn 0.6s ease both; }
+        .t-slide.active { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+
+        .t-quote {
+            position: relative;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 48px;
+        }
+        .t-quote::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: var(--gold);
+            opacity: 0.2;
+            position: absolute;
+            top: 8px; left: 28px;
+            line-height: 1;
+        }
+
+        .t-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: rgba(255,255,255,0.75);
+            position: relative;
+            z-index: 1;
+        }
+        .t-text.collapsed { max-height: 220px; overflow: hidden; mask-image: linear-gradient(to bottom, black 60%, transparent); -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent); }
+
+        .t-read-more {
+            background: none; border: none;
+            color: var(--gold);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 16px;
+            padding: 0;
+            transition: opacity 0.2s;
+        }
+        .t-read-more:hover { opacity: 0.75; }
+
+        .t-author {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+        }
+        .t-author-img {
+            width: 90px; height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 16px;
+            display: block;
+            border: 3px solid var(--gold);
+        }
+        .t-author h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .t-author p { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        .t-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .t-btn {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s;
+        }
+        .t-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+        .t-dots { display: flex; gap: 8px; }
+        .t-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .t-dot.active { background: var(--gold); transform: scale(1.3); }
+
+        /* ── LOCATION ── */
+        .location { padding: var(--section) 0; background: var(--cream); }
+
+        .location-inner {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .location-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 40px 36px;
+            color: white;
+        }
+        .location-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 28px;
+        }
+        .loc-detail {
+            display: flex; gap: 14px; margin-bottom: 22px; align-items: flex-start;
+        }
+        .loc-detail i {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+            width: 18px;
+        }
+        .loc-detail p { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+        .loc-map {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 440px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+        .loc-map iframe { width: 100%; height: 100%; border: none; }
+
+        /* ── CONTACT ── */
+        .contact { padding: var(--section) 0; background: var(--warm-wh); }
+
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .contact-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .contact-text p { color: var(--muted); line-height: 1.8; font-size: 1rem; margin-bottom: 36px; }
+
+        .contact-card {
+            background: var(--navy);
+            border-radius: 24px;
+            padding: 48px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(232,168,37,0.1);
+        }
+        .contact-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .contact-item {
+            display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start;
+        }
+        .contact-item i {
+            color: var(--gold); font-size: 1rem;
+            margin-top: 3px; flex-shrink: 0; width: 18px;
+        }
+        .contact-item span { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+        .contact-card .btn-gold {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
             font-size: 0.9rem;
-            opacity: 0.8;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 28px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(232,168,37,0.35);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .nav-links li {
-                margin-left: 15px;
-            }
-            
-            .nav-links a {
-                font-size: 0.9rem;
-            }
+        .contact-card .btn-gold:hover {
+            background: var(--gold-lt);
+            transform: translateY(-2px);
         }
-        
-        @media (max-width: 992px) {
-            :root {
-                --section-spacing: 70px;
-            }
-            
-            .about-content, .scholars-content, .contact-content {
-                flex-direction: column;
-            }
-            
-            .contact-image {
-                display: none;
-            }
-            
-            .hero-content h2 {
-                font-size: 2.7rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .menu-toggle {
-                display: flex;
-            }
-            
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                padding: 20px 0;
-            }
-            
-            .nav-links.active li {
-                margin: 10px 0;
-                text-align: center;
-            }
-            
-            .creator-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .creator-info {
-                text-align: center;
-            }
-            
-            .contact-buttons {
-                justify-content: center;
-            }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #080f18;
+            color: white;
+            padding: 60px 0 36px;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
-        
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 36px;
+        }
+
+        .footer-brand .logo-text { font-size: 1.5rem; }
+        .footer-brand p {
+            margin-top: 16px;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+        .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+        .social-btn {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+        }
+        .social-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+        .footer-col h5 {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .footer-col ul li a:hover { color: white; }
+
+        .footer-bottom {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px;
+        }
+        .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+        .footer-credit { color: var(--gold) !important; }
+
+
+        /* ── EXTRA ANIMATIONS ── */
+
+        /* Floating cards on team hover */
+        .team-card { transform-origin: center bottom; }
+
+        /* Shimmer on btn-primary */
+        .btn-primary { position: relative; overflow: hidden; }
+        .btn-primary::after {
+            content: '';
+            position: absolute; top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-20deg);
+            animation: btnShimmer 3s ease-in-out 2s infinite;
+        }
+        @keyframes btnShimmer {
+            0%   { left: -100%; }
+            40%, 100% { left: 150%; }
+        }
+
+        /* Pulsing gold ring on section eyebrows */
+        .eyebrow { position: relative; }
+
+        /* Value chips pop in */
+        .about-values { overflow: visible; }
+        .value-chip {
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+        }
+        .value-chip:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 8px 20px rgba(232,168,37,0.18);
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .value-chip:hover i { color: var(--navy); }
+
+        /* Scholars list items animate on scroll */
+        .scholars-list li {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .scholars-list li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Team card image shimmer on load */
+        .team-card-img { position: relative; }
+
+        /* Programs tab indicator bar */
+        .programs-tabs { position: relative; }
+
+        /* Testimonial quote mark pulse */
+        .t-quote::before {
+            animation: quotePulse 4s ease-in-out infinite alternate;
+        }
+        @keyframes quotePulse {
+            0%   { opacity: 0.15; }
+            100% { opacity: 0.35; }
+        }
+
+        /* Scroll line glow */
+        .scroll-line {
+            box-shadow: 0 0 8px rgba(255,255,255,0.15);
+        }
+
+        /* Footer social spin on hover */
+        .social-btn:hover i {
+            animation: spinOnce 0.4s ease;
+        }
+        @keyframes spinOnce {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Location card border glow */
+        .location-card {
+            transition: box-shadow 0.3s;
+        }
+        .location-card:hover {
+            box-shadow: 0 0 0 2px var(--gold), 0 20px 50px rgba(13,27,42,0.2);
+        }
+
+        /* About image badge bounce */
+        .about-image-badge {
+            animation: badgeBounce 3s ease-in-out infinite;
+        }
+        @keyframes badgeBounce {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+
+        /* Navbar link underline slide */
+        .nav-links a { position: relative; }
+        .nav-links a::after {
+            content: '';
+            position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 1.5px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Prog image reveal overlay wipe */
+        .prog-image { position: relative; }
+        .prog-image::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: var(--navy);
+            transform-origin: left;
+            animation: wipeReveal 0.8s ease forwards;
+        }
+        @keyframes wipeReveal {
+            0%   { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .about-grid, .scholars-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+            .about-image-wrap { order: -1; }
+            .about-image-badge { bottom: -16px; right: 16px; }
+            .t-slide.active { grid-template-columns: 1fr; }
+            .t-author { max-width: 320px; }
+            .programs-panel.active { grid-template-columns: 1fr; }
+            .location-inner { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .hero-stats { max-width: 100%; gap: 0; }
+            .stat-pill { padding-right: 20px; margin-right: 20px; }
+            .stat-pill strong { font-size: 1.6rem; }
+            .team-grid { grid-template-columns: 1fr 1fr; }
+        }
+
         @media (max-width: 768px) {
-            :root {
-                --section-spacing: 60px;
-            }
-            
-            .hero {
-                height: 80vh;
-                margin-top: 70px;
-            }
-            
-            .hero-content h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .wscspec h2 {
-                font-size: 2rem;
-            }
-            
-            .logo img {
-                height: 40px;
-            }
-            
-            .logo h1 {
-                font-size: 1.4rem;
-            }
-            
-            .programs-btn, .team-btn, .testimonial-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .testimonials-container, .team-container, .programs-container {
-                padding: 25px;
-            }
-            
-            .testimonial-content {
-                padding: 25px 25px 25px 70px;
-            }
-            
-            .testimonial-content::before {
-                font-size: 60px;
-                left: 20px;
-            }
-            
-            .testimonial-text {
-                font-size: 1rem;
-            }
-            
-            .testimonial-text.truncated {
-                max-height: 150px;
-            }
-            
-            .team-card {
-                padding: 20px;
-            }
+            :root { --section: 70px; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,27,42,0.98); padding: 24px; gap: 4px; }
+            .nav-links.open { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero { height: auto; min-height: calc(100vh - 72px); padding: 56px 0 48px; }
+            .hero-content { text-align: center; max-width: 100%; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-eyebrow { justify-content: center; }
+            .hero-eyebrow::before { display: none; }
+            .hero-sub { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-stats { max-width: 100%; justify-content: center; }
+            .hero-scroll { display: none; }
+            .team-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .t-quote { padding: 36px 28px; }
         }
-        
-        @media (max-width: 480px) {
-            :root {
-                --section-spacing: 50px;
-            }
-            
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.7rem;
-            }
 
-            .wscspec h2 {
-                font-size: 1.7rem;
-            }
-            
-            .btn {
-                padding: 12px 25px;
-                font-size: 0.8rem;
-            }
-            
-            .address {
-                padding: 25px;
-            }
-            
-            .contact-info {
-                padding: 25px;
-            }
-            
-            .testimonials-container, .team-container, .programs-container {
-                padding: 20px;
-            }
-            
-            .testimonial-content {
-                padding: 20px 20px 20px 60px;
-            }
-            
-            .testimonial-content::before {
-                font-size: 50px;
-                left: 15px;
-                top: 15px;
-            }
-            
-            .testimonial-text.truncated {
-                max-height: 120px;
-            }
-            
-            .testimonial-author, .team-card {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .testimonial-author img {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .team-image {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .creator-image {
-                width: 80px;
-                height: 80px;
-            }
-        
-            .testimonial-text.expanded {
-                max-height: none !important;
-            }
-        
-            /* Ensure read more buttons are visible by default */
-            .testimonial-read-more-btn {
-                display: inline-flex !important;
-            }
-        
-            .contact-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        
-            .contact-buttons .btn {
-                width: 100%;
-                text-align: center;
-            }
+        @media (max-width: 480px) {
+            :root { --section: 56px; }
+            .hero h1 { font-size: 1.85rem; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .hero-actions a { width: 100%; justify-content: center; }
+            .hero-stats { flex-direction: column; gap: 12px; border-top: none; padding-top: 16px; }
+            .stat-pill { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; text-align: center; }
+            .stat-pill:last-child { border-bottom: none; }
+            .about-values { grid-template-columns: 1fr; }
+            .programs-tabs { gap: 6px; }
+            .prog-tab { font-size: 0.8rem; padding: 8px 16px; }
+            .contact-card { padding: 32px 24px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header - FIXED -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <img src="logo.png" alt="Igniting Minds Logo">
-                    <h1>Igniting <span>Minds</span></h1>
-                </div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#programs">Programs</a></li>
-                    <li><a href="#events">Meet Our Team</a></li>
-                    <li><a href="#scholars">World Scholars</a></li>
-                    <li><a href="#student-testimonials">Testimonials</a></li>
-                    <li><a href="#location">Location</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Igniting Young Minds for a Brighter Future</h2>
-                <p>Center for all round devlopment with special focus on Public Speaking, Debates and MUNS.</p>
-                <a href="#contact" class="btn">Enroll Now</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-                <p>Learn what makes Igniting Minds special</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>At Igniting Minds, we believe in the dictum, "Each child is special." Given the right exposure, at the right age, every child can hone their skills to their maximum potential. We commit to fostering a love for learning, celebrating curiosity, building confidence and creating a close-knit community of support and trust.</p>
-                    <p>We make sure every child is seen, heard and valued, inspiring them to dream big and discover their strengths.</p>
-                    <p>Our mission is to spark creativity and promote collaboration in an inclusive, joyful environment. </p>
-                    <P>We integrate values into our learning, instilling integrity, caring, kindness, respect, empathy and responsibility, to ensure that our students are well rounded individuals with honesty, humility and compassion.</P>
-                    <a href="#programs" class="btn">Our Programs</a>
-                </div>
-                <div class="about-image">
-                    <img src="about-image.jpg" alt="Children learning at Igniting Minds">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programs Section - FIXED -->
-    <section id="programs" class="programs">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Programs</h2>
-                <p>Comprehensive after school activities for holistic development</p>
-            </div>
-            <div class="programs-wrapper">
-                <div class="programs-container">
-                    <div class="programs-carousel">
-                        <div class="program-cards" id="programsCarousel">
-                            <!-- Academic Support Card -->
-                            <div class="program-card">
-                                <div class="program-img">
-                                    <img src="academic-support.jpg" alt="Academic Support">
-                                </div>
-                                <div class="program-info">
-                                    <h3>Academic Support</h3>
-                                    <div class="program-text-container">
-                                        <div class="program-text-truncated">
-                                            <p>At this institution, we believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively. Our Academic Support is designed to nurture these very qualities — empowering every learner to reach their fullest potential.</p>
-                                            <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills that prepare students for real-world success. Each session is thoughtfully crafted to help students build logical reasoning, enhance English fluency, and master the art of public speaking and presentation — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
-                                            <P>A key feature in this regard is the intergration of real-world issues into student centric scenarios which stretch the students abiltiy to think beyond the confines of routine within the box thinking.</P>
-                                        </div>
-                                        <div class="program-text-full">
-                                            <p>At this institution, we believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively. Our Academic Support is designed to nurture these very qualities — empowering every learner to reach their fullest potential.</p>
-                                            <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills that prepare students for real-world success. Each session is thoughtfully crafted to help students build logical reasoning, enhance English fluency, and master the art of public speaking and presentation — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
-                                            <P>A key feature in this regard is the intergration of real-world issues into student centric scenarios which stretch the students abiltiy to think beyond the confines of routine within the box thinking.</P>
-                                        </div>
-                                    </div>
-                                    <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
-                                </div>
-                            </div>
-                            
-                            <!-- Creative Arts Card -->
-                            <div class="program-card">
-                                <div class="program-img">
-                                    <img src="creative-arts.jpg" alt="Creative Arts">
-                                </div>
-                                <div class="program-info">
-                                    <h3>Creative Arts</h3>
-                                    <div class="program-text-container">
-                                        <div class="program-text-truncated">
-                                            <p>Here, we inculcate the foundations of the special and fine arts and to establish a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and a meaningful impact. These include the visual arts, dance and sophisticated project presentations.</p>
-                                            <p>We utilise guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression and showcase their talent.</p>
-                                        </div>
-                                        <div class="program-text-full">
-                                            <p>Here, we inculcate the foundations of the special and fine arts and to establish a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and a meaningful impact. These include the visual arts, dance and sophisticated project presentations.</p>
-                                            <p>We utilise guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression and showcase their talent.</p>
-                                        </div>
-                                    </div>
-                                    <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
-                                </div>
-                            </div>
-                            
-                            <!-- Cambridge Examinations Card -->
-                            <div class="program-card">
-                                <div class="program-img">
-                                    <img src="cambridge-exams.jpg" alt="Cambridge Examinations">
-                                </div>
-                                <div class="program-info">
-                                    <h3>Cambridge Examinations</h3>
-                                    <div class="program-text-container">
-                                        <div class="program-text-truncated">
-                                            <p>In our pursuit of excellence, our students are trained vigorously to take up the intermediate and advanced levels of the Cambridge ESOL examinations. This is in tandem with many other dynamic and robust tests and assessments. These are done to validate a student's proficiency over the English language in the different disciplines of reading, writing, speaking and listening.</p>
-                                            <p>Our students routinely ace the exams, with most of them scoring distinction marks.</p>
-                                        </div>
-                                        <div class="program-text-full">
-                                            <p>In our pursuit of excellence, our students are trained vigorously to take up the intermediate and advanced levels of the Cambridge ESOL examinations. This is in tandem with many other dynamic and robust tests and assessments. These are done to validate a student's proficiency over the English language in the different disciplines of reading, writing, speaking and listening.</p>
-                                            <p>Our students routinely ace the exams, with most of them scoring distinction marks.</p>
-                                        </div>
-                                    </div>
-                                    <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
-                                </div>
-                            </div>
-                            
-                            <!-- Extra-Curricular Activities Card -->
-                            <div class="program-card">
-                                <div class="program-img">
-                                    <img src="extra-curricular.jpg" alt="Extra-Curricular Activities">
-                                </div>
-                                <div class="program-info">
-                                    <h3>Extra-Curricular Activities</h3>
-                                    <div class="program-text-container">
-                                        <div class="program-text-truncated">
-                                            <p>To promote a sense of healthy competition between our own houses within the institution who are named after legends of the literary world – Shakespeare, Wordsworth, Austen and Tagore – points are awarded to all achievers regardless of any field in which they have made an accomplishment of value and honour.</p>
-                                            <p>On top of that, we allow our students to participate in a versatile set of extra-curricular events such as competitions in dance, our very own and much cherished Sports Day, our historic Annual Day and our beloved cultural event 'IGNITE'. We believe that these events can open up spaces for out-of-the-box learning, personality-building, heartfelt camaraderie and an equitable opportunity for all to compete against the best of the best to emerge victorious for their houses.</p>
-                                        </div>
-                                        <div class="program-text-full">
-                                            <p>To promote a sense of healthy competition between our own houses within the institution who are named after legends of the literary world – Shakespeare, Wordsworth, Austen and Tagore – points are awarded to all achievers regardless of any field in which they have made an accomplishment of value and honour.</p>
-                                            <p>On top of that, we allow our students to participate in a versatile set of extra-curricular events such as competitions in dance, our very own and much cherished Sports Day, our historic Annual Day and our beloved cultural event 'IGNITE'. We believe that these events can open up spaces for out-of-the-box learning, personality-building, heartfelt camaraderie and an equitable opportunity for all to compete against the best of the best to emerge victorious for their houses.</p>
-                                        </div>
-                                    </div>
-                                    <button class="read-more-btn">Read More <i class="fas fa-chevron-down"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="programs-controls">
-                    <button class="programs-btn prev" id="programsPrev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="programs-dots" id="programsDots">
-                        <span class="dot active" data-index="0"></span>
-                        <span class="dot" data-index="1"></span>
-                        <span class="dot" data-index="2"></span>
-                        <span class="dot" data-index="3"></span>
-                    </div>
-                    <button class="programs-btn next" id="programsNext">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Meet Our Team Section - UPDATED WITH CAROUSEL -->
-    <section id="events" class="team-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Meet Our Team</h2>
-                <p>Passionate educators dedicated to your child's success</p>
-            </div>
-            <div class="team-wrapper">
-                <div class="team-container">
-                    <!-- Team Member 1 -->
-                    <div class="team-slide active" id="teamSlide1">
-                        <div class="team-card">
-                            <div class="team-image">
-                                <img src="teacher1.jpg" alt="Dr. Anupama Rau">
-                            </div>
-                            <div class="team-info">
-                                <h3>Dr. Anupama Rau</h3>
-                                <p class="position">Founder & Teacher</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est ante, posuere eu ligula eu, ultrices commodo tortor. In non lectus magna. Aenean fringilla at libero in volutpat. Donec consectetur feugiat elit, id luctus felis vehicula id. Etiam molestie diam et semper malesuada. Sed ornare tincidunt tellus, vel ullamcorper orci elementum eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Team Member 2 -->
-                    <div class="team-slide" id="teamSlide2">
-                        <div class="team-card">
-                            <div class="team-image">
-                                <img src="teacher2.jpg" alt="Ms. Khushi">
-                            </div>
-                            <div class="team-info">
-                                <h3>Ms. Khushi</h3>
-                                <p class="position">Teacher</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est ante, posuere eu ligula eu, ultrices commodo tortor. In non lectus magna. Aenean fringilla at libero in volutpat. Donec consectetur feugiat elit, id luctus felis vehicula id. Etiam molestie diam et semper malesuada. Sed ornare tincidunt tellus, vel ullamcorper orci elementum eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Team Member 3 -->
-                    <div class="team-slide" id="teamSlide3">
-                        <div class="team-card">
-                            <div class="team-image">
-                                <img src="teacher3.jpg" alt="Ms. Sonal">
-                            </div>
-                            <div class="team-info">
-                                <h3>Ms. Sonal</h3>
-                                <p class="position">Teacher</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est ante, posuere eu ligula eu, ultrices commodo tortor. In non lectus magna. Aenean fringilla at libero in volutpat. Donec consectetur feugiat elit, id luctus felis vehicula id. Etiam molestie diam et semper malesuada. Sed ornare tincidunt tellus, vel ullamcorper orci elementum eget..</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-controls">
-                    <button class="team-btn prev" id="teamPrev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="team-dots" id="teamDots">
-                        <span class="dot active" data-index="0"></span>
-                        <span class="dot" data-index="1"></span>
-                        <span class="dot" data-index="2"></span>
-                    </div>
-                    <button class="team-btn next" id="teamNext">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- World Scholars Cup Section -->
-    <section id="scholars" class="scholars-section">
-        <div class="container">
-            <div class="wscspec">
-                <h2>World Scholars Cup Preparation</h2>
-                <p>Specialized training for academic excellence and global competition</p>
-            </div>
-            <div class="scholars-content">
-                <div class="scholars-text">
-                    <h3>Excel in Global Academic Competitions</h3>
-                    <p>Our specialized World Scholars Cup program prepares students to excel in this prestigious global academic competition. We provide comprehensive training in all areas of the competition:</p>
-                    <ul class="scholars-list">
-                        <li><i class="fas fa-check-circle"></i> Collaborative Writing strategies and techniques</li>
-                        <li><i class="fas fa-check-circle"></i> Scholar's Challenge subject mastery</li>
-                        <li><i class="fas fa-check-circle"></i> Team Debate preparation and practice</li>
-                        <li><i class="fas fa-check-circle"></i> Curriculum-aligned subject knowledge building</li>
-                        <li><i class="fas fa-check-circle"></i> Mock tournaments and practice sessions</li>
-                        <li><i class="fas fa-check-circle"></i> Critical thinking and rapid learning skills</li>
-                    </ul>
-                    <p>Our experienced training have a proven track record of helping students achieve top honors at regional and global rounds of the World Scholars Cup.</p>
-                    <a href="#contact" class="btn">Learn More About Our WSC Program</a>
-                </div>
-                <div class="scholars-image">
-                    <img src="scholars-cup.jpg" alt="World Scholars Cup Preparation">
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <!-- Student Testimonials Section - FIXED -->
-<section id="student-testimonials" class="student-testimonials">
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header id="site-header">
     <div class="container">
-        <div class="section-title">
-            <h2>Student Testimonials</h2>
-            <p>What our students say about Igniting Minds</p>
-        </div>
-        <div class="testimonials-wrapper">
-            <div class="testimonials-container">
-                <!-- Testimonial Card 1 -->
-                <div class="testimonial-slide active" id="slide1">
-                    <div class="testimonial-content">
-                        <div class="testimonial-text truncated" id="testimonial1">
-                            <p>IGM is the abode of learning that every student and parent would dream of. The dynamic activities that keep us students engaged regularly help us in transforming ourselves to be outgoing, self-aware and intellectually capable of understanding situations and adapting to prompts.</p>
-                            <p>These include public speaking, writing, quizzing, debates and even other extra-curriculars like dance and sporting events too. Students from every walk of life are encouraged to take part. A worthwhile and astounding experience with various other higher-level English tests and opportunities in other competitions also provided!</p>
-                            <p>English and its subsequent modes of communication are taken very seriously here and will definitely improve with leaps and bounds. It is the heart and soul of so many young minds and to all those who read these reviews - these aren't nearly sufficient to completely describe this institution.</p>
-                            <p>Truly a marvellous community to whom I owe so much. This is one and truly the destination in this large city of ours which would undeniably help a growing student foster the necessary values for their future. Perfect for instilling overall development in the youth to become part of a well-faring society as a whole at the end of the day.</p>
-                            <p>My heart goes out to all those who have ever guided me here. LONG LIVE IGNITING MINDS!!</p>
-                        </div>
-                        <button class="testimonial-read-more-btn" data-target="testimonial1">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="sachin.jpg" alt="Sachin Sathyasivan">
-                        </div>
-                        <div class="author-details">
-                            <h4>Sachin Sathyasivan</h4>
-                            <p>Student at Igniting Minds</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial Card 2 -->
-                <div class="testimonial-slide" id="slide2">
-                    <div class="testimonial-content">
-                        <div class="testimonial-text truncated" id="testimonial2">
-                            <p>
-                            "Forget boring tuitions—my real learning happens at Igniting Minds, and it's actually fun!<br>
-                            Igniting Minds has made me so much more confident. What I love is that they don't just focus on grades, they make sure students genuinely fall in love with learning.<br>
-                            It's all thanks to the amazing teachers! They are experts who are passionate about teaching, and they help us deeply understand the concepts instead of just making us memorize facts.<br>
-                            Igniting Minds constantly pushes us with big challenges, like training hard for the World Scholars Cup (WSC), which has taught me to think critically. I have been a part of IGM since 7th grade and the WSC preparation has massively boosted my speaking and debating skills. Plus, the dedicated work for the Cambridge exams has really improved my English fluency and overall language skills.<br>
-                            It's more than just academics. Igniting Minds focuses on the all-round development of every child. I feel more confident and ready for anything life throws at me!<br>
-                            Igniting Minds doesn't just meet expectations—it has truly sparked a fire in several minds, including mine."
-                            </p>
-                        </div>
-                        <button class="testimonial-read-more-btn" data-target="testimonial2">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="student2.jpg" alt="Kriya Jain">
-                        </div>
-                        <div class="author-details">
-                            <h4>Kriya Jain</h4>
-                            <p>Student at Igniting Minds</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial Card 3 -->
-                <div class="testimonial-slide" id="slide3">
-                    <div class="testimonial-content">
-                        <div class="testimonial-text truncated" id="testimonial3">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies finibus feugiat. Fusce finibus libero id felis ultricies dapibus. Ut a erat eget diam feugiat malesuada. Nullam vestibulum sodales congue. Fusce purus purus, mattis a dui nec, rutrum molestie diam. Cras tristique leo nec est dignissim, vitae porttitor ex cursus. Sed quis vestibulum odio.</p>
-                        </div>
-                        <button class="testimonial-read-more-btn" data-target="testimonial3">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="student3.jpg" alt="Student 3">
-                        </div>
-                        <div class="author-details">
-                            <h4>Student 3</h4>
-                            <p>Student</p>
-                        </div>
-                    </div>
-                </div>
+        <nav class="navbar">
+            <a class="logo" href="#home">
+                <img src="logo.png" alt="Igniting Minds">
+                <span class="logo-text">Igniting <span>Minds</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#scholars">World Scholars</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact" class="nav-cta">Enroll Now</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Chennai's Premier After-School Program</p>
+            <h1>Igniting Young<br>Minds for a<br><em>Brighter Future</em></h1>
+            <p class="hero-sub">All-round development with a special focus on Public Speaking, Debates, MUNs and the World Scholars Cup.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Enroll Your Child <i class="fas fa-arrow-right"></i></a>
+                <a href="#about" class="btn-outline">Discover More</a>
             </div>
-            <div class="testimonial-controls">
-                <button class="testimonial-btn prev" id="testimonialsPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="testimonial-dots" id="testimonialsDots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
+            <div class="hero-stats">
+                <div class="stat-pill">
+                    <strong>10+</strong>
+                    <span>Years of Excellence</span>
                 </div>
-                <button class="testimonial-btn next" id="testimonialsNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <div class="stat-pill">
+                    <strong>WSC</strong>
+                    <span>Global Champions</span>
+                </div>
+                <div class="stat-pill">
+                    <strong>100%</strong>
+                    <span>Cambridge Distinctions</span>
+                </div>
             </div>
         </div>
     </div>
-    </section>
+    <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        Scroll
+    </div>
+</section>
 
-    <!-- Location Section -->
-    <section id="location" class="location">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Location</h2>
-                <p>Conveniently located in Kilpauk, Chennai</p>
-            </div>
-            <div class="location-content">
-                <div class="address">
-                    <h3>Our Center</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Bishop Ezra, 67/1, Sargunam Road, opposite Prive restaurant, Kilpauk, Chennai, Tamil Nadu 600010</p>
+<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image-wrap reveal">
+                <img src="about-image.jpg" alt="Children learning at Igniting Minds" class="about-image-main">
+                <div class="about-image-badge">
+                    <strong>100%</strong>
+                    <span>Cambridge Distinctions</span>
                 </div>
-                <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.238075500966!2d80.2442154759961!3d13.080579587227835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266066df5b58d%3A0x6d783fac58f7b48d!2s67%2F1%2C%20Sargunam%20Rd%2C%20Kilpauk%2C%20Chennai%2C%20Tamil%20Nadu%20600010!5e0!3m2!1sen!2sin!4v1693499999999!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="reveal" style="transition-delay:0.2s">
+                <div class="section-title">
+                    <p class="eyebrow">Our Mission</p>
+                    <h2>Every Child is<br><em style="font-style:italic; color: var(--gold);">Special</em></h2>
+                </div>
+                <p>At Igniting Minds, we believe that given the right exposure, at the right age, every child can hone their skills to their maximum potential. We commit to fostering a love for learning, celebrating curiosity, building confidence and creating a close-knit community.</p>
+                <p>We make sure every child is seen, heard and valued, inspiring them to dream big and discover their strengths in an inclusive, joyful environment.</p>
+                <div class="about-values">
+                    <div class="value-chip"><i class="fas fa-star"></i> Integrity</div>
+                    <div class="value-chip"><i class="fas fa-heart"></i> Kindness</div>
+                    <div class="value-chip"><i class="fas fa-users"></i> Collaboration</div>
+                    <div class="value-chip"><i class="fas fa-lightbulb"></i> Creativity</div>
+                    <div class="value-chip"><i class="fas fa-hands-helping"></i> Empathy</div>
+                    <div class="value-chip"><i class="fas fa-award"></i> Excellence</div>
+                </div>
+                <a href="#programs" class="btn-primary">Explore Programs <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ PROGRAMS ═══════════════════════ -->
+<section id="programs" class="programs">
+    <div class="container">
+        <div class="section-title reveal">
+            <p class="eyebrow">What We Offer</p>
+            <h2>Our Programs</h2>
+            <p>Comprehensive after-school activities designed for holistic development</p>
+        </div>
+        <div class="programs-tabs reveal" style="transition-delay:0.15s">
+            <button class="prog-tab active" data-panel="0">Academic Support</button>
+            <button class="prog-tab" data-panel="1">Creative Arts</button>
+            <button class="prog-tab" data-panel="2">Cambridge Exams</button>
+            <button class="prog-tab" data-panel="3">Extra-Curricular</button>
+        </div>
+
+        <!-- Panel 0 -->
+        <div class="programs-panel active reveal" data-panel="0" style="transition-delay:0.25s">
+            <div class="prog-image">
+                <img src="academic-support.jpg" alt="Academic Support">
+            </div>
+            <div class="prog-body">
+                <h3>Academic Support</h3>
+                <p>We believe that true academic excellence is not defined by rote learning or exam marks alone, but by a student's ability to think critically, communicate confidently, and apply knowledge creatively.</p>
+                <p>We go beyond conventional tutoring by combining structured academic guidance with a focus on higher-order skills — under the mentorship of Cambridge-level teachers who bring global standards into every session.</p>
+                <p>A key feature is the integration of real-world issues into student-centric scenarios, stretching students' ability to think beyond routine, within-the-box thinking.</p>
+            </div>
+        </div>
+
+        <!-- Panel 1 -->
+        <div class="programs-panel" data-panel="1">
+            <div class="prog-image">
+                <img src="creative-arts.jpg" alt="Creative Arts">
+            </div>
+            <div class="prog-body">
+                <h3>Creative Arts</h3>
+                <p>We inculcate the foundations of the special and fine arts, establishing a milieu that can flourish artistically. Creativity and innovation is regarded as a pivotal form of expression that can shape the way a young student brings about transformation and meaningful impact.</p>
+                <p>Guided workshops, interdisciplinary projects and group performances are marvellous displays of how students immerse themselves in new dimensions of self-expression.</p>
+            </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="programs-panel" data-panel="2">
+            <div class="prog-image">
+                <img src="cambridge-exams.jpg" alt="Cambridge Examinations">
+            </div>
+            <div class="prog-body">
+                <h3>Cambridge Examinations</h3>
+                <p>Our students are trained vigorously to take up the intermediate and advanced levels of Cambridge ESOL examinations — validating proficiency in reading, writing, speaking, and listening across the full spectrum of English language skills.</p>
+                <p>Our students routinely ace the exams, with most of them scoring distinction marks, reflecting the depth and rigour of our preparation approach.</p>
+            </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="programs-panel" data-panel="3">
+            <div class="prog-image">
+                <img src="extra-curricular.jpg" alt="Extra-Curricular Activities">
+            </div>
+            <div class="prog-body">
+                <h3>Extra-Curricular Activities</h3>
+                <p>We promote healthy competition through our four literary houses — Shakespeare, Wordsworth, Austen and Tagore — awarding points across all achievement fields.</p>
+                <p>Students participate in dance competitions, our cherished Sports Day, our historic Annual Day and our beloved cultural event <em>IGNITE</em> — spaces for out-of-the-box learning, personality-building, and heartfelt camaraderie.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ TEAM ═══════════════════════ -->
+<section id="team" class="team">
+    <div class="container">
+        <div class="section-title center reveal">
+            <p class="eyebrow">Who We Are</p>
+            <h2>Meet Our Team</h2>
+            <p>Passionate educators dedicated to your child's success</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal" style="transition-delay:0.1s">
+                <div class="team-card-img">
+                    <img src="teacher1.jpg" alt="Dr. Anupama Rau">
+                </div>
+                <div class="team-card-body">
+                    <h3>Dr. Anupama Rau</h3>
+                    <p class="role">Founder & Teacher</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est ante, posuere eu ligula eu, ultrices commodo tortor. In non lectus magna.</p>
+                </div>
+            </div>
+            <div class="team-card reveal" style="transition-delay:0.22s">
+                <div class="team-card-img">
+                    <img src="teacher2.jpg" alt="Ms. Khushi">
+                </div>
+                <div class="team-card-body">
+                    <h3>Ms. Khushi</h3>
+                    <p class="role">Teacher</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est ante, posuere eu ligula eu, ultrices commodo tortor. In non lectus magna.</p>
+                </div>
+            </div>
+            <div class="team-card reveal" style="transition-delay:0.34s">
+                <div class="team-card-img">
+                    <img src="teacher3.jpg" alt="Ms. Sonal">
+                </div>
+                <div class="team-card-body">
+                    <h3>Ms. Sonal</h3>
+                    <p class="role">Teacher</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est ante, posuere eu ligula eu, ultrices commodo tortor. In non lectus magna.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Section - UPDATED -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch to learn more</p>
+<!-- ═══════════════════════ WORLD SCHOLARS CUP ═══════════════════════ -->
+<section id="scholars" class="scholars">
+    <div class="container">
+        <div class="scholars-inner">
+            <div class="scholars-image reveal">
+                <div class="scholars-badge">⭐ WSC Preparation</div>
+                <img src="scholars-cup.jpg" alt="World Scholars Cup">
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Start the Conversation</h3>
-                    <p>We'd love to hear from you. Whether you have questions about our programs, or are ready to enroll your child, we're here to help!</p>
-                    <div class="contact-details">
-                        <p><i class="fas fa-map-marker-alt"></i> Bishop Ezra, 67/1, Sargunam Road, Kilpauk, Chennai</p>
-                        <p><i class="fas fa-phone"></i> +91 98403 48305</p>
-                        <p><i class="fas fa-clock"></i> Monday-Sunday: Varying Timings</p>
-                    </div>
-                    <div class="contact-buttons">
-                        <a href="https://forms.gle/your-form-link-here" class="btn" target="_blank">Fill a Form</a>
-                    </div>
+            <div class="reveal" style="transition-delay:0.2s">
+                <div class="section-title">
+                    <p class="eyebrow">Global Competitions</p>
+                    <h2>World Scholars<br>Cup Program</h2>
+                    <p>Specialized training for academic excellence and global competition</p>
                 </div>
-                <div class="contact-image">
-                    <img src="contact-image.jpg" alt="Children at Igniting Minds">
-                </div>
+                <p>Our specialized World Scholars Cup program prepares students to excel in this prestigious global academic competition with comprehensive training in all areas:</p>
+                <ul class="scholars-list">
+                    <li><span class="icon"><i class="fas fa-check"></i></span> Collaborative Writing strategies and techniques</li>
+                    <li><span class="icon"><i class="fas fa-check"></i></span> Scholar's Challenge subject mastery</li>
+                    <li><span class="icon"><i class="fas fa-check"></i></span> Team Debate preparation and practice</li>
+                    <li><span class="icon"><i class="fas fa-check"></i></span> Curriculum-aligned subject knowledge building</li>
+                    <li><span class="icon"><i class="fas fa-check"></i></span> Mock tournaments and practice sessions</li>
+                    <li><span class="icon"><i class="fas fa-check"></i></span> Critical thinking and rapid learning skills</li>
+                </ul>
+                <a href="#contact" class="btn-primary">
+                    Learn About WSC <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer - UPDATED -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
+<!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+<section id="testimonials" class="testimonials">
+    <div class="container">
+        <div class="section-title reveal">
+            <p class="eyebrow">Student Voices</p>
+            <h2>What Our Students Say</h2>
+            <p>Real stories from the Igniting Minds community</p>
+        </div>
+
+        <div class="testimonials-carousel reveal" style="transition-delay:0.2s">
+
+            <!-- Slide 1 -->
+            <div class="t-slide active" data-slide="0">
+                <div class="t-quote">
+                    <div class="t-text collapsed" id="t1">
+                        <p>IGM is the abode of learning that every student and parent would dream of. The dynamic activities that keep us students engaged regularly help us in transforming ourselves to be outgoing, self-aware and intellectually capable.</p>
+                        <p>These include public speaking, writing, quizzing, debates and even other extra-curriculars like dance and sporting events too. Students from every walk of life are encouraged to take part.</p>
+                        <p>English and its subsequent modes of communication are taken very seriously here and will definitely improve with leaps and bounds. It is the heart and soul of so many young minds.</p>
+                        <p>Truly a marvellous community to whom I owe so much. This is undeniably the destination in this large city which would help a growing student foster the necessary values for their future.</p>
+                        <p>My heart goes out to all those who have ever guided me here. <strong style="color:var(--gold)">LONG LIVE IGNITING MINDS!!</strong></p>
+                    </div>
+                    <button class="t-read-more" data-target="t1">Read more <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="t-author">
+                    <img src="sachin.jpg" alt="Sachin Sathyasivan" class="t-author-img">
+                    <h4>Sachin Sathyasivan</h4>
+                    <p>Student at Igniting Minds</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="t-slide" data-slide="1">
+                <div class="t-quote">
+                    <div class="t-text collapsed" id="t2">
+                        <p>Forget boring tuitions — my real learning happens at Igniting Minds, and it's actually fun! Igniting Minds has made me so much more confident.</p>
+                        <p>What I love is that they don't just focus on grades — they make sure students genuinely fall in love with learning. The teachers are experts who are passionate about teaching and help us deeply understand concepts instead of just making us memorize facts.</p>
+                        <p>Igniting Minds constantly pushes us with big challenges, like training hard for the World Scholars Cup, which has taught me to think critically. The WSC preparation has massively boosted my speaking and debating skills, and the Cambridge exams have really improved my English fluency.</p>
+                        <p><strong style="color:var(--gold)">Igniting Minds doesn't just meet expectations — it has truly sparked a fire in several minds, including mine.</strong></p>
+                    </div>
+                    <button class="t-read-more" data-target="t2">Read more <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="t-author">
+                    <img src="student2.jpg" alt="Kriya Jain" class="t-author-img">
+                    <h4>Kriya Jain</h4>
+                    <p>Student at Igniting Minds</p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="t-slide" data-slide="2">
+                <div class="t-quote">
+                    <div class="t-text collapsed" id="t3">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies finibus feugiat. Fusce finibus libero id felis ultricies dapibus. Ut a erat eget diam feugiat malesuada.</p>
+                        <p>Nullam vestibulum sodales congue. Fusce purus purus, mattis a dui nec, rutrum molestie diam. Cras tristique leo nec est dignissim, vitae porttitor ex cursus.</p>
+                    </div>
+                    <button class="t-read-more" data-target="t3">Read more <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="t-author">
+                    <img src="student3.jpg" alt="Student 3" class="t-author-img">
+                    <h4>Student 3</h4>
+                    <p>Student at Igniting Minds</p>
+                </div>
+            </div>
+
+            <div class="t-controls">
+                <button class="t-btn" id="tPrev"><i class="fas fa-chevron-left"></i></button>
+                <div class="t-dots">
+                    <span class="t-dot active" data-i="0"></span>
+                    <span class="t-dot" data-i="1"></span>
+                    <span class="t-dot" data-i="2"></span>
+                </div>
+                <button class="t-btn" id="tNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ LOCATION ═══════════════════════ -->
+<section id="location" class="location">
+    <div class="container">
+        <div class="section-title center reveal">
+            <p class="eyebrow">Find Us</p>
+            <h2>Our Location</h2>
+            <p>Conveniently located in Kilpauk, Chennai</p>
+        </div>
+        <div class="location-inner reveal" style="transition-delay:0.15s">
+            <div class="location-card">
+                <h3>Igniting Minds Centre</h3>
+                <div class="loc-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Bishop Ezra, 67/1, Sargunam Road, opposite Prive restaurant, Kilpauk, Chennai, Tamil Nadu 600010</p>
+                </div>
+                <div class="loc-detail">
+                    <i class="fas fa-phone"></i>
+                    <p>+91 98403 48305</p>
+                </div>
+                <div class="loc-detail">
+                    <i class="fas fa-clock"></i>
+                    <p>Monday – Sunday<br>Varying Timings</p>
+                </div>
+                <div class="loc-detail">
+                    <i class="fab fa-instagram"></i>
+                    <p><a href="https://www.instagram.com/ignitingmindschennai/" style="color:var(--gold); text-decoration:none;">@ignitingmindschennai</a></p>
+                </div>
+            </div>
+            <div class="loc-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.238075500966!2d80.2442154759961!3d13.080579587227835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266066df5b58d%3A0x6d783fac58f7b48d!2s67%2F1%2C%20Sargunam%20Rd%2C%20Kilpauk%2C%20Chennai%2C%20Tamil%20Nadu%20600010!5e0!3m2!1sen!2sin!4v1693499999999!5m2!1sen!2sin" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="contact-inner">
+            <div class="contact-text reveal">
+                <div class="section-title">
+                    <p class="eyebrow">Get In Touch</p>
+                    <h2>Let's Start the Conversation</h2>
+                </div>
+                <p>We'd love to hear from you. Whether you have questions about our programs or are ready to enroll your child, we're here to help. Reach out and let's ignite their journey together.</p>
+                <img src="contact-image.jpg" alt="Students at Igniting Minds" style="width:100%; border-radius:16px; object-fit:cover; object-position:top; aspect-ratio:16/9; display:block; margin-top:0;">
+            </div>
+            <div class="contact-card reveal" style="transition-delay:0.2s">
+                <h4>Contact Details</h4>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Bishop Ezra, 67/1 Sargunam Road, Kilpauk, Chennai</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 98403 48305</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Monday – Sunday: Varying Timings</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@ignitingmindschennai</span>
+                </div>
+                <a href="https://forms.gle/your-form-link-here" target="_blank" class="btn-gold">
+                    Enroll Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
                 <div class="logo">
-                    <img src="logo.png" alt="Igniting Minds Logo" height="40">
-                    <h1>Igniting <span>Minds</span></h1>
+                    <img src="logo.png" alt="Igniting Minds" height="38">
+                    <span class="logo-text">Igniting <span>Minds</span></span>
                 </div>
-                <div class="social-links">
-                    <!--<a href="./gallery"><i class="fab fa-facebook-f"></i></a>-->
-                    <a href="https://www.instagram.com/ignitingmindschennai/?hl=en"><i class="fab fa-instagram"></i></a>
+                <p>Center for all-round development with a special focus on Public Speaking, Debates, MUNs and the World Scholars Cup. Every child is special.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/ignitingmindschennai/" class="social-btn"><i class="fab fa-instagram"></i></a>
                 </div>
-                
-                <!-- Creator Section - NEW -->
-                <div class="creator-section">
-                    <div class="creator-content">
-                        <div class="creator-image">
-                            <img src="creator.jpg" alt="Website Creator">
-                        </div>
-                        <div class="creator-info">
-                            <h4>About the Creator</h4>
-                            <p>This website was designed and developed with passion and dedication to showcase the excellence of Igniting Minds. The creator is a student at Igniting Minds who has experienced firsthand the transformative education offered here.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="copyright">- Made with ❤️ by Kiyan Parekh -</p>
-                <p class="copyright">&copy; 2025 Igniting Minds After School Program. All rights reserved.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Navigation</h5>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#scholars">World Scholars</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a href="#location">Find Us</a></li>
+                    <li><a href="tel:+919840348305">+91 98403 48305</a></li>
+                    <li><a href="#contact">Enroll Now</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        <!-- Developer Credit -->
+        <div class="footer-dev">
+            <div class="footer-dev-inner">
+                <div class="footer-dev-avatar">
+                    <img src="creator.jpg" alt="Kiyan Parekh">
+                </div>
+                <div class="footer-dev-info">
+                    <p class="footer-dev-label">Website Designer & Developer</p>
+                    <h4>Kiyan Parekh</h4>
+                    <p>A student at Igniting Minds who experienced firsthand the transformative education offered here. Designed and built this website with passion to showcase the excellence of Igniting Minds.</p>
+                </div>
+            </div>
+        </div>
 
-        // Carousel functionality for Programs - FIXED
-        const programsCarousel = document.getElementById('programsCarousel');
-        const programsPrev = document.getElementById('programsPrev');
-        const programsNext = document.getElementById('programsNext');
-        const programsDots = document.getElementById('programsDots');
-        const programCards = document.querySelectorAll('.program-card');
-        let currentProgramIndex = 0;
+        <div class="footer-bottom" style="margin-top:28px;">
+            <p class="footer-credit">Made with ❤️ by Kiyan Parekh</p>
+            <p>&copy; 2025 Igniting Minds After School Program. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
-        function updateProgramsCarousel() {
-            programsCarousel.style.transform = `translateX(-${currentProgramIndex * 100}%)`;
-            
-            // Update dots
-            document.querySelectorAll('#programsDots .dot').forEach((dot, index) => {
-                if (index === currentProgramIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
+<script>
+    // ── Mobile Menu ──
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks   = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-        programsPrev.addEventListener('click', () => {
-            currentProgramIndex = (currentProgramIndex - 1 + programCards.length) % programCards.length;
-            updateProgramsCarousel();
-        });
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        programsNext.addEventListener('click', () => {
-            currentProgramIndex = (currentProgramIndex + 1) % programCards.length;
-            updateProgramsCarousel();
+    // ── Programs Tabs ──
+    const tabs   = document.querySelectorAll('.prog-tab');
+    const panels = document.querySelectorAll('.programs-panel');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const idx = tab.dataset.panel;
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelector(`.programs-panel[data-panel="${idx}"]`).classList.add('active');
         });
+    });
 
-        // Add click event to dots
-        document.querySelectorAll('#programsDots .dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                currentProgramIndex = parseInt(dot.getAttribute('data-index'));
-                updateProgramsCarousel();
-            });
-        });
+    // ── Testimonial Carousel ──
+    const tSlides = document.querySelectorAll('.t-slide');
+    const tDots   = document.querySelectorAll('.t-dot');
+    let tCur = 0;
 
-        // Testimonials Carousel - Fixed Version
-        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-        const testimonialDots = document.querySelectorAll('#testimonialsDots .dot');
-        const testimonialsPrev = document.getElementById('testimonialsPrev');
-        const testimonialsNext = document.getElementById('testimonialsNext');
-        let currentTestimonialIndex = 0;
-        
-        // Function to show a specific slide
-        function showTestimonialSlide(index) {
-            // Hide all slides
-            testimonialSlides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-            
-            // Remove active class from all dots
-            testimonialDots.forEach(dot => {
-                dot.classList.remove('active');
-            });
-            
-            // Show the selected slide and activate corresponding dot
-            testimonialSlides[index].classList.add('active');
-            testimonialDots[index].classList.add('active');
-            
-            currentTestimonialIndex = index;
-        }
-        
-        // Event listeners for navigation
-        testimonialsPrev.addEventListener('click', () => {
-            let newIndex = currentTestimonialIndex - 1;
-            if (newIndex < 0) newIndex = testimonialSlides.length - 1;
-            showTestimonialSlide(newIndex);
-        });
-        
-        testimonialsNext.addEventListener('click', () => {
-            let newIndex = currentTestimonialIndex + 1;
-            if (newIndex >= testimonialSlides.length) newIndex = 0;
-            showTestimonialSlide(newIndex);
-        });
-        
-        // Event listeners for dots
-        testimonialDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const index = parseInt(dot.getAttribute('data-index'));
-                showTestimonialSlide(index);
-            });
-        });
-        
-        // Team Carousel - NEW
-        const teamSlides = document.querySelectorAll('.team-slide');
-        const teamDots = document.querySelectorAll('#teamDots .dot');
-        const teamPrev = document.getElementById('teamPrev');
-        const teamNext = document.getElementById('teamNext');
-        let currentTeamIndex = 0;
-        
-        // Function to show a specific team slide
-        function showTeamSlide(index) {
-            // Hide all slides
-            teamSlides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-            
-            // Remove active class from all dots
-            teamDots.forEach(dot => {
-                dot.classList.remove('active');
-            });
-            
-            // Show the selected slide and activate corresponding dot
-            teamSlides[index].classList.add('active');
-            teamDots[index].classList.add('active');
-            
-            currentTeamIndex = index;
-        }
-        
-        // Event listeners for navigation
-        teamPrev.addEventListener('click', () => {
-            let newIndex = currentTeamIndex - 1;
-            if (newIndex < 0) newIndex = teamSlides.length - 1;
-            showTeamSlide(newIndex);
-        });
-        
-        teamNext.addEventListener('click', () => {
-            let newIndex = currentTeamIndex + 1;
-            if (newIndex >= teamSlides.length) newIndex = 0;
-            showTeamSlide(newIndex);
-        });
-        
-        // Event listeners for dots
-        teamDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const index = parseInt(dot.getAttribute('data-index'));
-                showTeamSlide(index);
-            });
-        });
-        
-        // SIMPLE Read More functionality for testimonials - FIXED
-        function initTestimonialReadMore() {
-            document.querySelectorAll('.testimonial-read-more-btn').forEach(button => {
-                // Make sure button is visible
-                button.style.display = 'inline-flex';
-                
-                button.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-target');
-                    const textElement = document.getElementById(targetId);
-                    
-                    if (!textElement) return;
-                    
-                    if (textElement.classList.contains('truncated')) {
-                        // Expand the text
-                        textElement.classList.remove('truncated');
-                        textElement.classList.add('expanded');
-                        this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-                        this.classList.add('active');
-                    } else {
-                        // Collapse the text
-                        textElement.classList.add('truncated');
-                        textElement.classList.remove('expanded');
-                        this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                        this.classList.remove('active');
-                    }
-                });
-            });
-        }
-        
-        // Read More functionality for programs
-        document.querySelectorAll('.read-more-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const container = this.closest('.program-info');
-                const truncated = container.querySelector('.program-text-truncated');
-                const full = container.querySelector('.program-text-full');
-                
-                if (truncated.style.display === 'none') {
-                    truncated.style.display = 'block';
-                    full.style.display = 'none';
-                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                    this.classList.remove('active');
-                } else {
-                    truncated.style.display = 'none';
-                    full.style.display = 'block';
-                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-                    this.classList.add('active');
-                }
-            });
-        });
+    function showSlide(i) {
+        tSlides.forEach(s => s.classList.remove('active'));
+        tDots.forEach(d => d.classList.remove('active'));
+        tCur = (i + tSlides.length) % tSlides.length;
+        tSlides[tCur].classList.add('active');
+        tDots[tCur].classList.add('active');
+    }
+    document.getElementById('tPrev').addEventListener('click', () => showSlide(tCur - 1));
+    document.getElementById('tNext').addEventListener('click', () => showSlide(tCur + 1));
+    tDots.forEach(d => d.addEventListener('click', () => showSlide(+d.dataset.i)));
 
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize testimonial read more buttons
-            initTestimonialReadMore();
-            
-            // Initialize the carousels
-            showTestimonialSlide(0);
-            showTeamSlide(0);
-            updateProgramsCarousel();
+    // ── Scholars list stagger animation ──
+    const scholarsItems = document.querySelectorAll('.scholars-list li');
+    const scholarsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 100);
+            }
         });
-    </script>
+    }, { threshold: 0.2 });
+    scholarsItems.forEach(li => scholarsObserver.observe(li));
+
+    // ── Read More ──
+    document.querySelectorAll('.t-read-more').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const el = document.getElementById(this.dataset.target);
+            const collapsed = el.classList.contains('collapsed');
+            el.classList.toggle('collapsed', !collapsed);
+            this.innerHTML = collapsed
+                ? 'Read less <i class="fas fa-chevron-up"></i>'
+                : 'Read more <i class="fas fa-chevron-down"></i>';
+        });
+    });
+
+    // ── Smooth scroll with offset ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' }); }
+        });
+    });
+</script>
 </body>
 </html>
-
-
