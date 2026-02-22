@@ -147,7 +147,6 @@
                 url('hero-bg.jpg') center/cover no-repeat;
         }
 
-        /* animated floating orbs */
         .hero-bg::before, .hero-bg::after {
             content: '';
             position: absolute;
@@ -170,7 +169,6 @@
             100% { transform: translate(30px,30px) scale(1.1); }
         }
 
-        /* grain overlay */
         .hero::after {
             content: '';
             position: absolute; inset: 0;
@@ -211,10 +209,7 @@
             color: #fff;
             animation: fadeUp 0.8s 0.4s both;
         }
-        .hero h1 em {
-            font-style: italic;
-            color: var(--gold);
-        }
+        .hero h1 em { font-style: italic; color: var(--gold); }
 
         .hero-sub {
             margin-top: 16px;
@@ -274,6 +269,28 @@
             transform: translateY(-3px);
         }
 
+        /* ── GLOBAL BTN-GOLD ── */
+        .btn-gold {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 13px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 24px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(232,168,37,0.35);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-gold:hover {
+            background: var(--gold-lt);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(232,168,37,0.45);
+        }
+
         .hero-stats {
             display: flex;
             flex-direction: row;
@@ -297,9 +314,7 @@
         .stat-pill:nth-child(1) { animation-delay: 1.0s; }
         .stat-pill:nth-child(2) { animation-delay: 1.2s; }
         .stat-pill:nth-child(3) { animation-delay: 1.4s; }
-        @keyframes statFadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes statFadeUp { to { opacity: 1; transform: translateY(0); } }
         .stat-pill strong {
             display: block;
             font-family: 'Playfair Display', serif;
@@ -330,6 +345,7 @@
             width: 1.5px; height: 50px;
             background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
             animation: scrollPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(255,255,255,0.15);
         }
         @keyframes scrollPulse {
             0%, 100% { opacity: 0.4; transform: scaleY(1); }
@@ -337,9 +353,7 @@
         }
 
         /* ── SECTION TITLE ── */
-        .section-title {
-            margin-bottom: 64px;
-        }
+        .section-title { margin-bottom: 64px; }
         .section-title .eyebrow {
             display: inline-flex; align-items: center; gap: 10px;
             font-size: 0.75rem; font-weight: 600;
@@ -364,7 +378,6 @@
             max-width: 540px;
             line-height: 1.7;
         }
-
         .section-title.center { text-align: center; }
         .section-title.center p { margin-left: auto; margin-right: auto; }
         .section-title.center .eyebrow { justify-content: center; }
@@ -372,17 +385,13 @@
 
         /* ── ABOUT ── */
         .about { padding: var(--section) 0; background: var(--warm-wh); }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
         }
-
-        .about-image-wrap {
-            position: relative;
-        }
+        .about-image-wrap { position: relative; }
         .about-image-main {
             width: 100%;
             aspect-ratio: 4/5;
@@ -399,6 +408,7 @@
             border-radius: 16px;
             padding: 24px 28px;
             box-shadow: 0 20px 50px rgba(232,168,37,0.35);
+            animation: badgeBounce 3s ease-in-out infinite;
         }
         .about-image-badge strong {
             display: block;
@@ -408,24 +418,18 @@
             line-height: 1;
         }
         .about-image-badge span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        @keyframes badgeBounce {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
 
-        .about-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--navy);
-            margin-bottom: 24px;
-        }
-        .about-text p {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 18px;
-            font-size: 1rem;
-        }
+        .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 18px; font-size: 1rem; }
         .about-values {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin: 32px 0;
+            overflow: visible;
         }
         .value-chip {
             display: flex; align-items: center; gap: 10px;
@@ -435,8 +439,26 @@
             font-size: 0.88rem;
             font-weight: 500;
             color: var(--navy);
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
         }
         .value-chip i { color: var(--gold); font-size: 0.9rem; }
+        .value-chip:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 8px 20px rgba(232,168,37,0.18);
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .value-chip:hover i { color: var(--navy); }
+
+        .eligibility-chip {
+            grid-column: 1 / -1;
+            background: rgba(232,168,37,0.12);
+            border: 1px solid rgba(232,168,37,0.3);
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .eligibility-chip i { color: var(--gold); }
+        .eligibility-chip:hover { background: var(--gold); border-color: var(--gold); }
 
         /* ── PROGRAMS ── */
         .programs { padding: var(--section) 0; background: var(--navy); position: relative; overflow: hidden; }
@@ -445,7 +467,6 @@
             position: absolute; top: 0; left: 0; right: 0; height: 1px;
             background: linear-gradient(90deg, transparent, rgba(232,168,37,0.4), transparent);
         }
-
         .programs .section-title h2 { color: #fff; }
         .programs .section-title .eyebrow { color: var(--gold); }
         .programs .section-title p { color: rgba(255,255,255,0.5); }
@@ -455,6 +476,7 @@
             gap: 8px;
             margin-bottom: 48px;
             flex-wrap: wrap;
+            position: relative;
         }
         .prog-tab {
             padding: 10px 24px;
@@ -489,6 +511,18 @@
             border-radius: 20px;
             overflow: hidden;
             aspect-ratio: 4/3;
+            position: relative;
+        }
+        .prog-image::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: var(--navy);
+            transform-origin: left;
+            animation: wipeReveal 0.8s ease forwards;
+        }
+        @keyframes wipeReveal {
+            0%   { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
         }
         .prog-image img {
             width: 100%; height: 100%;
@@ -505,15 +539,64 @@
         }
         .prog-body p { color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
 
+        /* Extra-curricular bottom row: button + upcoming sidebar */
+        .extracurr-bottom {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .upcoming-sidebar {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 16px 18px;
+            min-width: 200px;
+        }
+        .upcoming-sidebar-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .upcoming-event-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .upcoming-event-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .upcoming-event-date {
+            flex-shrink: 0;
+            width: 40px;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 8px;
+            text-align: center;
+            padding: 5px 4px;
+        }
+        .ue-day { display: block; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; line-height: 1; }
+        .ue-month { display: block; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 1px; }
+        .upcoming-event-info { flex: 1; }
+        .upcoming-event-info strong { display: block; font-size: 0.82rem; color: #fff; font-weight: 600; margin-bottom: 2px; }
+        .upcoming-event-info span { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+
         /* ── TEAM ── */
         .team { padding: var(--section) 0; background: var(--cream); }
-
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 28px;
         }
-
         .team-card {
             background: var(--warm-wh);
             border-radius: 20px;
@@ -522,12 +605,12 @@
             transition: transform 0.35s, box-shadow 0.35s;
             cursor: default;
             text-align: center;
+            transform-origin: center bottom;
         }
         .team-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
-
         .team-card-img {
             width: 120px; height: 120px;
             border-radius: 50%;
@@ -536,6 +619,7 @@
             border: 3px solid var(--gold);
             box-shadow: 0 0 0 5px rgba(232,168,37,0.15);
             transition: box-shadow 0.35s, transform 0.35s;
+            position: relative;
         }
         .team-card:hover .team-card-img {
             box-shadow: 0 0 0 7px rgba(232,168,37,0.25);
@@ -547,13 +631,6 @@
             transition: transform 0.5s;
         }
         .team-card:hover .team-card-img img { transform: scale(1.08); }
-
-        /* gold accent bar under avatar */
-        .team-card-img-wrap {
-            position: relative;
-            display: inline-block;
-        }
-
         .team-card-body h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.25rem;
@@ -574,83 +651,26 @@
         }
         .team-card-body p { font-size: 0.93rem; color: var(--muted); line-height: 1.7; }
 
-        /* ── FOOTER DEVELOPER CARD ── */
-        .footer-dev {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            margin-top: 0;
-            padding: 40px 0 0;
-        }
-        .footer-dev-inner {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 16px;
-            padding: 28px 32px;
-        }
-        .footer-dev-avatar {
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 2.5px solid var(--gold);
-            box-shadow: 0 0 0 4px rgba(232,168,37,0.15);
-        }
-        .footer-dev-avatar img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .footer-dev-info { flex: 1; }
-        .footer-dev-label {
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 4px;
-        }
-        .footer-dev-info h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-        .footer-dev-info p {
-            font-size: 0.83rem;
-            color: rgba(255,255,255,0.45);
-            line-height: 1.6;
-            max-width: 480px;
-            margin: 0;
-        }
-
         /* ── WSC ── */
         .scholars { padding: var(--section) 0; background: var(--warm-wh); }
-
         .scholars-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 72px;
             align-items: center;
         }
-
         .scholars-image {
             position: relative;
             border-radius: 20px;
             overflow: hidden;
             aspect-ratio: 3/4;
         }
-        .scholars-image img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
+        .scholars-image img { width: 100%; height: 100%; object-fit: cover; }
         .scholars-image::after {
             content: '';
             position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(13,27,42,0.5) 0%, transparent 50%);
         }
-
         .scholars-badge {
             position: absolute;
             top: 28px; left: 28px;
@@ -664,7 +684,6 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
         }
-
         .scholars-list {
             list-style: none;
             display: flex;
@@ -679,7 +698,11 @@
             font-size: 1rem;
             color: var(--text);
             line-height: 1.6;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
+        .scholars-list li.visible { opacity: 1; transform: translateX(0); }
         .scholars-list li .icon {
             flex-shrink: 0;
             width: 28px; height: 28px;
@@ -698,14 +721,9 @@
             position: absolute; top:0; left:0; right:0; height:1px;
             background: linear-gradient(90deg, transparent, rgba(232,168,37,0.4), transparent);
         }
-
         .testimonials .section-title h2 { color: #fff; }
         .testimonials .section-title .eyebrow { color: var(--gold); }
         .testimonials .section-title p { color: rgba(255,255,255,0.5); }
-
-        .testimonials-carousel {
-            position: relative;
-        }
 
         .t-slide { display: none; animation: fadeIn 0.6s ease both; }
         .t-slide.active { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
@@ -726,8 +744,12 @@
             position: absolute;
             top: 8px; left: 28px;
             line-height: 1;
+            animation: quotePulse 4s ease-in-out infinite alternate;
         }
-
+        @keyframes quotePulse {
+            0%   { opacity: 0.15; }
+            100% { opacity: 0.35; }
+        }
         .t-text {
             font-size: 1.05rem;
             line-height: 1.85;
@@ -736,7 +758,6 @@
             z-index: 1;
         }
         .t-text.collapsed { max-height: 220px; overflow: hidden; mask-image: linear-gradient(to bottom, black 60%, transparent); -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent); }
-
         .t-read-more {
             background: none; border: none;
             color: var(--gold);
@@ -750,7 +771,6 @@
             transition: opacity 0.2s;
         }
         .t-read-more:hover { opacity: 0.75; }
-
         .t-author {
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.08);
@@ -766,20 +786,10 @@
             display: block;
             border: 3px solid var(--gold);
         }
-        .t-author h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 6px;
-        }
+        .t-author h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 6px; }
         .t-author p { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; }
 
-        .t-controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-top: 40px;
-        }
+        .t-controls { display: flex; align-items: center; gap: 16px; margin-top: 40px; }
         .t-btn {
             width: 48px; height: 48px;
             border-radius: 50%;
@@ -792,7 +802,6 @@
             transition: all 0.25s;
         }
         .t-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
-
         .t-dots { display: flex; gap: 8px; }
         .t-dot {
             width: 8px; height: 8px;
@@ -805,64 +814,36 @@
 
         /* ── LOCATION ── */
         .location { padding: var(--section) 0; background: var(--cream); }
-
         .location-inner {
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 48px;
             align-items: start;
         }
-
         .location-card {
             background: var(--navy);
             border-radius: 20px;
             padding: 40px 36px;
             color: white;
+            transition: box-shadow 0.3s;
         }
-        .location-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 28px;
-        }
-        .loc-detail {
-            display: flex; gap: 14px; margin-bottom: 22px; align-items: flex-start;
-        }
-        .loc-detail i {
-            color: var(--gold);
-            font-size: 1rem;
-            margin-top: 3px;
-            flex-shrink: 0;
-            width: 18px;
-        }
+        .location-card:hover { box-shadow: 0 0 0 2px var(--gold), 0 20px 50px rgba(13,27,42,0.2); }
+        .location-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 28px; }
+        .loc-detail { display: flex; gap: 14px; margin-bottom: 22px; align-items: flex-start; }
+        .loc-detail i { color: var(--gold); font-size: 1rem; margin-top: 3px; flex-shrink: 0; width: 18px; }
         .loc-detail p { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
-
-        .loc-map {
-            border-radius: 20px;
-            overflow: hidden;
-            height: 440px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-        }
+        .loc-map { border-radius: 20px; overflow: hidden; height: 440px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
         .loc-map iframe { width: 100%; height: 100%; border: none; }
 
         /* ── CONTACT ── */
         .contact { padding: var(--section) 0; background: var(--warm-wh); }
-
         .contact-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 56px;
             align-items: center;
         }
-
-        .contact-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
-            color: var(--navy);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
         .contact-text p { color: var(--muted); line-height: 1.8; font-size: 1rem; margin-bottom: 36px; }
-
         .contact-card {
             background: var(--navy);
             border-radius: 24px;
@@ -879,38 +860,11 @@
             border-radius: 50%;
             background: rgba(232,168,37,0.1);
         }
-        .contact-card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-        }
-
-        .contact-item {
-            display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start;
-        }
-        .contact-item i {
-            color: var(--gold); font-size: 1rem;
-            margin-top: 3px; flex-shrink: 0; width: 18px;
-        }
+        .contact-card h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 24px; }
+        .contact-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+        .contact-item i { color: var(--gold); font-size: 1rem; margin-top: 3px; flex-shrink: 0; width: 18px; }
         .contact-item span { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
-
-        .contact-card .btn-gold {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--gold);
-            color: var(--navy);
-            font-weight: 700;
-            font-size: 0.9rem;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 28px;
-            transition: all 0.3s;
-            box-shadow: 0 8px 24px rgba(232,168,37,0.35);
-        }
-        .contact-card .btn-gold:hover {
-            background: var(--gold-lt);
-            transform: translateY(-2px);
-        }
+        .contact-card .btn-gold { margin-top: 28px; padding: 14px 32px; }
 
         /* ── FOOTER ── */
         footer {
@@ -919,7 +873,6 @@
             padding: 60px 0 36px;
             border-top: 1px solid rgba(255,255,255,0.06);
         }
-
         .footer-top {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr;
@@ -928,15 +881,8 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
             margin-bottom: 36px;
         }
-
         .footer-brand .logo-text { font-size: 1.5rem; }
-        .footer-brand p {
-            margin-top: 16px;
-            color: rgba(255,255,255,0.45);
-            font-size: 0.9rem;
-            line-height: 1.7;
-            max-width: 300px;
-        }
+        .footer-brand p { margin-top: 16px; color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.7; max-width: 300px; }
         .footer-social { display: flex; gap: 12px; margin-top: 20px; }
         .social-btn {
             width: 38px; height: 38px;
@@ -949,23 +895,41 @@
             transition: all 0.25s;
         }
         .social-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+        .social-btn:hover i { animation: spinOnce 0.4s ease; }
+        @keyframes spinOnce { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .footer-col h5 {
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
+        .footer-col h5 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
         .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .footer-col ul li a {
-            color: rgba(255,255,255,0.45);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
+        .footer-col ul li a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
         .footer-col ul li a:hover { color: white; }
+
+        /* ── FOOTER DEVELOPER CARD ── */
+        .footer-dev {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 40px 0 0;
+        }
+        .footer-dev-inner {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 28px 32px;
+        }
+        .footer-dev-avatar {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2.5px solid var(--gold);
+            box-shadow: 0 0 0 4px rgba(232,168,37,0.15);
+        }
+        .footer-dev-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .footer-dev-info { flex: 1; }
+        .footer-dev-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+        .footer-dev-info h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+        .footer-dev-info p { font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 480px; margin: 0; }
 
         .footer-bottom {
             display: flex; justify-content: space-between; align-items: center;
@@ -974,13 +938,7 @@
         .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
         .footer-credit { color: var(--gold) !important; }
 
-
-        /* ── EXTRA ANIMATIONS ── */
-
-        /* Floating cards on team hover */
-        .team-card { transform-origin: center bottom; }
-
-        /* Shimmer on btn-primary */
+        /* ── SHIMMER on btn-primary ── */
         .btn-primary { position: relative; overflow: hidden; }
         .btn-primary::after {
             content: '';
@@ -990,108 +948,9 @@
             transform: skewX(-20deg);
             animation: btnShimmer 3s ease-in-out 2s infinite;
         }
-        @keyframes btnShimmer {
-            0%   { left: -100%; }
-            40%, 100% { left: 150%; }
-        }
+        @keyframes btnShimmer { 0% { left: -100%; } 40%, 100% { left: 150%; } }
 
-        /* Pulsing gold ring on section eyebrows */
         .eyebrow { position: relative; }
-
-        /* Value chips pop in */
-        .about-values { overflow: visible; }
-        .value-chip {
-            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
-        }
-        .value-chip:hover {
-            transform: translateY(-4px) scale(1.04);
-            box-shadow: 0 8px 20px rgba(232,168,37,0.18);
-            background: var(--gold);
-            color: var(--navy);
-        }
-        .value-chip:hover i { color: var(--navy); }
-
-        /* Scholars list items animate on scroll */
-        .scholars-list li {
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .scholars-list li.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Team card image shimmer on load */
-        .team-card-img { position: relative; }
-
-        /* Programs tab indicator bar */
-        .programs-tabs { position: relative; }
-
-        /* Testimonial quote mark pulse */
-        .t-quote::before {
-            animation: quotePulse 4s ease-in-out infinite alternate;
-        }
-        @keyframes quotePulse {
-            0%   { opacity: 0.15; }
-            100% { opacity: 0.35; }
-        }
-
-        /* Scroll line glow */
-        .scroll-line {
-            box-shadow: 0 0 8px rgba(255,255,255,0.15);
-        }
-
-        /* Footer social spin on hover */
-        .social-btn:hover i {
-            animation: spinOnce 0.4s ease;
-        }
-        @keyframes spinOnce {
-            0%   { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Location card border glow */
-        .location-card {
-            transition: box-shadow 0.3s;
-        }
-        .location-card:hover {
-            box-shadow: 0 0 0 2px var(--gold), 0 20px 50px rgba(13,27,42,0.2);
-        }
-
-        /* About image badge bounce */
-        .about-image-badge {
-            animation: badgeBounce 3s ease-in-out infinite;
-        }
-        @keyframes badgeBounce {
-            0%, 100% { transform: translateY(0); }
-            50%       { transform: translateY(-8px); }
-        }
-
-        /* Navbar link underline slide */
-        .nav-links a { position: relative; }
-        .nav-links a::after {
-            content: '';
-            position: absolute; bottom: -2px; left: 0;
-            width: 0; height: 1.5px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover::after { width: 100%; }
-
-        /* Prog image reveal overlay wipe */
-        .prog-image { position: relative; }
-        .prog-image::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: var(--navy);
-            transform-origin: left;
-            animation: wipeReveal 0.8s ease forwards;
-        }
-        @keyframes wipeReveal {
-            0%   { transform: scaleX(1); }
-            100% { transform: scaleX(0); }
-        }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -1127,6 +986,7 @@
             .footer-top { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .t-quote { padding: 36px 28px; }
+            .footer-dev-inner { flex-direction: column; text-align: center; }
         }
 
         @media (max-width: 480px) {
@@ -1177,7 +1037,7 @@
         <div class="hero-content">
             <p class="hero-eyebrow">Chennai's Premier After-School Program</p>
             <h1>Igniting Young<br>Minds for a<br><em>Brighter Future</em></h1>
-            <p class="hero-sub">Center for all-round development with a special focus on Cambrigde Exams, Public Speaking, Debates, MUNs and the World Scholars Cup.</p>
+            <p class="hero-sub">Center for all-round development with a special focus on Cambridge Exams, Public Speaking, Debates, MUNs and the World Scholars Cup.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">Enroll Your Child <i class="fas fa-arrow-right"></i></a>
                 <a href="#about" class="btn-outline">Discover More</a>
@@ -1222,10 +1082,8 @@
                 </div>
                 <p>At Igniting Minds, we believe that given the right exposure, at the right age, every child can hone their skills to their maximum potential. We commit to fostering a love for learning, celebrating curiosity, building confidence and creating a close-knit community.</p>
                 <p>We make sure every child is seen, heard and valued, inspiring them to dream big and discover their strengths in an inclusive, joyful environment.</p>
-                <p><br></p>
-                <p></p>
-                <div class="value-chip"><i class="fas fa-check-circle"></i> Eligibility Criteria: Grade 7 - Grade 12</div>
                 <div class="about-values">
+                    <div class="value-chip eligibility-chip"><i class="fas fa-check-circle"></i> Eligibility Criteria: Grade 7 – Grade 12</div>
                     <div class="value-chip"><i class="fas fa-star"></i> Integrity</div>
                     <div class="value-chip"><i class="fas fa-heart"></i> Kindness</div>
                     <div class="value-chip"><i class="fas fa-users"></i> Collaboration</div>
@@ -1300,9 +1158,11 @@
                 <h3>Extra-Curricular Activities</h3>
                 <p>We promote healthy competition through our four literary houses — Shakespeare, Wordsworth, Austen and Tagore — awarding points across all achievement fields.</p>
                 <p>Students participate in dance competitions, our cherished Sports Day, our historic Annual Day and our beloved cultural event <em>IGNITE</em> — spaces for out-of-the-box learning, personality-building, and heartfelt camaraderie.</p>
-               <a href="aaaa" class="btn-gold">
-    Upcoming Events <i class="fas fa-calendar-day"></i>
-</a>
+                <div class="extracurr-bottom">
+                    <a href="upcoming" class="btn-gold">All Events <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1374,9 +1234,7 @@
                     <li><span class="icon"><i class="fas fa-check"></i></span> Mock tournaments and practice sessions</li>
                     <li><span class="icon"><i class="fas fa-check"></i></span> Critical thinking and rapid learning skills</li>
                 </ul>
-                <a href="#contact" class="btn-primary">
-                    Learn About WSC <i class="fas fa-arrow-right"></i>
-                </a>
+                <a href="#contact" class="btn-primary">Learn About WSC <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -1456,7 +1314,7 @@
                     <button class="t-read-more" data-target="t4">Read more <i class="fas fa-chevron-down"></i></button>
                 </div>
                 <div class="t-author">
-                    <img src="student4.jpg" alt="Aryan Mehta" class="t-author-img">
+                    <img src="student4.jpg" alt="Student 4" class="t-author-img">
                     <h4>Student 4</h4>
                     <p>Student at Igniting Minds</p>
                 </div>
@@ -1466,13 +1324,13 @@
             <div class="t-slide" data-slide="4">
                 <div class="t-quote">
                     <div class="t-text collapsed" id="t5">
-                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies finibus feugiat. Fusce finibus libero id felis ultricies dapibus. Ut a erat eget diam feugiat malesuada.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies finibus feugiat. Fusce finibus libero id felis ultricies dapibus. Ut a erat eget diam feugiat malesuada.</p>
                         <p>Nullam vestibulum sodales congue. Fusce purus purus, mattis a dui nec, rutrum molestie diam. Cras tristique leo nec est dignissim, vitae porttitor ex cursus.</p>
                     </div>
                     <button class="t-read-more" data-target="t5">Read more <i class="fas fa-chevron-down"></i></button>
                 </div>
                 <div class="t-author">
-                    <img src="student5.jpg" alt="Priya Sharma" class="t-author-img">
+                    <img src="student5.jpg" alt="Student 5" class="t-author-img">
                     <h4>Student 5</h4>
                     <p>Parent at Igniting Minds</p>
                 </div>
@@ -1488,7 +1346,7 @@
                     <button class="t-read-more" data-target="t6">Read more <i class="fas fa-chevron-down"></i></button>
                 </div>
                 <div class="t-author">
-                    <img src="student6.jpg" alt="Nandita Krishnan" class="t-author-img">
+                    <img src="student6.jpg" alt="Student 6" class="t-author-img">
                     <h4>Student 6</h4>
                     <p>Student at Igniting Minds</p>
                 </div>
@@ -1713,11 +1571,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
