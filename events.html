@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events — Igniting Minds Chennai</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy:    #0d1b2a;
+            --navy-mid:#1a3050;
+            --gold:    #e8a825;
+            --gold-lt: #f5c84c;
+            --cream:   #fdf8f0;
+            --warm-wh: #fffdf7;
+            --text:    #1c1c1e;
+            --muted:   #6b7280;
+            --accent:  #c8522a;
+            --section: 90px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Outfit', sans-serif; background: var(--warm-wh); color: var(--text); overflow-x: hidden; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(13,27,42,0.92);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(232,168,37,0.2);
+        }
+        .navbar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { height: 42px; }
+        .logo-text { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: #fff; line-height: 1; }
+        .logo-text span { color: var(--gold); }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 6px; }
+        .nav-links a {
+            font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+            color: rgba(255,255,255,0.78); text-decoration: none; padding: 6px 10px; border-radius: 4px;
+            transition: color 0.25s, background 0.25s;
+        }
+        .nav-links a:hover { color: var(--gold); background: rgba(232,168,37,0.1); }
+        .nav-cta { background: var(--gold) !important; color: var(--navy) !important; font-weight: 700 !important; padding: 8px 18px !important; border-radius: 30px !important; }
+        .nav-cta:hover { background: var(--gold-lt) !important; }
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+        .menu-toggle span { display: block; width: 26px; height: 2px; background: white; transition: all 0.3s; }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            margin-top: 72px;
+            background: var(--navy);
+            padding: 80px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,168,37,0.1) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 10% 60%, rgba(200,82,42,0.07) 0%, transparent 50%);
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(232,168,37,0.4), transparent);
+        }
+        .page-hero-content { position: relative; z-index: 1; }
+        .page-hero .eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 16px;
+        }
+        .page-hero .eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--gold); }
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900; line-height: 1.1; color: #fff;
+        }
+        .page-hero h1 em { font-style: italic; color: var(--gold); }
+        .page-hero p { margin-top: 18px; font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.7; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb i { font-size: 0.6rem; }
+
+        /* ── SECTION LABELS ── */
+        .section-label {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 40px;
+        }
+        .section-label h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700; color: var(--navy);
+        }
+        .section-label .label-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(13,27,42,0.12), transparent); }
+        .section-label .label-tag {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--gold); background: rgba(232,168,37,0.12); border-radius: 50px; padding: 5px 14px;
+            white-space: nowrap;
+        }
+
+        /* ── UPCOMING EVENTS ── */
+        .upcoming-section { padding: var(--section) 0; background: var(--warm-wh); }
+
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .event-card {
+            background: var(--warm-wh);
+            border: 1px solid rgba(13,27,42,0.07);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            transition: transform 0.35s, box-shadow 0.35s;
+        }
+        .event-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+
+        .event-card-banner {
+            height: 180px;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .event-card-banner img {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.7;
+            transition: transform 0.5s, opacity 0.35s;
+        }
+        .event-card:hover .event-card-banner img { transform: scale(1.06); opacity: 0.85; }
+        .event-card-banner-icon {
+            position: absolute;
+            font-size: 3rem; color: rgba(255,255,255,0.2);
+        }
+        .event-date-badge {
+            position: absolute; top: 16px; left: 16px;
+            background: var(--gold); color: var(--navy);
+            border-radius: 10px; padding: 8px 14px;
+            text-align: center; min-width: 56px;
+            box-shadow: 0 4px 16px rgba(232,168,37,0.4);
+        }
+        .event-date-badge .day { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; line-height: 1; }
+        .event-date-badge .month { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+
+        .event-status-badge {
+            position: absolute; top: 16px; right: 16px;
+            border-radius: 50px; padding: 4px 12px;
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .status-upcoming { background: rgba(232,168,37,0.9); color: var(--navy); }
+        .status-soon { background: rgba(200,82,42,0.9); color: #fff; }
+        .status-tba { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
+        .event-card-body { padding: 24px; }
+        .event-card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem; color: var(--navy); margin-bottom: 8px;
+        }
+        .event-card-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+        .event-meta {
+            display: flex; flex-direction: column; gap: 6px;
+            margin-bottom: 20px;
+        }
+        .event-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--muted); }
+        .event-meta-item i { color: var(--gold); width: 14px; font-size: 0.78rem; }
+        .event-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--gold); background: rgba(232,168,37,0.1); border-radius: 50px; padding: 4px 12px;
+        }
+
+        /* ── PAST EVENTS ── */
+        .past-section { padding: var(--section) 0; background: var(--cream); }
+
+        .past-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .past-card {
+            background: var(--warm-wh);
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            transition: transform 0.35s, box-shadow 0.35s;
+        }
+        .past-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+
+        .past-card-img {
+            position: relative; overflow: hidden;
+            background: var(--navy);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .past-card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: transform 0.5s, opacity 0.35s; }
+        .past-card:hover .past-card-img img { transform: scale(1.06); opacity: 0.9; }
+        .past-card-img-icon { position: absolute; font-size: 2.5rem; color: rgba(255,255,255,0.15); }
+        .past-year-badge {
+            position: absolute; bottom: 12px; left: 12px;
+            background: var(--gold); color: var(--navy);
+            border-radius: 6px; padding: 4px 10px;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+        }
+
+        .past-card-body { padding: 28px 24px; }
+        .past-card-body .event-tag { margin-bottom: 12px; }
+        .past-card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--navy); margin-bottom: 10px; }
+        .past-card-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+        .past-card-body .event-meta { margin-bottom: 0; }
+
+        /* ── NEWSLETTER CTA ── */
+        .cta-section {
+            background: var(--navy); padding: 72px 0;
+            position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,168,37,0.1) 0%, transparent 60%);
+        }
+        .cta-section::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(232,168,37,0.4), transparent);
+        }
+        .cta-inner {
+            position: relative; z-index: 1;
+            display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+        }
+        .cta-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: #fff; margin-bottom: 10px; }
+        .cta-text p { font-size: 1rem; color: rgba(255,255,255,0.5); max-width: 460px; line-height: 1.7; }
+
+        .btn-gold {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold); color: var(--navy);
+            font-weight: 700; font-size: 0.9rem;
+            padding: 14px 32px; border-radius: 50px; text-decoration: none;
+            transition: all 0.3s; box-shadow: 0 8px 24px rgba(232,168,37,0.35);
+            position: relative; overflow: hidden;
+        }
+        .btn-gold:hover { background: var(--gold-lt); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(232,168,37,0.45); }
+        .btn-outline-white {
+            display: inline-flex; align-items: center; gap: 8px;
+            border: 1.5px solid rgba(255,255,255,0.3); color: #fff;
+            font-weight: 500; font-size: 0.9rem;
+            padding: 14px 32px; border-radius: 50px; text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-outline-white:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+        /* ── FOOTER ── */
+        footer { background: #080f18; color: white; padding: 48px 0 32px; border-top: 1px solid rgba(255,255,255,0.06); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+        .footer-credit { color: var(--gold) !important; }
+        .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 20px; }
+        .footer-logo img { height: 36px; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .upcoming-grid { grid-template-columns: 1fr 1fr; }
+            .past-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,27,42,0.98); padding: 24px; gap: 4px; }
+            .nav-links.open { display: flex; }
+            .menu-toggle { display: flex; }
+            .upcoming-grid { grid-template-columns: 1fr; }
+            .past-card { grid-template-columns: 1fr; }
+            .past-card-img { height: 180px; }
+            .cta-inner { flex-direction: column; text-align: center; }
+            .cta-inner .cta-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        }
+        @media (max-width: 480px) {
+            .page-hero { padding: 60px 0 50px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header id="site-header">
+    <div class="container">
+        <nav class="navbar">
+            <a class="logo" href="../index">
+                <img src="../logo.png" alt="Igniting Minds">
+                <span class="logo-text">Igniting <span>Minds</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index#about">About</a></li>
+                <li><a href="../index#programs">Programs</a></li>
+                <li><a href="../index#team">Team</a></li>
+                <li><a href="../index#scholars">World Scholars</a></li>
+                <li><a href="../index#testimonials">Testimonials</a></li>
+                <li><a href="../index#location">Location</a></li>
+                <li><a href="../index#contact" class="nav-cta">Enroll Now</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══════════════════════ PAGE HERO ═══════════════════════ -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="../index">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Events</span>
+            </div>
+            <p class="eyebrow">What's Happening</p>
+            <h1>Events &amp; <em>Milestones</em></h1>
+            <p>From annual celebrations to global competitions — here's where Igniting Minds comes alive beyond the classroom.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ UPCOMING EVENTS ═══════════════════════ -->
+<section class="upcoming-section">
+    <div class="container">
+        <div class="section-label reveal">
+            <h2>Upcoming Events</h2>
+            <div class="label-line"></div>
+            <span class="label-tag"><i class="fas fa-calendar-day" style="margin-right:5px"></i> 2025</span>
+        </div>
+
+        <div class="upcoming-grid">
+
+            <!-- Event 1: Talent Show -->
+            <div class="event-card reveal" style="transition-delay:0.1s">
+                <div class="event-card-banner" style="background: linear-gradient(135deg, #1a3050, #0d1b2a);">
+                    <img src="talent-show.jpg" alt="Talent Show" onerror="this.style.display='none'">
+                    <i class="event-card-banner-icon fas fa-microphone-alt"></i>
+                    <div class="event-date-badge">
+                        <div class="day">15</div>
+                        <div class="month">Mar</div>
+                    </div>
+                    <span class="event-status-badge status-upcoming">Upcoming</span>
+                </div>
+                <div class="event-card-body">
+                    <span class="event-tag"><i class="fas fa-star"></i> Performance</span>
+                    <h3 style="margin-top:10px">Annual Talent Show</h3>
+                    <p>A stage for every hidden star — students showcase their talents in singing, spoken word, comedy, dance, and more in front of the full Igniting Minds community.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item"><i class="fas fa-clock"></i> 4:00 PM – 7:00 PM</div>
+                        <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Igniting Minds Centre, Kilpauk</div>
+                        <div class="event-meta-item"><i class="fas fa-users"></i> Open to all students & parents</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 2: MUN Prep Workshop -->
+            <div class="event-card reveal" style="transition-delay:0.2s">
+                <div class="event-card-banner" style="background: linear-gradient(135deg, #2a1a0d, #1a0d05);">
+                    <img src="mun-workshop.jpg" alt="MUN Workshop" onerror="this.style.display='none'">
+                    <i class="event-card-banner-icon fas fa-globe"></i>
+                    <div class="event-date-badge">
+                        <div class="day">29</div>
+                        <div class="month">Mar</div>
+                    </div>
+                    <span class="event-status-badge status-upcoming">Upcoming</span>
+                </div>
+                <div class="event-card-body">
+                    <span class="event-tag"><i class="fas fa-landmark"></i> Workshop</span>
+                    <h3 style="margin-top:10px">MUN Intensive Workshop</h3>
+                    <p>A two-day immersive training camp for students preparing for their first Model United Nations. Covers resolution writing, caucusing, public speaking, and chair etiquette.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item"><i class="fas fa-clock"></i> 9:00 AM – 5:00 PM (2 Days)</div>
+                        <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Igniting Minds Centre, Kilpauk</div>
+                        <div class="event-meta-item"><i class="fas fa-users"></i> Grades 8 – 12</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 3: IGNITE Cultural Fest -->
+            <div class="event-card reveal" style="transition-delay:0.3s">
+                <div class="event-card-banner" style="background: linear-gradient(135deg, #0d1a2a, #162536);">
+                    <img src="ignite-fest.jpg" alt="IGNITE Festival" onerror="this.style.display='none'">
+                    <i class="event-card-banner-icon fas fa-fire"></i>
+                    <div class="event-date-badge">
+                        <div class="day">TBA</div>
+                        <div class="month">Apr</div>
+                    </div>
+                    <span class="event-status-badge status-tba">Date TBA</span>
+                </div>
+                <div class="event-card-body">
+                    <span class="event-tag"><i class="fas fa-fire"></i> Cultural</span>
+                    <h3 style="margin-top:10px">IGNITE — Cultural Festival</h3>
+                    <p>The flagship cultural event of Igniting Minds. A full-day celebration of the arts, performance, and house spirit, featuring competitions across all four literary houses.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item"><i class="fas fa-clock"></i> Full Day Event</div>
+                        <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Venue to be announced</div>
+                        <div class="event-meta-item"><i class="fas fa-users"></i> All students welcome</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ PAST EVENTS ═══════════════════════ -->
+<section class="past-section">
+    <div class="container">
+        <div class="section-label reveal">
+            <h2>Past Events</h2>
+            <div class="label-line"></div>
+            <span class="label-tag"><i class="fas fa-history" style="margin-right:5px"></i> Highlights</span>
+        </div>
+
+        <div class="past-grid">
+
+            <!-- Past 1: Annual Day 2024 -->
+            <div class="past-card reveal" style="transition-delay:0.1s">
+                <div class="past-card-img">
+                    <img src="annual-day.jpg" alt="Annual Day 2024" onerror="this.style.display='none'">
+                    <i class="past-card-img-icon fas fa-award"></i>
+                    <span class="past-year-badge">2024</span>
+                </div>
+                <div class="past-card-body">
+                    <span class="event-tag"><i class="fas fa-award"></i> Annual Day</span>
+                    <h3>Annual Day 2024</h3>
+                    <p>A magnificent evening of performances, award presentations, and heartfelt recognition — celebrating the achievements of every student across the academic year. Students from all houses took to the stage in a stunning showcase of talent, hard work, and community spirit.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item"><i class="fas fa-calendar"></i> December 2024</div>
+                        <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Kilpauk, Chennai</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past 2: WSC Chennai Round 2024 -->
+            <div class="past-card reveal" style="transition-delay:0.2s">
+                <div class="past-card-img">
+                    <img src="scholars-cup.jpg" alt="WSC Chennai 2024" onerror="this.style.display='none'">
+                    <i class="past-card-img-icon fas fa-trophy"></i>
+                    <span class="past-year-badge">2024</span>
+                </div>
+                <div class="past-card-body">
+                    <span class="event-tag"><i class="fas fa-trophy"></i> Competition</span>
+                    <h3>World Scholars Cup — Chennai Round</h3>
+                    <p>Our students competed in the World Scholars Cup Chennai regional round, excelling in Collaborative Writing, Scholar's Bowl, and Team Debate. Multiple students qualified for the Global Round, continuing our proud tradition of WSC excellence on the world stage.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item"><i class="fas fa-calendar"></i> August 2024</div>
+                        <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Chennai</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past 3: Sports Day 2024 -->
+            <div class="past-card reveal" style="transition-delay:0.3s">
+                <div class="past-card-img">
+                    <img src="sports-day.jpg" alt="Sports Day 2024" onerror="this.style.display='none'">
+                    <i class="past-card-img-icon fas fa-running"></i>
+                    <span class="past-year-badge">2024</span>
+                </div>
+                <div class="past-card-body">
+                    <span class="event-tag"><i class="fas fa-running"></i> Sports</span>
+                    <h3>Sports Day 2024</h3>
+                    <p>The annual Sports Day brought out the competitive spirit of all four literary houses — Shakespeare, Wordsworth, Austen, and Tagore — in a full day of track and field events, team sports, and inter-house relays. A celebration of fitness, teamwork, and healthy rivalry.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item"><i class="fas fa-calendar"></i> October 2024</div>
+                        <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Kilpauk, Chennai</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ STAY UPDATED CTA ═══════════════════════ -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-inner">
+            <div class="cta-text">
+                <h2>Stay in the Loop</h2>
+                <p>Follow us on Instagram or get in touch directly to hear about upcoming events, workshops, and competitions first.</p>
+            </div>
+            <div class="cta-actions" style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a href="https://www.instagram.com/ignitingmindschennai/" target="_blank" class="btn-gold">
+                    <i class="fab fa-instagram"></i> Follow on Instagram
+                </a>
+                <a href="tel:+919840348305" class="btn-outline-white">
+                    <i class="fas fa-phone"></i> Call Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+    <div class="container">
+        <div class="footer-bottom">
+            <a class="footer-logo" href="../index.html">
+                <img src="../logo.png" alt="Igniting Minds">
+                <span class="logo-text">Igniting <span style="color:var(--gold)">Minds</span></span>
+            </a>
+            <p class="footer-credit">Made with ❤️ by Kiyan Parekh</p>
+            <p>&copy; 2025 Igniting Minds After School Program. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ── Mobile Menu ──
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks   = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
